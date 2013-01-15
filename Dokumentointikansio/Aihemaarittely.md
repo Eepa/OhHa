@@ -12,7 +12,7 @@ tai vinottain.
 Pelilautana toimii 6X7 kokoinen "lokerikko", johon pelaajat 
 tiputtavat ylh‰‰lt‰ pelinappulansa vuorotellen. 
 Nelj‰n suora-peli on kahdestaan pelattava, ja ensimm‰inen 
-nelj‰n suoran muodostanut pelaaja voittaa. 
+nelj‰n nappulan pituisen suoran muodostanut pelaaja voittaa. 
 T‰m‰n j‰lkeen pelilauta tyhjennet‰‰n.
 
 K‰ytt‰j‰t: Kaksi pelaajaa
