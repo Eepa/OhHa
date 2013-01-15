@@ -2,13 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ohhaohjelma;
+package neljansuora;
 
 /**
  *
  * @author Eveliina Pakarinen
  */
-public class OhHaOhjelma {
+public class Neljansuora {
 
     /**
      * @param args the command line arguments
