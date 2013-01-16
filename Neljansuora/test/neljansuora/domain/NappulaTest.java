@@ -1,5 +1,8 @@
-
-package neljansuora;
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package neljansuora.domain;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,9 +15,9 @@ import static org.junit.Assert.*;
  *
  * @author evpa
  */
-public class NeljansuoraTest {
+public class NappulaTest {
     
-    public NeljansuoraTest() {
+    public NappulaTest() {
     }
     
     @BeforeClass
