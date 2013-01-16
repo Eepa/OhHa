@@ -1,6 +1,7 @@
 
 package neljansuora.peli;
 
+import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -11,27 +12,19 @@ import static org.junit.Assert.*;
 
 public class NeljansuoraTest {
     
-    public NeljansuoraTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
+    Scanner lukija;
+    Neljansuora neljansuora;
     
     @Before
     public void setUp() {
+        this.lukija = new Scanner(System.in);
+        this.neljansuora = new Neljansuora(8, 9, lukija);
+        
     }
     
-    @After
-    public void tearDown() {
+    @Test
+    public void luotuNeljansuoraOlemassa(){
+        assertTrue(neljansuora != null);
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
 }

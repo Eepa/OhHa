@@ -54,11 +54,26 @@ public class Pelilauta {
     }
     
     public void luoPelilauta(){
-        this.taytaKentta();
+        
+        for(int i = 0; i < this.korkeus; i++){
+            String[] uusiRivi = new String[this.leveys];
+            this.lauta.put(i, uusiRivi);
+        }
+        
+        this.taytaPelilauta();
         this.lisaaNappulatKenttaan();
     }
     
-    public void taytaKentta(){
+    public void taytaPelilauta(){
+        
+        for(String[] taulukko : this.lauta.values()){
+            
+            for(int j = 0; j < taulukko.length; j++){
+                taulukko[j] = ".";
+            }
+            
+        }
+        
         
     }
     

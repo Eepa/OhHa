@@ -13,7 +13,12 @@ public class Pelaaja {
     
     public Pelaaja(int vuoronumero, String nimi){
         this.vuoronumero = vuoronumero;
+        this.nimi = nimi;
         this.nappulat = new ArrayList<Nappula>();
+    }
+    
+    public List palautaNappulat(){
+        return this.nappulat;
     }
     
     

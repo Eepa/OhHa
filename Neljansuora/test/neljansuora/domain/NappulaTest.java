@@ -11,27 +11,29 @@ import static org.junit.Assert.*;
 
 public class NappulaTest {
     
-    public NappulaTest() {
-    }
+    Nappula nappula;
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+   
     @Before
     public void setUp() {
+        this.nappula = new Nappula(5, 9);
     }
     
-    @After
-    public void tearDown() {
+    
+    @Test
+    public void luotuNappulaOlemassa(){
+        assertTrue(nappula != null);
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
+    @Test
+    public void toimiikoPalautaX(){
+        assertEquals(5, nappula.palautaX());
+    }
+    
+    @Test
+    public void toimiikoPalautaY(){
+        assertEquals(9, nappula.palautaY());
+    }
+    
+    
 }
