@@ -28,6 +28,6 @@ public class PelaajaTest {
     
     @Test
     public void palauttaaVuoronumeronOikein(){
-        assertEquals(2, pelaaja.annaVuoronumero());
+        assertEquals(2, pelaaja.getVuoronumero());
     }
 }

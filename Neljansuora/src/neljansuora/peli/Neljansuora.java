@@ -26,12 +26,11 @@ public class Neljansuora {
     }
 
     public void tulostaPelilauta() {
-        this.pelilauta.tulostaTilanne();
+        this.pelilauta.tulostaPelilauta();
     }
 
     public void lisaaPelaajat() {
         this.pelilauta.luoPelaajat();
-
     }
 
     public void kaynnista() {
@@ -40,7 +39,9 @@ public class Neljansuora {
 
         while (i < 3) {
 
-            this.pelilauta.tulostaTilanne();
+            this.pelilauta.tulostaPelilauta();
+            
+            System.out.println("--------");
 
             this.pelaaKierros();
 
@@ -51,5 +52,8 @@ public class Neljansuora {
     }
 
     public void pelaaKierros() {
+        
+        
+        
     }
 }

@@ -47,7 +47,7 @@ public class PelilautaTest {
           
 
         
-        assertEquals(2, pelilauta.palautaPelaajat().size());
+        assertEquals(2, pelilauta.getPelaajat().size());
     }
     
     @Test
@@ -55,10 +55,10 @@ public class PelilautaTest {
         
         this.pelilauta.luoPelaajat();
         
-        List<Pelaaja> pelaajat = this.pelilauta.palautaPelaajat();
+        List<Pelaaja> pelaajat = this.pelilauta.getPelaajat();
         int summa = 0;
         for(Pelaaja p : pelaajat){
-            summa = summa + p.annaVuoronumero();
+            summa = summa + p.getVuoronumero();
         }
         
         assertEquals(3, summa);

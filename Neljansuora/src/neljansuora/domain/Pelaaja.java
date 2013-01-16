@@ -17,11 +17,11 @@ public class Pelaaja {
         this.nappulat = new ArrayList<Nappula>();
     }
     
-    public List palautaNappulat(){
+    public List getNappulat(){
         return this.nappulat;
     }
     
-    public int annaVuoronumero(){
+    public int getVuoronumero(){
         return this.vuoronumero;
     }
     

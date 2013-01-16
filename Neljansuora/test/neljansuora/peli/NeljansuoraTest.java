@@ -27,4 +27,9 @@ public class NeljansuoraTest {
         assertTrue(neljansuora != null);
     }
     
+    @Test
+    public void kaynnistaMetodinSuoritusLoppuu(){
+        
+    }
+    
 }
