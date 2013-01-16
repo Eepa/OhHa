@@ -40,16 +40,16 @@ public class Pelilauta {
     public void luoPelaajat(){
         
         for(int i = 1; i <= 2; i++){
-            System.out.println("Anna pelaajan nimi:");
-            String nimi = lukija.nextLine();
+//            System.out.println("Anna pelaajan nimi:");
+//            String nimi = lukija.nextLine();
             
-            Pelaaja pelaaja = new Pelaaja(i, nimi);
+            Pelaaja pelaaja = new Pelaaja(i);
             this.pelaajat.add(pelaaja);
         }
         
     }
     
-    public List palautaPelaajat(){
+    public List<Pelaaja> palautaPelaajat(){
         return this.pelaajat;
     }
     

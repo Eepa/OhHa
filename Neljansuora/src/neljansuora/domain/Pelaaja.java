@@ -9,16 +9,20 @@ public class Pelaaja {
     
     private int vuoronumero;
     private List<Nappula> nappulat;
-    private String nimi;
+//    private String nimi;
     
-    public Pelaaja(int vuoronumero, String nimi){
+    public Pelaaja(int vuoronumero){
         this.vuoronumero = vuoronumero;
-        this.nimi = nimi;
+//        this.nimi = nimi;
         this.nappulat = new ArrayList<Nappula>();
     }
     
     public List palautaNappulat(){
         return this.nappulat;
+    }
+    
+    public int annaVuoronumero(){
+        return this.vuoronumero;
     }
     
     

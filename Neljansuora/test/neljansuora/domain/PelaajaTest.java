@@ -15,7 +15,7 @@ public class PelaajaTest {
     
     @Before
     public void setUp() {
-        this.pelaaja = new Pelaaja(1, "Pekka");
+        this.pelaaja = new Pelaaja(2);
         
     }
     
@@ -24,5 +24,10 @@ public class PelaajaTest {
     @Test
     public void luotuPelaajaOlemassa(){
         assertTrue(pelaaja != null);
+    }
+    
+    @Test
+    public void palauttaaVuoronumeronOikein(){
+        assertEquals(2, pelaaja.annaVuoronumero());
     }
 }
