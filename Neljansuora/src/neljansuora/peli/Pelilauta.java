@@ -15,6 +15,7 @@ public class Pelilauta {
     private Scanner lukija;
     private Map<Integer, String[]> lauta;
     private List<Pelaaja> pelaajat;
+    private PeliSuorittaja suorittaja;
 
     public Pelilauta(int leveys, int korkeus, Scanner lukija) {
         this.leveys = leveys;
@@ -23,19 +24,16 @@ public class Pelilauta {
 
         this.lauta = new HashMap<Integer, String[]>();
         this.pelaajat = new ArrayList<Pelaaja>();
+        this.suorittaja = new PeliSuorittaja(this.lauta, this.lukija);
 
         this.luoPelilauta();
 
     }
 
     public void tulostaPelilauta() {
-        for (String[] rivi : this.lauta.values()) {
 
-            for (int j = 0; j < rivi.length; j++) {
-                System.out.print(rivi[j]);
-            }
-            System.out.println("");
-        }
+        this.suorittaja.tulostaPelilauta();
+
     }
 
     public void luoPelaajat() {
@@ -62,61 +60,38 @@ public class Pelilauta {
         }
 
         this.taytaPelilauta();
-        this.lisaaNappulatKenttaan();
     }
 
     public void taytaPelilauta() {
 
-        this.kirjoitaLaudalle(".");
-
+        this.suorittaja.kirjoitaLaudalle(".");
 
     }
 
-    public void lisaaNappulatKenttaan() {
+    public void teeSiirrot() {
 
         for (Pelaaja p : this.pelaajat) {
 
-            if (p.getVuoronumero() == 1) {
-                this.lisaaPelaajanNappulat("X", p.getNappulat());
+            String nimi = "Pelaaja" + p.getVuoronumero();
+            boolean jatketaanko = true;
 
-            } else {
-                this.lisaaPelaajanNappulat("O", p.getNappulat());
-            }
-        }
+            int siirronNumero = this.suorittaja.luePelaajanSiirto(nimi);
 
-    }
+            while (jatketaanko) {
 
-    public void kirjoitaLaudalle(String syote) {
-        for (String[] taulukko : this.lauta.values()) {
-
-            for (int j = 0; j < taulukko.length; j++) {
-                taulukko[j] = syote;
-            }
-        }
-    }
-
-    public void lisaaPelaajanNappulat(String merkki, List<Nappula> nappulat) {
-
-        for (Nappula nappula : nappulat) {
-            this.kirjoitaLaudalle(merkki, nappula.palautaX(), nappula.palautaY());
-        }
-
-    }
-
-    public void kirjoitaLaudalle(String syote, int x, int y) {
-
-        for (int i = 0; i < this.lauta.size(); i++) {
-            if (i == y) {
-                String[] taulukko = this.lauta.get(i);
-
-                for (int j = 0; j < taulukko.length; j++) {
-
-                    if (j == x) {
-                        taulukko[j] = syote;
-                    }
+                if (p.onkoMahdollinenSiirto(siirronNumero)) {
+                    p.teeSiirto(siirronNumero);
+                    jatketaanko = false;
+                } else {
+                    System.out.println("Ei mahdollinen siirto!");
+                    siirronNumero = this.suorittaja.luePelaajanSiirto(nimi);
+                    jatketaanko = true;
                 }
-
             }
+
+
+
         }
+
     }
 }
