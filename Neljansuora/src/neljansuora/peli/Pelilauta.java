@@ -83,7 +83,7 @@ public class Pelilauta {
                 int siirronNumero = this.peliSuorittaja.luePelaajanSiirto(nimi);
                 
                 if (this.pelaajaSuorittaja.onkoMahdollinenSiirto(siirronNumero)) {
-                    this.pelaajaSuorittaja.teeSiirto(siirronNumero);
+                    this.pelaajaSuorittaja.teeSiirto(siirronNumero, p);
                     jatketaanko = false;
                 } else {
                     System.out.println("Ei mahdollinen siirto!");
