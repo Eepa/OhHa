@@ -15,6 +15,7 @@ public class Pelaaja {
         this.vuoronumero = vuoronumero;
 //        this.nimi = nimi;
         this.nappulat = new ArrayList<Nappula>();
+        
     }
     
     public List getNappulat(){

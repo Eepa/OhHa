@@ -10,10 +10,12 @@ public class PeliSuorittaja {
 
     private Map<Integer, String[]> lauta;
     private Scanner lukija;
+    private List<Pelaaja> pelaajat;
 
-    public PeliSuorittaja(Map<Integer, String[]> lauta, Scanner lukija) {
+    public PeliSuorittaja(Map<Integer, String[]> lauta, List<Pelaaja> pelaajat, Scanner lukija) {
         this.lauta = lauta;
         this.lukija = lukija;
+        this.pelaajat = pelaajat;
     }
 
     public void tulostaPelilauta() {
@@ -53,6 +55,7 @@ public class PeliSuorittaja {
     public void lisaaPelaajanNappulat(String merkki, List<Nappula> nappulat) {
 
         for (Nappula nappula : nappulat) {
+
             this.kirjoitaLaudalleNappula(merkki, nappula.palautaX(), nappula.palautaY());
         }
 
@@ -60,34 +63,33 @@ public class PeliSuorittaja {
 
     public void kirjoitaLaudalleNappula(String syote, int x, int y) {
 
-        String[] taulukko = this.lauta.get(y);
-
-        taulukko[x] = syote;
+        this.lauta.get(y)[x] = syote;
 
     }
 
+
     public int luePelaajanSiirto(String nimi) {
-        
-        System.out.println(nimi + " syötä numero 1:n ja " + this.lauta.get(0).length 
+
+        System.out.println(nimi + " syötä numero 0:n ja " + (this.lauta.get(0).length - 1)
                 + ":n väliltä");
 
         while (true) {
             try {
-                
+
                 int numero = Integer.parseInt(lukija.nextLine());
-                
-                if(numero < 0){
+
+                if (numero < 0) {
                     throw new IllegalArgumentException();
-                } else if(numero > this.lauta.get(0).length){
+                } else if (numero > this.lauta.get(0).length - 1) {
                     throw new IllegalArgumentException();
                 }
-                
-                return numero-1;
-                
+
+                return numero;
+
             } catch (Exception e) {
-                
+
                 System.out.println("Ei kunnollinen numero!");
-                
+
             }
         }
 

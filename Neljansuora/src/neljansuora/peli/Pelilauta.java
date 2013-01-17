@@ -25,8 +25,8 @@ public class Pelilauta {
 
         this.lauta = new HashMap<Integer, String[]>();
         this.pelaajat = new ArrayList<Pelaaja>();
-        this.peliSuorittaja = new PeliSuorittaja(this.lauta, this.lukija);
-        this.pelaajaSuorittaja = new PelaajaSuorittaja(this.lauta, this.pelaajat);
+        this.peliSuorittaja = new PeliSuorittaja(this.lauta, this.pelaajat, this.lukija);
+        this.pelaajaSuorittaja = new PelaajaSuorittaja(this.lauta);
 
         this.luoPelilauta();
 
@@ -50,10 +50,6 @@ public class Pelilauta {
 
     }
 
-    public List<Pelaaja> getPelaajat() {
-        return this.pelaajat;
-    }
-
     public void luoPelilauta() {
 
         for (int i = 0; i < this.korkeus; i++) {
@@ -67,6 +63,7 @@ public class Pelilauta {
     public void taytaPelilauta() {
 
         this.peliSuorittaja.kirjoitaLaudalle(".");
+        
 
     }
 
@@ -77,22 +74,20 @@ public class Pelilauta {
             String nimi = "Pelaaja" + p.getVuoronumero();
             boolean jatketaanko = true;
 
-
-
+            int vaakarivinNumero = this.peliSuorittaja.luePelaajanSiirto(nimi);
             while (jatketaanko) {
-                int siirronNumero = this.peliSuorittaja.luePelaajanSiirto(nimi);
-                
-                if (this.pelaajaSuorittaja.onkoMahdollinenSiirto(siirronNumero)) {
-                    this.pelaajaSuorittaja.teeSiirto(siirronNumero, p);
+
+                if (this.pelaajaSuorittaja.onkoMahdollinenSiirto(vaakarivinNumero)) {
+                    this.pelaajaSuorittaja.teeSiirto(vaakarivinNumero, p);
                     jatketaanko = false;
                 } else {
                     System.out.println("Ei mahdollinen siirto!");
-                    siirronNumero = this.peliSuorittaja.luePelaajanSiirto(nimi);
+                    vaakarivinNumero = this.peliSuorittaja.luePelaajanSiirto(nimi);
                     jatketaanko = true;
                 }
             }
 
-
+            this.peliSuorittaja.lisaaNappulatKenttaan(pelaajat);
 
         }
 

@@ -21,14 +21,6 @@ public class Neljansuora {
         this.pelilauta = new Pelilauta(leveys, korkeus, this.lukija);
     }
 
-    public Pelilauta getPelilauta() {
-        return this.pelilauta;
-    }
-
-    public void tulostaPelilauta() {
-        this.pelilauta.tulostaPelilauta();
-    }
-
     public void lisaaPelaajat() {
         this.pelilauta.luoPelaajat();
     }
@@ -37,24 +29,26 @@ public class Neljansuora {
 
         int i = 0;
 
-        while (i < 3) {
+        while (i < 5) {
 
             this.pelilauta.tulostaPelilauta();
-            
-            System.out.println("--------");
+
+            System.out.println("-----------------");
 
             this.pelaaKierros();
 
             i++;
         }
-
+        System.out.println("-----------------------");
+        this.pelilauta.tulostaPelilauta();
+        
         System.out.println("Loppu");
     }
 
     public void pelaaKierros() {
-        
+
         this.pelilauta.teeSiirrot();
-        
-        
+
+
     }
 }

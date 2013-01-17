@@ -9,17 +9,17 @@ import neljansuora.domain.Pelaaja;
 public class PelaajaSuorittaja {
     
     private Map<Integer, String[]> lauta;
-    private List<Pelaaja> pelaajat;
     
-    public PelaajaSuorittaja(Map<Integer, String[]> lauta, List<Pelaaja> pelaajat){
+    
+    public PelaajaSuorittaja(Map<Integer, String[]> lauta){
         this.lauta = lauta;
-        this.pelaajat = pelaajat;
+        
     }
     
     
-    public boolean onkoMahdollinenSiirto(int pystyRivinNumero){
+    public boolean onkoMahdollinenSiirto(int vaakarivinNumero){
         
-        if(this.lauta.get(0)[pystyRivinNumero].equals(".")){
+        if(this.lauta.get(0)[vaakarivinNumero].equals(".")){
             return true;
         }
         
@@ -28,19 +28,22 @@ public class PelaajaSuorittaja {
     
     public void teeSiirto(int pystyRivinNumero, Pelaaja p){
         
-        int vaakaRivinNumero = 0;
+        int vaakarivinNumero = this.lauta.size()-1;
         
-        for(int i = 0; i < this.lauta.size(); i++){
-            while(!this.lauta.get(i)[pystyRivinNumero].equals(".")){
-                vaakaRivinNumero = i;
-                p.lisaaUusiNappula(pystyRivinNumero, vaakaRivinNumero);
+        while(vaakarivinNumero >= 0){
+            
+            String[] rivi = this.lauta.get(vaakarivinNumero);
+            
+            if(rivi[pystyRivinNumero].equals(".")){
+                p.lisaaUusiNappula(pystyRivinNumero, vaakarivinNumero);
                 return;
             }
+            vaakarivinNumero--;
         }
         
     }
     
-    public int etsiVapaaPaikka(int pystyRivinNumero){
+    public int etsiVapaaPaikka(int vaakaRivinNumero){
         
         
         
