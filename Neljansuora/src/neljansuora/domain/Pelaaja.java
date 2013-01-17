@@ -25,19 +25,8 @@ public class Pelaaja {
         return this.vuoronumero;
     }
     
-    public boolean onkoMahdollinenSiirto(int numero){
-        
-        if(numero > 10){
-            return true;
-        }
-        
-        return false;
-    }
-    
-    public void teeSiirto(int rivinNumero){
-        
-        
-        
+    public void lisaaUusiNappula(int x, int y){
+        this.nappulat.add(new Nappula(x, y));
     }
     
     

@@ -15,7 +15,8 @@ public class Pelilauta {
     private Scanner lukija;
     private Map<Integer, String[]> lauta;
     private List<Pelaaja> pelaajat;
-    private PeliSuorittaja suorittaja;
+    private PeliSuorittaja peliSuorittaja;
+    private PelaajaSuorittaja pelaajaSuorittaja;
 
     public Pelilauta(int leveys, int korkeus, Scanner lukija) {
         this.leveys = leveys;
@@ -24,7 +25,8 @@ public class Pelilauta {
 
         this.lauta = new HashMap<Integer, String[]>();
         this.pelaajat = new ArrayList<Pelaaja>();
-        this.suorittaja = new PeliSuorittaja(this.lauta, this.lukija);
+        this.peliSuorittaja = new PeliSuorittaja(this.lauta, this.lukija);
+        this.pelaajaSuorittaja = new PelaajaSuorittaja(this.lauta, this.pelaajat);
 
         this.luoPelilauta();
 
@@ -32,7 +34,7 @@ public class Pelilauta {
 
     public void tulostaPelilauta() {
 
-        this.suorittaja.tulostaPelilauta();
+        this.peliSuorittaja.tulostaPelilauta();
 
     }
 
@@ -64,7 +66,7 @@ public class Pelilauta {
 
     public void taytaPelilauta() {
 
-        this.suorittaja.kirjoitaLaudalle(".");
+        this.peliSuorittaja.kirjoitaLaudalle(".");
 
     }
 
@@ -75,16 +77,17 @@ public class Pelilauta {
             String nimi = "Pelaaja" + p.getVuoronumero();
             boolean jatketaanko = true;
 
-            int siirronNumero = this.suorittaja.luePelaajanSiirto(nimi);
+
 
             while (jatketaanko) {
-
-                if (p.onkoMahdollinenSiirto(siirronNumero)) {
-                    p.teeSiirto(siirronNumero);
+                int siirronNumero = this.peliSuorittaja.luePelaajanSiirto(nimi);
+                
+                if (this.pelaajaSuorittaja.onkoMahdollinenSiirto(siirronNumero)) {
+                    this.pelaajaSuorittaja.teeSiirto(siirronNumero);
                     jatketaanko = false;
                 } else {
                     System.out.println("Ei mahdollinen siirto!");
-                    siirronNumero = this.suorittaja.luePelaajanSiirto(nimi);
+                    siirronNumero = this.peliSuorittaja.luePelaajanSiirto(nimi);
                     jatketaanko = true;
                 }
             }

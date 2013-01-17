@@ -75,6 +75,13 @@ public class PeliSuorittaja {
             try {
                 
                 int numero = Integer.parseInt(lukija.nextLine());
+                
+                if(numero < 0){
+                    throw new IllegalArgumentException();
+                } else if(numero > this.lauta.get(0).length){
+                    throw new IllegalArgumentException();
+                }
+                
                 return numero-1;
                 
             } catch (Exception e) {
