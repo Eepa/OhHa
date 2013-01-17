@@ -16,7 +16,7 @@ public class Pelilauta {
     private Map<Integer, String[]> lauta;
     private List<Pelaaja> pelaajat;
     private PeliSuorittaja peliSuorittaja;
-    private NappulaSuorittaja pelaajaSuorittaja;
+    private NappulaSuorittaja nappulaSuorittaja;
 
     public Pelilauta(int leveys, int korkeus, Scanner lukija) {
         this.leveys = leveys;
@@ -26,7 +26,7 @@ public class Pelilauta {
         this.lauta = new HashMap<Integer, String[]>();
         this.pelaajat = new ArrayList<Pelaaja>();
         this.peliSuorittaja = new PeliSuorittaja(this.lauta, this.pelaajat, this.lukija);
-        this.pelaajaSuorittaja = new NappulaSuorittaja(this.lauta);
+        this.nappulaSuorittaja = new NappulaSuorittaja(this.lauta, this.pelaajat);
 
         this.luoPelilauta();
 
@@ -81,8 +81,8 @@ public class Pelilauta {
             int vaakarivinNumero = this.peliSuorittaja.luePelaajanSiirto(nimi);
             while (jatketaanko) {
 
-                if (this.pelaajaSuorittaja.onkoMahdollinenSiirto(vaakarivinNumero)) {
-                    this.pelaajaSuorittaja.teeSiirto(vaakarivinNumero, p);
+                if (this.nappulaSuorittaja.onkoMahdollinenSiirto(vaakarivinNumero)) {
+                    this.nappulaSuorittaja.teeSiirto(vaakarivinNumero, p);
                     jatketaanko = false;
                 } else {
                     System.out.println("Ei mahdollinen siirto!");
@@ -92,8 +92,14 @@ public class Pelilauta {
             }
 
             this.peliSuorittaja.lisaaNappulatKenttaan(pelaajat);
-
+            
         }
 
     }
+    
+    public boolean onkoNeljanSuoraa(){
+        
+        return this.nappulaSuorittaja.onkoRiittavanPitkiaSuoria();
+    }
+    
 }

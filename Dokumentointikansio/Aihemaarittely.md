@@ -1,21 +1,21 @@
 OhHa
 ====
 
-Aihe: Nelj‰n suora -peli
+Aihe: Neljan suora -peli
 
-Toteutetaan Nelj‰n suora -niminen peli, 
-jossa pelaajien tarkoituksena on muodostaa v‰hint‰‰n nelj‰n 
-oman v‰risens‰ nappulan pituinen suora. 
+Toteutetaan Neljan suora -niminen peli, 
+jossa pelaajien tarkoituksena on muodostaa v‰hint‰‰n neljan 
+oman varisensa nappulan pituinen suora. 
 Suora voidaan muodostaa joko vaaka- tai pystysuoraan 
 tai vinottain. 
 
 Pelilautana toimii 6X7 kokoinen "lokerikko", johon pelaajat 
-tiputtavat ylh‰‰lt‰ pelinappulansa vuorotellen. 
-Nelj‰n suora-peli on kahdestaan pelattava, ja ensimm‰inen 
-nelj‰n nappulan pituisen suoran muodostanut pelaaja voittaa. 
-T‰m‰n j‰lkeen pelilauta tyhjennet‰‰n.
+tiputtavat ylhaalta pelinappulansa vuorotellen. 
+Neljan suora-peli on kahdestaan pelattava, ja ensimm‰inen vahintaan
+neljan nappulan pituisen suoran muodostanut pelaaja voittaa. 
+Taman jalkeen pelilauta tyhjennetaan.
 
-K‰ytt‰j‰t: Kaksi pelaajaa
+Kayttajat: Kaksi pelaajaa
 
-K‰ytt‰jien toiminnot:
+Kayttajien toiminnot:
 - Oman nappulan pudottaminen

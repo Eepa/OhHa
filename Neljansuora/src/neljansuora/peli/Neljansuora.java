@@ -30,18 +30,24 @@ public class Neljansuora {
         int i = 0;
 
         while (i < 5) {
-
+            
+            if (this.pelilauta.onkoNeljanSuoraa()) {
+                break;
+            }
+            
             this.pelilauta.tulostaPelilauta();
 
             System.out.println("-----------------");
 
             this.pelaaKierros();
 
+
             i++;
         }
+
         System.out.println("-----------------------");
         this.pelilauta.tulostaPelilauta();
-        
+
         System.out.println("Loppu");
     }
 

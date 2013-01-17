@@ -3,17 +3,18 @@ package neljansuora.peli;
 
 import java.util.List;
 import java.util.Map;
+import neljansuora.domain.Nappula;
 import neljansuora.domain.Pelaaja;
 
 
 public class NappulaSuorittaja {
     
     private Map<Integer, String[]> lauta;
+    private List<Pelaaja> pelaajat;
     
-    
-    public NappulaSuorittaja(Map<Integer, String[]> lauta){
+    public NappulaSuorittaja(Map<Integer, String[]> lauta, List<Pelaaja> pelaajat){
         this.lauta = lauta;
-        
+        this.pelaajat = pelaajat;
     }
     
     
@@ -43,13 +44,48 @@ public class NappulaSuorittaja {
         
     }
     
-    public int etsiVapaaPaikka(int vaakaRivinNumero){
+    public boolean onkoRiittavanPitkiaSuoria(){
         
+        String merkki = "";
         
+        for(Pelaaja p : this.pelaajat){
+            
+            if(p.getNappulat().size() < 4){
+                return false;
+            }
+            
+            if(p.getVuoronumero() == 1){
+                merkki = "X";
+            } else {
+                merkki = "Y";
+            }
+            
+            if(this.onkoVaakasuorasti(p.getNappulat(), merkki) || 
+                    this.onkoPystysuorasti(p.getNappulat(), merkki) 
+                    || this.onkoVinosti(p.getNappulat(), merkki)){
+                return true;
+            }
+                        
+        }
         
-        return 0;
+        return false;
     }
     
+    public boolean onkoVaakasuorasti(List<Nappula> nappulat, String merkki){
+        
+        
+        
+        
+        return true;
+    }
+    
+    public boolean onkoPystysuorasti(List<Nappula> nappulat, String merkki){
+        return true;
+    }
+    
+    public boolean onkoVinosti(List<Nappula> nappulat, String merkki){
+        return true;
+    }
     
     
 }
