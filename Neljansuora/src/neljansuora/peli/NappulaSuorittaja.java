@@ -6,12 +6,12 @@ import java.util.Map;
 import neljansuora.domain.Pelaaja;
 
 
-public class PelaajaSuorittaja {
+public class NappulaSuorittaja {
     
     private Map<Integer, String[]> lauta;
     
     
-    public PelaajaSuorittaja(Map<Integer, String[]> lauta){
+    public NappulaSuorittaja(Map<Integer, String[]> lauta){
         this.lauta = lauta;
         
     }

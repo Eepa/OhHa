@@ -10,3 +10,7 @@ Keskiviikko 16.1.2012, 3,5h
 Ohjelmoinnin aloittaminen (alustavat luokat ja pakkausrakenne 
 ohjelmassa), alustavien testien tekeminen (miten tehd‰ System.in 
 testit?), v‰h‰n kaavioita (luokkakaavio alustava).
+
+Torstai 17.1.2013, 2,5h
+Ohjelmointia sovelluslogiikkaan (tulostaa laudan oikein ja lis√§√§ nappulat,
+ei tarkistuksia), ei viel√§ testej√§.

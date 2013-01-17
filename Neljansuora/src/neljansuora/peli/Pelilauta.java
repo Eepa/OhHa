@@ -16,7 +16,7 @@ public class Pelilauta {
     private Map<Integer, String[]> lauta;
     private List<Pelaaja> pelaajat;
     private PeliSuorittaja peliSuorittaja;
-    private PelaajaSuorittaja pelaajaSuorittaja;
+    private NappulaSuorittaja pelaajaSuorittaja;
 
     public Pelilauta(int leveys, int korkeus, Scanner lukija) {
         this.leveys = leveys;
@@ -26,7 +26,7 @@ public class Pelilauta {
         this.lauta = new HashMap<Integer, String[]>();
         this.pelaajat = new ArrayList<Pelaaja>();
         this.peliSuorittaja = new PeliSuorittaja(this.lauta, this.pelaajat, this.lukija);
-        this.pelaajaSuorittaja = new PelaajaSuorittaja(this.lauta);
+        this.pelaajaSuorittaja = new NappulaSuorittaja(this.lauta);
 
         this.luoPelilauta();
 
@@ -36,6 +36,10 @@ public class Pelilauta {
 
         this.peliSuorittaja.tulostaPelilauta();
 
+    }
+    
+    public List<Pelaaja> getPelaajat(){
+        return this.pelaajat;
     }
 
     public void luoPelaajat() {
