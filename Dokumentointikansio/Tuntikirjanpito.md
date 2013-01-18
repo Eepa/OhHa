@@ -14,3 +14,6 @@ testit?), vahan kaavioita (luokkakaavio alustava).
 Torstai 17.1.2013, 3,5h
 Ohjelmointia sovelluslogiikkaan (tulostaa laudan oikein ja lisaa 
 nappulat, ei tarkistuksia), ei viela testeja.
+
+Perjantai 18.1.2013, 1h
+Maarittelyvaiheen luokkakaavion kuva lisatty, testeja lisatty.
