@@ -1,5 +1,6 @@
 package neljansuora.peli;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class Neljansuora {
@@ -19,6 +20,10 @@ public class Neljansuora {
 
     public void luoPelilauta(int leveys, int korkeus) {
         this.pelilauta = new Pelilauta(leveys, korkeus, this.lukija);
+    }
+    
+    public Pelilauta getPelilauta(){
+        return this.pelilauta;
     }
 
     public void lisaaPelaajat() {

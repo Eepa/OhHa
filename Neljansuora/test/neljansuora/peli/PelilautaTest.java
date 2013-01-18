@@ -51,6 +51,11 @@ public class PelilautaTest {
     }
     
     @Test
+    public void pelaajanPalautusEiPalautaTyhjaa(){
+        assertTrue(this.pelilauta.getPelaajat() != null);
+    }
+    
+    @Test
     public void palauttaaPelaajatOikein(){
         
         this.pelilauta.luoPelaajat();
@@ -62,6 +67,37 @@ public class PelilautaTest {
         }
         
         assertEquals(3, summa);
+    }
+    
+    @Test
+    public void luoPelilaudanOikein(){
+        int summa = 8 + 9;
+        
+        int tarkistussumma = this.pelilauta.getLauta().size() + this.pelilauta.getLauta().get(0).length;
+        
+        assertEquals(summa, tarkistussumma);
+        
+    }
+    
+    @Test
+    public void tayttoToimiiOikein(){
+        String[] taulukko = this.pelilauta.getLauta().get(0);
+        String tulostus = "";
+        for(int i = 0; i < taulukko.length; i++){
+            tulostus = tulostus + taulukko[i];
+        }
+        
+        String testiSana = "";
+        for(int j = 0; j < taulukko.length; j++){
+            testiSana = testiSana + ".";
+        }
+        
+        assertEquals(tulostus, testiSana);
+    }
+    
+    @Test
+    public void palauttaaLaudanOikein(){
+        assertTrue(this.pelilauta.getLauta() != null);
     }
     
 }

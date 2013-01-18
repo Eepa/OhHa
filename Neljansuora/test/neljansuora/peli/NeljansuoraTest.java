@@ -28,8 +28,13 @@ public class NeljansuoraTest {
     }
     
     @Test
+    public void pelilautaLuodaanAlussa(){
+        assertTrue(this.neljansuora.getPelilauta() != null);
+    }
+    
+    @Test
     public void kaynnistaMetodinSuoritusLoppuu(){
-        
+        // tehdaan sisalto kun osataan
     }
     
 }

@@ -7,12 +7,12 @@ import neljansuora.domain.Nappula;
 import neljansuora.domain.Pelaaja;
 
 
-public class NappulaSuorittaja {
+public class NappulaKasittelija {
     
     private Map<Integer, String[]> lauta;
     private List<Pelaaja> pelaajat;
     
-    public NappulaSuorittaja(Map<Integer, String[]> lauta, List<Pelaaja> pelaajat){
+    public NappulaKasittelija(Map<Integer, String[]> lauta, List<Pelaaja> pelaajat){
         this.lauta = lauta;
         this.pelaajat = pelaajat;
     }

@@ -6,13 +6,13 @@ import java.util.Scanner;
 import neljansuora.domain.Nappula;
 import neljansuora.domain.Pelaaja;
 
-public class PeliSuorittaja {
+public class LautaKasittelija {
 
     private Map<Integer, String[]> lauta;
     private Scanner lukija;
     private List<Pelaaja> pelaajat;
 
-    public PeliSuorittaja(Map<Integer, String[]> lauta, List<Pelaaja> pelaajat, Scanner lukija) {
+    public LautaKasittelija(Map<Integer, String[]> lauta, List<Pelaaja> pelaajat, Scanner lukija) {
         this.lauta = lauta;
         this.lukija = lukija;
         this.pelaajat = pelaajat;

@@ -15,8 +15,8 @@ public class Pelilauta {
     private Scanner lukija;
     private Map<Integer, String[]> lauta;
     private List<Pelaaja> pelaajat;
-    private PeliSuorittaja peliSuorittaja;
-    private NappulaSuorittaja nappulaSuorittaja;
+    private LautaKasittelija lautaKasittelija;
+    private NappulaKasittelija nappulaKasittelija;
 
     public Pelilauta(int leveys, int korkeus, Scanner lukija) {
         this.leveys = leveys;
@@ -25,8 +25,8 @@ public class Pelilauta {
 
         this.lauta = new HashMap<Integer, String[]>();
         this.pelaajat = new ArrayList<Pelaaja>();
-        this.peliSuorittaja = new PeliSuorittaja(this.lauta, this.pelaajat, this.lukija);
-        this.nappulaSuorittaja = new NappulaSuorittaja(this.lauta, this.pelaajat);
+        this.lautaKasittelija = new LautaKasittelija(this.lauta, this.pelaajat, this.lukija);
+        this.nappulaKasittelija = new NappulaKasittelija(this.lauta, this.pelaajat);
 
         this.luoPelilauta();
 
@@ -34,8 +34,12 @@ public class Pelilauta {
 
     public void tulostaPelilauta() {
 
-        this.peliSuorittaja.tulostaPelilauta();
+        this.lautaKasittelija.tulostaPelilauta();
 
+    }
+    
+    public Map<Integer, String[]> getLauta(){
+        return this.lauta;
     }
     
     public List<Pelaaja> getPelaajat(){
@@ -66,7 +70,7 @@ public class Pelilauta {
 
     public void taytaPelilauta() {
 
-        this.peliSuorittaja.kirjoitaLaudalle(".");
+        this.lautaKasittelija.kirjoitaLaudalle(".");
         
 
     }
@@ -78,20 +82,20 @@ public class Pelilauta {
             String nimi = "Pelaaja" + p.getVuoronumero();
             boolean jatketaanko = true;
 
-            int vaakarivinNumero = this.peliSuorittaja.luePelaajanSiirto(nimi);
+            int vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
             while (jatketaanko) {
 
-                if (this.nappulaSuorittaja.onkoMahdollinenSiirto(vaakarivinNumero)) {
-                    this.nappulaSuorittaja.teeSiirto(vaakarivinNumero, p);
+                if (this.nappulaKasittelija.onkoMahdollinenSiirto(vaakarivinNumero)) {
+                    this.nappulaKasittelija.teeSiirto(vaakarivinNumero, p);
                     jatketaanko = false;
                 } else {
                     System.out.println("Ei mahdollinen siirto!");
-                    vaakarivinNumero = this.peliSuorittaja.luePelaajanSiirto(nimi);
+                    vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
                     jatketaanko = true;
                 }
             }
 
-            this.peliSuorittaja.lisaaNappulatKenttaan(pelaajat);
+            this.lautaKasittelija.lisaaNappulatKenttaan(pelaajat);
             
         }
 
@@ -99,7 +103,7 @@ public class Pelilauta {
     
     public boolean onkoNeljanSuoraa(){
         
-        return this.nappulaSuorittaja.onkoRiittavanPitkiaSuoria();
+        return this.nappulaKasittelija.onkoRiittavanPitkiaSuoria();
     }
     
 }
