@@ -33,14 +33,17 @@ public class Neljansuora {
     public void kaynnista() {
 
         int i = 0;
-
+        
+        this.pelilauta.tulostaPelilauta();
+        
         while (i < 5) {
             
             if (this.pelilauta.onkoNeljanSuoraa()) {
+                //lisaa tarkistus kumpi pelaaja sai suoran sout esim pelaaja1 voitti
                 break;
             }
             
-            this.pelilauta.tulostaPelilauta();
+            
 
             System.out.println("-----------------");
 
@@ -57,7 +60,7 @@ public class Neljansuora {
     }
 
     public void pelaaKierros() {
-
+        
         this.pelilauta.teeSiirrot();
 
 

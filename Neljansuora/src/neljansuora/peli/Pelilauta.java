@@ -81,7 +81,7 @@ public class Pelilauta {
 
             String nimi = "Pelaaja" + p.getVuoronumero();
             boolean jatketaanko = true;
-
+            
             int vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
             while (jatketaanko) {
 
@@ -96,7 +96,7 @@ public class Pelilauta {
             }
 
             this.lautaKasittelija.lisaaNappulatKenttaan(pelaajat);
-            
+            this.tulostaPelilauta();
         }
 
     }
