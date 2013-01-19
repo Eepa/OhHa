@@ -79,8 +79,11 @@ public class NappulaKasittelija {
 
             for(int j = 0; j < rivi.length; j++){
                 jono = jono + rivi[j];
+                
             }
-
+            
+            int vertailupituus = this.testaaMerkkijononPituus(jono, merkki);
+            
         }
 
 
@@ -96,5 +99,32 @@ public class NappulaKasittelija {
     public int onkoVinosti(List<Nappula> nappulat, String merkki) {
         return 0;
     }
+    
+    public int testaaMerkkijononPituus(String jono, String merkki){
+        
+        String xjono = teeJono(6);
+        int jononPituus = 0;
+        
+        for(int i = 6; i >= 4; i--){
+            if(jono.contains(xjono)){
+                
+                return i;
+            }
+            xjono = teeJono(i);
+        }
+        
+        return jononPituus;
+    }
 
+    
+    public String teeJono(int pituus){
+        
+        String jono = "";
+        
+        for(int i = 0; i < pituus; i++){
+            jono = jono + "X";
+        }
+        
+        return jono;
+    }
 }
