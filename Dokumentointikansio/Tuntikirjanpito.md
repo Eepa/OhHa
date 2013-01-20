@@ -17,3 +17,6 @@ nappulat, ei tarkistuksia), ei viela testeja.
 
 Perjantai 18.1.2013, 1h
 Maarittelyvaiheen luokkakaavion kuva lisatty, testeja lisatty.
+
+Lauantai 19.1.2012, 2h
+Suorien pituuden tarkastuslogiikkaa lisatty, ohjelmoitu eteenpain.
