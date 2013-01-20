@@ -58,10 +58,12 @@ public class NappulaKasittelija {
                 merkki = "O";
             }
 
-            if (this.onkoVaakasuorasti(p.getNappulat(), merkki)
-                    || this.onkoPystysuorasti(p.getNappulat(), merkki)
-                    || this.onkoVinostiVasemmaltaOikealle(p.getNappulat(), merkki) 
-                    || this.onkoVinostiOikealtaVasemmalle(p.getNappulat(), merkki)) {
+            if (this.onkoVaakasuorasti(merkki)
+                    || this.onkoPystysuorasti(merkki)
+                    || this.onkoVinostiVasemmaltaOikealleYlapuoli(merkki)
+                    || this.onkoVinostiOikealtaVasemmalleYlapuoli(merkki)
+                    || this.onkoVinostiOikealtaVasemmalleAlapuoli(merkki)
+                    || this.onkoVinostiVasemmaltaOikealleAlapuoli(merkki)) {
                 return true;
             }
 
@@ -70,7 +72,7 @@ public class NappulaKasittelija {
         return false;
     }
 
-    public boolean onkoVaakasuorasti(List<Nappula> nappulat, String merkki) {
+    public boolean onkoVaakasuorasti(String merkki) {
 
 
         for (int i = 0; i < this.lauta.size(); i++) {
@@ -90,14 +92,15 @@ public class NappulaKasittelija {
         return false;
     }
 
-    public boolean onkoPystysuorasti(List<Nappula> nappulat, String merkki) {
+    public boolean onkoPystysuorasti(String merkki) {
 
         for (int i = 0; i < this.lauta.size(); i++) {
-
             String jono = "";
 
-            for (String[] rivi : this.lauta.values()) {
-                jono = jono + rivi[i];
+            for (int j = 0; j < this.lauta.get(0).length; j++) {
+                for (String[] rivi : this.lauta.values()) {
+                    jono = jono + rivi[j];
+                }
             }
 
             if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
@@ -107,7 +110,9 @@ public class NappulaKasittelija {
         return false;
     }
 
-    public boolean onkoVinostiVasemmaltaOikealle(List<Nappula> nappulat, String merkki) {
+    public boolean onkoVinostiVasemmaltaOikealleYlapuoli(String merkki) {
+        
+        //wanha
 
         for (int i = 0; i < this.lauta.size(); i++) {
             int x = 0;
@@ -123,6 +128,7 @@ public class NappulaKasittelija {
                     y--;
                     x++;
                 }
+
             } else {
                 for (int j = 0; j < i; j++) {
 
@@ -144,9 +150,53 @@ public class NappulaKasittelija {
 
         return false;
     }
-    
-    public boolean onkoVinostiOikealtaVasemmalle(List<Nappula> nappulat, String merkki){
+
+    public boolean onkoVinostiVasemmaltaOikealleAlapuoli(String merkki) {
+
+        //uusi
         
+        for (int i = 0; i < this.lauta.size(); i++) {
+            int x = this.lauta.get(0).length - 1;
+            int y = this.selvitaLyhinPituusLaudassa()-i;
+
+            String jono = "";
+
+            if (this.selvitaLyhinPituusLaudassa() < i) {
+                for (int j = 0; j < this.selvitaLyhinPituusLaudassa(); j++) {
+
+                    jono = jono + this.lauta.get(y)[x];
+
+                    y++;
+                    x--;
+                }
+
+            } else {
+                for (int j = 0; j < i; j++) {
+
+                    jono = jono + this.lauta.get(y)[x];
+
+                    y++;
+                    x--;
+                }
+            }
+
+
+            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
+                return true;
+            }
+
+
+        }
+
+
+
+        return false;
+    }
+
+    public boolean onkoVinostiOikealtaVasemmalleYlapuoli(String merkki) {
+        
+        //wanha
+
         for (int i = 0; i < this.lauta.size(); i++) {
             int x = this.lauta.size();
             int y = i;
@@ -178,7 +228,47 @@ public class NappulaKasittelija {
 
 
         }
+
+        return false;
+    }
+
+    public boolean onkoVinostiOikealtaVasemmalleAlapuoli(String merkki) {
         
+        //uusi
+
+        for (int i = 0; i < this.lauta.size(); i++) {
+            int x = 0;
+            int y = this.selvitaLyhinPituusLaudassa()- i;
+
+            String jono = "";
+
+            if (this.selvitaLyhinPituusLaudassa() < i) {
+                for (int j = 0; j < this.selvitaLyhinPituusLaudassa(); j++) {
+
+                    jono = jono + this.lauta.get(y)[x];
+
+                    y++;
+                    x++;
+                }
+            } else {
+                for (int j = 0; j < i; j++) {
+
+                    jono = jono + this.lauta.get(y)[x];
+
+                    y++;
+                    x++;
+                }
+            }
+
+
+            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
+                return true;
+            }
+
+
+        }
+
+
         return false;
     }
 
