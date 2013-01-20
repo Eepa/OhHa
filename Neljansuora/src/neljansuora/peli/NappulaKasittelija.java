@@ -55,12 +55,13 @@ public class NappulaKasittelija {
             if (p.getVuoronumero() == 1) {
                 merkki = "X";
             } else {
-                merkki = "Y";
+                merkki = "O";
             }
 
-            if (this.onkoVaakasuorasti(p.getNappulat(), merkki) >= 4
-                    || this.onkoPystysuorasti(p.getNappulat(), merkki) >= 4
-                    || this.onkoVinosti(p.getNappulat(), merkki) >= 4) {
+            if (this.onkoVaakasuorasti(p.getNappulat(), merkki)
+                    || this.onkoPystysuorasti(p.getNappulat(), merkki)
+                    || this.onkoVinostiVasemmaltaOikealle(p.getNappulat(), merkki) 
+                    || this.onkoVinostiOikealtaVasemmalle(p.getNappulat(), merkki)) {
                 return true;
             }
 
@@ -69,62 +70,183 @@ public class NappulaKasittelija {
         return false;
     }
 
-    public int onkoVaakasuorasti(List<Nappula> nappulat, String merkki) {
-        int perakkaistenMaara = 0;
+    public boolean onkoVaakasuorasti(List<Nappula> nappulat, String merkki) {
+
 
         for (int i = 0; i < this.lauta.size(); i++) {
 
             String[] rivi = this.lauta.get(i);
             String jono = "";
 
-            for(int j = 0; j < rivi.length; j++){
+            for (int j = 0; j < rivi.length; j++) {
                 jono = jono + rivi[j];
-                
+
             }
-            
-            int vertailupituus = this.testaaMerkkijononPituus(jono, merkki);
-            
+
+            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean onkoPystysuorasti(List<Nappula> nappulat, String merkki) {
+
+        for (int i = 0; i < this.lauta.size(); i++) {
+
+            String jono = "";
+
+            for (String[] rivi : this.lauta.values()) {
+                jono = jono + rivi[i];
+            }
+
+            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean onkoVinostiVasemmaltaOikealle(List<Nappula> nappulat, String merkki) {
+
+        for (int i = 0; i < this.lauta.size(); i++) {
+            int x = 0;
+            int y = i;
+
+            String jono = "";
+
+            if (this.selvitaLyhinPituusLaudassa() < i) {
+                for (int j = 0; j < this.selvitaLyhinPituusLaudassa(); j++) {
+
+                    jono = jono + this.lauta.get(y)[x];
+
+                    y--;
+                    x++;
+                }
+            } else {
+                for (int j = 0; j < i; j++) {
+
+                    jono = jono + this.lauta.get(y)[x];
+
+                    y--;
+                    x++;
+                }
+            }
+
+
+            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
+                return true;
+            }
+
+
         }
 
 
-        return perakkaistenMaara;
-    }
-
-    
-
-    public int onkoPystysuorasti(List<Nappula> nappulat, String merkki) {
-        return 0;
-    }
-
-    public int onkoVinosti(List<Nappula> nappulat, String merkki) {
-        return 0;
+        return false;
     }
     
-    public int testaaMerkkijononPituus(String jono, String merkki){
+    public boolean onkoVinostiOikealtaVasemmalle(List<Nappula> nappulat, String merkki){
         
-        String xjono = teeJono(6);
-        int jononPituus = 0;
+        for (int i = 0; i < this.lauta.size(); i++) {
+            int x = this.lauta.size();
+            int y = i;
+
+            String jono = "";
+
+            if (this.selvitaLyhinPituusLaudassa() < i) {
+                for (int j = 0; j < this.selvitaLyhinPituusLaudassa(); j++) {
+
+                    jono = jono + this.lauta.get(y)[x];
+
+                    y--;
+                    x--;
+                }
+            } else {
+                for (int j = 0; j < i; j++) {
+
+                    jono = jono + this.lauta.get(y)[x];
+
+                    y--;
+                    x--;
+                }
+            }
+
+
+            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
+                return true;
+            }
+
+
+        }
         
-        for(int i = 6; i >= 4; i--){
-            if(jono.contains(xjono)){
-                
+        return false;
+    }
+
+    public int testaaMerkkijononPituus(String jono, String merkki) {
+
+        String xjono = teeJono(4, merkki);
+
+        int lyhin = this.selvitaLyhinPituusLaudassa();
+
+
+        for (int i = 4; i <= lyhin; i++) {
+            if (jono.contains(xjono)) {
                 return i;
             }
-            xjono = teeJono(i);
+            xjono = teeJono(i, merkki);
         }
-        
-        return jononPituus;
+
+        return 0;
     }
 
-    
-    public String teeJono(int pituus){
-        
+    public String teeJono(int pituus, String merkki) {
+
         String jono = "";
-        
-        for(int i = 0; i < pituus; i++){
-            jono = jono + "X";
+
+        for (int i = 0; i < pituus; i++) {
+            jono = jono + merkki;
         }
-        
+
         return jono;
+    }
+
+    public boolean onkoLautaTaynna() {
+
+        int tarkistusluku = 0;
+
+        for (int i = 0; i < this.lauta.size(); i++) {
+
+            String[] rivi = this.lauta.get(i);
+            String jono = "";
+
+            for (int j = 0; j < rivi.length; j++) {
+                jono = jono + rivi[j];
+            }
+
+            if (jono.contains(".")) {
+                return false;
+            } else {
+                tarkistusluku++;
+            }
+
+        }
+
+        if (tarkistusluku == this.lauta.size()) {
+            return true;
+        }
+
+
+        return false;
+    }
+
+    public int selvitaLyhinPituusLaudassa() {
+        int hashMapkoko = this.lauta.size();
+        int rivinKoko = this.lauta.get(0).length;
+
+        if (hashMapkoko < rivinKoko) {
+            return hashMapkoko;
+        } else {
+            return rivinKoko;
+        }
     }
 }

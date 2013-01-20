@@ -37,12 +37,12 @@ public class Pelilauta {
         this.lautaKasittelija.tulostaPelilauta();
 
     }
-    
-    public Map<Integer, String[]> getLauta(){
+
+    public Map<Integer, String[]> getLauta() {
         return this.lauta;
     }
-    
-    public List<Pelaaja> getPelaajat(){
+
+    public List<Pelaaja> getPelaajat() {
         return this.pelaajat;
     }
 
@@ -71,17 +71,23 @@ public class Pelilauta {
     public void taytaPelilauta() {
 
         this.lautaKasittelija.kirjoitaLaudalle(".");
-        
+
 
     }
 
     public void teeSiirrot() {
+        
+        // muokkaa metodia paremmaksi
 
         for (Pelaaja p : this.pelaajat) {
 
+            if (this.onkoNeljanSuoraa() || this.onkoLautaTaynna()) {
+                return;
+            }
+
             String nimi = "Pelaaja" + p.getVuoronumero();
             boolean jatketaanko = true;
-            
+
             int vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
             while (jatketaanko) {
 
@@ -95,15 +101,19 @@ public class Pelilauta {
                 }
             }
 
-            this.lautaKasittelija.lisaaNappulatKenttaan(pelaajat);
+            this.lautaKasittelija.lisaaNappulatKenttaan(this.pelaajat);
             this.tulostaPelilauta();
         }
 
     }
-    
-    public boolean onkoNeljanSuoraa(){
-        
+
+    public boolean onkoNeljanSuoraa() {
+
         return this.nappulaKasittelija.onkoRiittavanPitkiaSuoria();
     }
     
+     public boolean onkoLautaTaynna() {
+
+        return this.nappulaKasittelija.onkoLautaTaynna();
+    }
 }
