@@ -60,7 +60,8 @@ public class NappulaKasittelija {
 
             if (this.onkoVaakasuorasti(merkki, merkkijononPituus)
                     || this.onkoPystysuorasti(merkki, merkkijononPituus)
-                    || this.onkoVinostiKoillinenKaakko(merkki, merkkijononPituus)) {
+                    || this.onkoVinostiKoillinenKaakko(merkki, merkkijononPituus)
+                    || this.onkoVinostiLounasLuode(merkki, merkkijononPituus)) {
                 return true;
             }
 
@@ -137,10 +138,10 @@ public class NappulaKasittelija {
 
     public boolean onkoVinostiLounasLuode(String merkki, int pituus) {
 
-        for (int i = 0; i < this.lauta.size(); i++) {
+        for (int i = this.lauta.size()-1; i >= 0; i--) {
             String[] rivi = this.lauta.get(i);
 
-            for (int j = rivi.length - 1; j > 0; j--) {
+            for (int j = 0; j < rivi.length; j++) {
                 String merkkijono = "";
                 String alkuPiste = rivi[j];
 
@@ -162,17 +163,17 @@ public class NappulaKasittelija {
     
     public String laskeTulevatPisteetLounasLuode(int y, int x, String merkkijono){
         
-        y++;
-        x++;
+        y--;
+        x--;
 
-        if (x > this.lauta.get(0).length-1 || y > this.lauta.size() - 1) {
+        if (x < 0|| y < 0) {
             return merkkijono;
         } else {
             String seuraavaPiste = this.lauta.get(y)[x];
 
             merkkijono = merkkijono + seuraavaPiste;
 
-            return this.laskeTulevatPisteetKoillinenKaakko(y, x, merkkijono);
+            return this.laskeTulevatPisteetLounasLuode(y, x, merkkijono);
         }
 
     }
