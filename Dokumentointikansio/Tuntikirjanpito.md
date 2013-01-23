@@ -20,3 +20,7 @@ Maarittelyvaiheen luokkakaavion kuva lisatty, testeja lisatty.
 
 Lauantai 19.1.2012, 2h
 Suorien pituuden tarkastuslogiikkaa lisatty, ohjelmoitu eteenpain.
+
+Keskiviikko 23.01.2012, 2h
+Uudelleen nimeamisia metodeihin ja muuttujiin, tarkastuslogiikkaa 
+mietitty eteenpain.
