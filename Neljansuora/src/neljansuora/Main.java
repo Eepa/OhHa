@@ -15,7 +15,7 @@ public class Main {
         
         Scanner lukija = new Scanner(System.in);
         
-        Neljansuora neljansuora = new Neljansuora(7, 6, lukija);
+        Neljansuora neljansuora = new Neljansuora(7, 6, 4, lukija);
         
         neljansuora.kaynnista();
         

@@ -42,7 +42,7 @@ public class NappulaKasittelija {
 
     }
 
-    public boolean onkoRiittavanPitkiaSuoria() {
+    public boolean onkoRiittavanPitkiaSuoria(int merkkijononPituus) {
 
         String merkki = "";
 
@@ -58,8 +58,8 @@ public class NappulaKasittelija {
                 merkki = "O";
             }
 
-            if (this.onkoVaakasuorasti(merkki)
-                    || this.onkoPystysuorasti(merkki)
+            if (this.onkoVaakasuorasti(merkki, merkkijononPituus)
+                    || this.onkoPystysuorasti(merkki, merkkijononPituus)
                     || this.onkoVinostiVasemmaltaOikealleYlapuoli(merkki)
                     || this.onkoVinostiOikealtaVasemmalleYlapuoli(merkki)
                     || this.onkoVinostiOikealtaVasemmalleAlapuoli(merkki)
@@ -72,7 +72,7 @@ public class NappulaKasittelija {
         return false;
     }
 
-    public boolean onkoVaakasuorasti(String merkki) {
+    public boolean onkoVaakasuorasti(String merkki, int pituus) {
 
 
         for (int i = 0; i < this.lauta.size(); i++) {
@@ -85,14 +85,14 @@ public class NappulaKasittelija {
 
             }
 
-            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
+            if (this.testaaMerkkijononPituus(jono, merkki, pituus) >= 4) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean onkoPystysuorasti(String merkki) {
+    public boolean onkoPystysuorasti(String merkki, int pituus) {
 
         for (int i = 0; i < this.lauta.size(); i++) {
             String jono = "";
@@ -103,7 +103,7 @@ public class NappulaKasittelija {
                 }
             }
 
-            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
+            if (this.testaaMerkkijononPituus(jono, merkki, pituus) >= pituus) {
                 return true;
             }
         }
@@ -114,38 +114,38 @@ public class NappulaKasittelija {
         
         //wanha
 
-        for (int i = 0; i < this.lauta.size(); i++) {
-            int x = 0;
-            int y = i;
-
-            String jono = "";
-
-            if (this.selvitaLyhinPituusLaudassa() < i) {
-                for (int j = 0; j < this.selvitaLyhinPituusLaudassa(); j++) {
-
-                    jono = jono + this.lauta.get(y)[x];
-
-                    y--;
-                    x++;
-                }
-
-            } else {
-                for (int j = 0; j < i; j++) {
-
-                    jono = jono + this.lauta.get(y)[x];
-
-                    y--;
-                    x++;
-                }
-            }
-
-
-            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
-                return true;
-            }
-
-
-        }
+//        for (int i = 0; i < this.lauta.size(); i++) {
+//            int x = 0;
+//            int y = i;
+//
+//            String jono = "";
+//
+//            if (this.selvitaLyhimmanSivunPituusLaudassa() < i) {
+//                for (int j = 0; j < this.selvitaLyhimmanSivunPituusLaudassa(); j++) {
+//
+//                    jono = jono + this.lauta.get(y)[x];
+//
+//                    y--;
+//                    x++;
+//                }
+//
+//            } else {
+//                for (int j = 0; j < i; j++) {
+//
+//                    jono = jono + this.lauta.get(y)[x];
+//
+//                    y--;
+//                    x++;
+//                }
+//            }
+//
+//
+//            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
+//                return true;
+//            }
+//
+//
+//        }
 
 
         return false;
@@ -155,38 +155,38 @@ public class NappulaKasittelija {
 
         //uusi
         
-        for (int i = 0; i < this.lauta.size(); i++) {
-            int x = this.lauta.get(0).length - 1;
-            int y = this.selvitaLyhinPituusLaudassa()-i;
-
-            String jono = "";
-
-            if (this.selvitaLyhinPituusLaudassa() < i) {
-                for (int j = 0; j < this.selvitaLyhinPituusLaudassa(); j++) {
-
-                    jono = jono + this.lauta.get(y)[x];
-
-                    y++;
-                    x--;
-                }
-
-            } else {
-                for (int j = 0; j < i; j++) {
-
-                    jono = jono + this.lauta.get(y)[x];
-
-                    y++;
-                    x--;
-                }
-            }
-
-
-            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
-                return true;
-            }
-
-
-        }
+//        for (int i = 0; i < this.lauta.size(); i++) {
+//            int x = this.lauta.get(0).length - 1;
+//            int y = this.selvitaLyhimmanSivunPituusLaudassa()-i;
+//
+//            String jono = "";
+//
+//            if (this.selvitaLyhimmanSivunPituusLaudassa() < i) {
+//                for (int j = 0; j < this.selvitaLyhimmanSivunPituusLaudassa(); j++) {
+//
+//                    jono = jono + this.lauta.get(y)[x];
+//
+//                    y++;
+//                    x--;
+//                }
+//
+//            } else {
+//                for (int j = 0; j < i; j++) {
+//
+//                    jono = jono + this.lauta.get(y)[x];
+//
+//                    y++;
+//                    x--;
+//                }
+//            }
+//
+//
+//            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
+//                return true;
+//            }
+//
+//
+//        }
 
 
 
@@ -197,37 +197,37 @@ public class NappulaKasittelija {
         
         //wanha
 
-        for (int i = 0; i < this.lauta.size(); i++) {
-            int x = this.lauta.size();
-            int y = i;
-
-            String jono = "";
-
-            if (this.selvitaLyhinPituusLaudassa() < i) {
-                for (int j = 0; j < this.selvitaLyhinPituusLaudassa(); j++) {
-
-                    jono = jono + this.lauta.get(y)[x];
-
-                    y--;
-                    x--;
-                }
-            } else {
-                for (int j = 0; j < i; j++) {
-
-                    jono = jono + this.lauta.get(y)[x];
-
-                    y--;
-                    x--;
-                }
-            }
-
-
-            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
-                return true;
-            }
-
-
-        }
+//        for (int i = 0; i < this.lauta.size(); i++) {
+//            int x = this.lauta.size();
+//            int y = i;
+//
+//            String jono = "";
+//
+//            if (this.selvitaLyhimmanSivunPituusLaudassa() < i) {
+//                for (int j = 0; j < this.selvitaLyhimmanSivunPituusLaudassa(); j++) {
+//
+//                    jono = jono + this.lauta.get(y)[x];
+//
+//                    y--;
+//                    x--;
+//                }
+//            } else {
+//                for (int j = 0; j < i; j++) {
+//
+//                    jono = jono + this.lauta.get(y)[x];
+//
+//                    y--;
+//                    x--;
+//                }
+//            }
+//
+//
+//            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
+//                return true;
+//            }
+//
+//
+//        }
 
         return false;
     }
@@ -235,51 +235,51 @@ public class NappulaKasittelija {
     public boolean onkoVinostiOikealtaVasemmalleAlapuoli(String merkki) {
         
         //uusi
-
-        for (int i = 0; i < this.lauta.size(); i++) {
-            int x = 0;
-            int y = this.selvitaLyhinPituusLaudassa()- i;
-
-            String jono = "";
-
-            if (this.selvitaLyhinPituusLaudassa() < i) {
-                for (int j = 0; j < this.selvitaLyhinPituusLaudassa(); j++) {
-
-                    jono = jono + this.lauta.get(y)[x];
-
-                    y++;
-                    x++;
-                }
-            } else {
-                for (int j = 0; j < i; j++) {
-
-                    jono = jono + this.lauta.get(y)[x];
-
-                    y++;
-                    x++;
-                }
-            }
-
-
-            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
-                return true;
-            }
-
-
-        }
+//
+//        for (int i = 0; i < this.lauta.size(); i++) {
+//            int x = 0;
+//            int y = this.selvitaLyhimmanSivunPituusLaudassa()- i;
+//
+//            String jono = "";
+//
+//            if (this.selvitaLyhimmanSivunPituusLaudassa() < i) {
+//                for (int j = 0; j < this.selvitaLyhimmanSivunPituusLaudassa(); j++) {
+//
+//                    jono = jono + this.lauta.get(y)[x];
+//
+//                    y++;
+//                    x++;
+//                }
+//            } else {
+//                for (int j = 0; j < i; j++) {
+//
+//                    jono = jono + this.lauta.get(y)[x];
+//
+//                    y++;
+//                    x++;
+//                }
+//            }
+//
+//
+//            if (this.testaaMerkkijononPituus(jono, merkki) >= 4) {
+//                return true;
+//            }
+//
+//
+//        }
 
 
         return false;
     }
 
-    public int testaaMerkkijononPituus(String jono, String merkki) {
+    public int testaaMerkkijononPituus(String jono, String merkki, int pituus) {
 
-        String xjono = teeJono(4, merkki);
+        String xjono = teeJono(pituus, merkki);
 
-        int lyhin = this.selvitaLyhinPituusLaudassa();
+        int lyhin = this.selvitaLyhimmanSivunPituusLaudassa();
 
 
-        for (int i = 4; i <= lyhin; i++) {
+        for (int i = pituus; i <= lyhin; i++) {
             if (jono.contains(xjono)) {
                 return i;
             }
@@ -329,14 +329,14 @@ public class NappulaKasittelija {
         return false;
     }
 
-    public int selvitaLyhinPituusLaudassa() {
-        int hashMapkoko = this.lauta.size();
-        int rivinKoko = this.lauta.get(0).length;
+    public int selvitaLyhimmanSivunPituusLaudassa() {
+        int korkeus = this.lauta.size();
+        int leveys = this.lauta.get(0).length;
 
-        if (hashMapkoko < rivinKoko) {
-            return hashMapkoko;
+        if (korkeus < leveys) {
+            return korkeus;
         } else {
-            return rivinKoko;
+            return leveys;
         }
     }
 }

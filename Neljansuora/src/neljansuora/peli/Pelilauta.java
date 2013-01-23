@@ -12,15 +12,17 @@ public class Pelilauta {
 
     private int leveys;
     private int korkeus;
+    private int merkkijononPituus;
     private Scanner lukija;
     private Map<Integer, String[]> lauta;
     private List<Pelaaja> pelaajat;
     private LautaKasittelija lautaKasittelija;
     private NappulaKasittelija nappulaKasittelija;
 
-    public Pelilauta(int leveys, int korkeus, Scanner lukija) {
+    public Pelilauta(int leveys, int korkeus, int merkkijononPituus, Scanner lukija) {
         this.leveys = leveys;
         this.korkeus = korkeus;
+        this.merkkijononPituus = merkkijononPituus;
         this.lukija = lukija;
 
         this.lauta = new HashMap<Integer, String[]>();
@@ -109,7 +111,7 @@ public class Pelilauta {
 
     public boolean onkoNeljanSuoraa() {
 
-        return this.nappulaKasittelija.onkoRiittavanPitkiaSuoria();
+        return this.nappulaKasittelija.onkoRiittavanPitkiaSuoria(this.merkkijononPituus);
     }
     
      public boolean onkoLautaTaynna() {

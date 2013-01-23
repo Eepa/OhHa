@@ -8,18 +8,18 @@ public class Neljansuora {
     private Pelilauta pelilauta;
     private Scanner lukija;
 
-    public Neljansuora(int leveys, int korkeus, Scanner lukija) {
+    public Neljansuora(int leveys, int korkeus, int merkkijononPituus, Scanner lukija) {
 
         this.lukija = lukija;
 
-        this.luoPelilauta(leveys, korkeus);
+        this.luoPelilauta(leveys, korkeus, merkkijononPituus);
 
         this.lisaaPelaajat();
 
     }
 
-    public void luoPelilauta(int leveys, int korkeus) {
-        this.pelilauta = new Pelilauta(leveys, korkeus, this.lukija);
+    public void luoPelilauta(int leveys, int korkeus, int merkkijononPituus) {
+        this.pelilauta = new Pelilauta(leveys, korkeus, merkkijononPituus, this.lukija);
     }
     
     public Pelilauta getPelilauta(){
