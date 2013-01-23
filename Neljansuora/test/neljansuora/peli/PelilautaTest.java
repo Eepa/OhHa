@@ -24,7 +24,7 @@ public class PelilautaTest {
 //        String syote1 = "";
         
         this.lukija = new Scanner(System.in);
-        this.pelilauta = new Pelilauta(8, 9, lukija);
+        this.pelilauta = new Pelilauta(8, 9, 4, lukija);
     }
     
     @Test

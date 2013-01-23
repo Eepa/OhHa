@@ -32,8 +32,6 @@ public class Neljansuora {
 
     public void kaynnista() {
 
-        int i = 0;
-        
         this.pelilauta.tulostaPelilauta();
         
         while (true) {
@@ -49,7 +47,6 @@ public class Neljansuora {
             this.pelaaKierros();
 
 
-            i++;
         }
 
         System.out.println("-----------------------");

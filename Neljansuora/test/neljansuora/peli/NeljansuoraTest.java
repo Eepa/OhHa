@@ -18,7 +18,7 @@ public class NeljansuoraTest {
     @Before
     public void setUp() {
         this.lukija = new Scanner(System.in);
-        this.neljansuora = new Neljansuora(8, 9, lukija);
+        this.neljansuora = new Neljansuora(8, 9, 4, lukija);
         
     }
     
