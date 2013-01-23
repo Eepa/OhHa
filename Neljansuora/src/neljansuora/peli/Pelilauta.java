@@ -35,7 +35,6 @@ public class Pelilauta {
     }
 
     public void tulostaPelilauta() {
-
         this.lautaKasittelija.tulostaPelilauta();
 
     }
@@ -71,9 +70,7 @@ public class Pelilauta {
     }
 
     public void taytaPelilauta() {
-
         this.lautaKasittelija.kirjoitaLaudalle(".");
-
 
     }
 
@@ -110,12 +107,10 @@ public class Pelilauta {
     }
 
     public boolean onkoNeljanSuoraa() {
-
         return this.nappulaKasittelija.onkoRiittavanPitkiaSuoria(this.merkkijononPituus);
     }
     
      public boolean onkoLautaTaynna() {
-
         return this.nappulaKasittelija.onkoLautaTaynna();
     }
 }

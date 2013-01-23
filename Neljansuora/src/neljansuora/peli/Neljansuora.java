@@ -56,9 +56,7 @@ public class Neljansuora {
     }
 
     public void pelaaKierros() {
-        
         this.pelilauta.teeSiirrot();
-
 
     }
 }
