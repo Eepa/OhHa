@@ -60,10 +60,7 @@ public class NappulaKasittelija {
 
             if (this.onkoVaakasuorasti(merkki, merkkijononPituus)
                     || this.onkoPystysuorasti(merkki, merkkijononPituus)
-                    || this.onkoVinostiVasemmaltaOikealleYlapuoli(merkki)
-                    || this.onkoVinostiOikealtaVasemmalleYlapuoli(merkki)
-                    || this.onkoVinostiOikealtaVasemmalleAlapuoli(merkki)
-                    || this.onkoVinostiVasemmaltaOikealleAlapuoli(merkki)) {
+                    || this.onkoVinostiKoillinenKaakko(merkki, merkkijononPituus)) {
                 return true;
             }
 
@@ -98,7 +95,7 @@ public class NappulaKasittelija {
             String testattavaJono = "";
 
             for (int j = 0; j < this.lauta.get(0).length; j++) {
-                
+
                 for (String[] rivi : this.lauta.values()) {
                     testattavaJono = testattavaJono + rivi[j];
                 }
@@ -111,8 +108,95 @@ public class NappulaKasittelija {
         return false;
     }
 
-    public boolean onkoVinostiVasemmaltaOikealleYlapuoli(String merkki) {
+    public boolean onkoVinostiKoillinenKaakko(String merkki, int pituus) {
+
+        for (int i = 0; i < this.lauta.size(); i++) {
+            String[] rivi = this.lauta.get(i);
+
+
+
+
+            for (int j = 0; j < rivi.length; j++) {
+                String merkkijono = "";
+                String alkuPiste = rivi[j];
+
+                merkkijono = merkkijono + alkuPiste;
+
+                merkkijono = this.laskeTulevatPisteetKoillinenKaakko(i, j, merkkijono);
+
+
+                if (this.testaaMerkkijononPituus(merkkijono, merkki, pituus) >= pituus) {
+                    return true;
+                }
+            }
+
+        }
+
+        return false;
+    }
+
+    public boolean onkoVinostiLounasLuode(String merkki, int pituus) {
+
+        for (int i = 0; i < this.lauta.size(); i++) {
+            String[] rivi = this.lauta.get(i);
+
+            for (int j = rivi.length - 1; j > 0; j--) {
+                String merkkijono = "";
+                String alkuPiste = rivi[j];
+
+                merkkijono = merkkijono + alkuPiste;
+
+                merkkijono = this.laskeTulevatPisteetLounasLuode(i, j, merkkijono);
+
+
+                if (this.testaaMerkkijononPituus(merkkijono, merkki, pituus) >= pituus) {
+                    return true;
+                }
+            }
+
+        }
+
+
+        return false;
+    }
+    
+    public String laskeTulevatPisteetLounasLuode(int y, int x, String merkkijono){
         
+        y++;
+        x++;
+
+        if (x > this.lauta.get(0).length-1 || y > this.lauta.size() - 1) {
+            return merkkijono;
+        } else {
+            String seuraavaPiste = this.lauta.get(y)[x];
+
+            merkkijono = merkkijono + seuraavaPiste;
+
+            return this.laskeTulevatPisteetKoillinenKaakko(y, x, merkkijono);
+        }
+
+    }
+
+    public String laskeTulevatPisteetKoillinenKaakko(int y, int x, String merkkijono) {
+
+
+        y++;
+        x--;
+
+        if (x < 0 || y > this.lauta.size() - 1) {
+            return merkkijono;
+        } else {
+            String seuraavaPiste = this.lauta.get(y)[x];
+
+            merkkijono = merkkijono + seuraavaPiste;
+
+            return this.laskeTulevatPisteetKoillinenKaakko(y, x, merkkijono);
+        }
+
+    }
+
+    public boolean onkoVinostiVasemmaltaOikealleYlapuoli(String merkki) {
+
         //wanha
 
 //        for (int i = 0; i < this.lauta.size(); i++) {
@@ -155,7 +239,7 @@ public class NappulaKasittelija {
     public boolean onkoVinostiVasemmaltaOikealleAlapuoli(String merkki) {
 
         //uusi
-        
+
 //        for (int i = 0; i < this.lauta.size(); i++) {
 //            int x = this.lauta.get(0).length - 1;
 //            int y = this.selvitaLaudanLyhimmanSivunPituus()-i;
@@ -195,7 +279,7 @@ public class NappulaKasittelija {
     }
 
     public boolean onkoVinostiOikealtaVasemmalleYlapuoli(String merkki) {
-        
+
         //wanha
 
 //        for (int i = 0; i < this.lauta.size(); i++) {
@@ -234,7 +318,7 @@ public class NappulaKasittelija {
     }
 
     public boolean onkoVinostiOikealtaVasemmalleAlapuoli(String merkki) {
-        
+
         //uusi
 //
 //        for (int i = 0; i < this.lauta.size(); i++) {
@@ -303,7 +387,7 @@ public class NappulaKasittelija {
     public boolean onkoLautaTaynna() {
 
         int tarkistusluku = 0;
-        
+
         //Tarkistetaan jokaiselta vaakariviltä sisältääkö se tyhjiä paikkoja
 
         for (int i = 0; i < this.lauta.size(); i++) {
