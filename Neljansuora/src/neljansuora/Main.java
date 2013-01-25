@@ -14,15 +14,10 @@ public class Main {
   
     public static void main(String[] args) {
         // TODO code application logic here
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
-        SwingUtilities.invokeLater(kayttoliittyma);
-        
         Scanner lukija = new Scanner(System.in);
         
-        Neljansuora neljansuora = new Neljansuora(7, 6, 4, lukija);
-        
-        neljansuora.kaynnista();
-        
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(new Neljansuora(7, 6, 4, lukija));
+        SwingUtilities.invokeLater(kayttoliittyma);
         
    
     }

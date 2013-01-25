@@ -15,7 +15,7 @@ public class Neljansuora {
         this.luoPelilauta(leveys, korkeus, merkkijononPituus);
 
         this.lisaaPelaajat();
-
+//        this.kaynnista();
     }
 
     public void luoPelilauta(int leveys, int korkeus, int merkkijononPituus) {
