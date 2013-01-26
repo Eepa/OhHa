@@ -16,6 +16,7 @@ public class Kayttoliittyma implements Runnable {
     
     private JFrame frame;
     private Neljansuora neljansuora;
+    private Piirtoalusta piirtoalusta;
     
     
     public Kayttoliittyma(Neljansuora neljansuora){
@@ -38,11 +39,19 @@ public class Kayttoliittyma implements Runnable {
     }
     
     private void luoKomponentit(Container container){
+        
+        this.piirtoalusta = new Piirtoalusta(this.neljansuora);
+        container.add(this.piirtoalusta);
+        
         container.setLayout(new BorderLayout());
         
         container.add(new ValikkoPanel(1, 5, new String[5]), BorderLayout.NORTH);
-        container.add(new PeliruudukkoPanel(this.neljansuora));
+        container.add(new PeliruudukkoPanel(this.neljansuora, this.piirtoalusta));
         
+    }
+    
+    public Paivitettava getPaivitettava(){
+        return this.piirtoalusta;
     }
     
     

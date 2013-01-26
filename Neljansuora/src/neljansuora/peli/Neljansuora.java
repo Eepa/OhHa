@@ -1,12 +1,18 @@
 package neljansuora.peli;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Timer;
+import neljansuora.kayttoliittyma.Paivitettava;
+import neljansuora.kayttoliittyma.Piirtoalusta;
 
-public class Neljansuora {
+public class Neljansuora extends Timer implements ActionListener{
 
     private Pelilauta pelilauta;
     private Scanner lukija;
+    private Paivitettava paivitettava;
 
     public Neljansuora(int leveys, int korkeus, int merkkijononPituus, Scanner lukija) {
 
@@ -15,7 +21,7 @@ public class Neljansuora {
         this.luoPelilauta(leveys, korkeus, merkkijononPituus);
 
         this.lisaaPelaajat();
-//        this.kaynnista();
+
     }
 
     public void luoPelilauta(int leveys, int korkeus, int merkkijononPituus) {
@@ -28,6 +34,10 @@ public class Neljansuora {
 
     public void lisaaPelaajat() {
         this.pelilauta.luoPelaajat();
+    }
+    
+    public void setPaivitettava(Paivitettava paivitettava){
+        this.paivitettava = paivitettava;
     }
 
     public void kaynnista() {
@@ -46,7 +56,6 @@ public class Neljansuora {
 
             this.pelaaKierros();
 
-
         }
 
         System.out.println("-----------------------");
@@ -58,5 +67,10 @@ public class Neljansuora {
     public void pelaaKierros() {
         this.pelilauta.teeSiirrot();
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        
     }
 }
