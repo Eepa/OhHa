@@ -25,5 +25,6 @@ Keskiviikko 23.01.2012, 3h
 Uudelleen nimeamisia metodeihin ja muuttujiin, tarkastuslogiikkaa 
 mietitty eteenpain ja korjattu.
 
-Perjantai 25.01.2013, 1,5h
-Graafisen kayttoliittyman ohjelmoiminen aloitettu.
+Perjantai 25.01.2013, 2,5h
+Graafisen kayttoliittyman ohjelmoiminen aloitettu, luokkakaavion 
+tarkennus tehty.
