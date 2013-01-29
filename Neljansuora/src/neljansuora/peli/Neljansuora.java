@@ -15,7 +15,8 @@ public class Neljansuora extends Timer implements ActionListener{
     private Paivitettava paivitettava;
 
     public Neljansuora(int leveys, int korkeus, int merkkijononPituus, Scanner lukija) {
-
+        super();
+               
         this.lukija = lukija;
 
         this.luoPelilauta(leveys, korkeus, merkkijononPituus);
@@ -66,11 +67,15 @@ public class Neljansuora extends Timer implements ActionListener{
 
     public void pelaaKierros() {
         this.pelilauta.teeSiirrot();
-
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        this.pelilauta.teeSiirrot();
         
+        this.paivitettava.paivita();
     }
+
+    
 }

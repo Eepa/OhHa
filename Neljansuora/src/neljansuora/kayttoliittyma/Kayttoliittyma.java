@@ -2,6 +2,7 @@
 package neljansuora.kayttoliittyma;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -27,7 +28,10 @@ public class Kayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Neljän Suora");
-        frame.setPreferredSize(new Dimension(500, 500));
+        
+        int leveys = (this.neljansuora.getPelilauta().getLauta().get(0).length +1) * 50;
+        int korkeus = (this.neljansuora.getPelilauta().getLauta().size()+1) * 50;
+        frame.setPreferredSize(new Dimension(leveys, korkeus));
         
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
@@ -45,7 +49,7 @@ public class Kayttoliittyma implements Runnable {
         
         container.setLayout(new BorderLayout());
         
-        container.add(new ValikkoPanel(1, 5, new String[5]), BorderLayout.NORTH);
+        container.add(new ValikkoPanel(1, 3), BorderLayout.NORTH);
         container.add(new PeliruudukkoPanel(this.neljansuora, this.piirtoalusta));
         
     }

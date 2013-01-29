@@ -28,3 +28,6 @@ mietitty eteenpain ja korjattu.
 Perjantai 25.01.2013, 2,5h
 Graafisen kayttoliittyman ohjelmoiminen aloitettu, luokkakaavion 
 tarkennus tehty.
+
+Tiistai 29.1.2013, 2h
+Graafista kayttoliittymaa yritetty saada eteenpain, ei sujunut.

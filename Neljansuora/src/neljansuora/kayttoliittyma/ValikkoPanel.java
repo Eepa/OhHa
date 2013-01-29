@@ -8,16 +8,19 @@ import javax.swing.JPanel;
 
 public class ValikkoPanel extends JPanel{
     
-    public ValikkoPanel(int korkeus, int leveys, String[] komponenttienSisalto){
+    int leveys;
+    
+    public ValikkoPanel(int korkeus, int leveys){
         super(new GridLayout(korkeus, leveys));
-        luoKomponentit(komponenttienSisalto);
+        this.leveys = leveys;
+        luoKomponentit();
     }
     
-    private void luoKomponentit(String[] sisalto){
+    private void luoKomponentit(){
         
-        for(int i = 0; i < sisalto.length; i++){
-          add(new JButton(sisalto[i]));  
-        }
+        add(new JButton("Uusi peli"));
+        add(new JButton("Väriasetukset"));
+        add(new JButton("Joku nappi"));
         
     }
     
