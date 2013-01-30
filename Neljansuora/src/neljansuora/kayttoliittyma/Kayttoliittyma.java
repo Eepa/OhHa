@@ -30,8 +30,8 @@ public class Kayttoliittyma implements Runnable {
     public void run() {
         frame = new JFrame("Neljän Suora");
         
-        int leveys = (this.neljansuora.getPelilauta().getLauta().get(0).length) * 52;
-        int korkeus = (this.neljansuora.getPelilauta().getLauta().size()+ 2) * 48;
+        int leveys = (this.neljansuora.getPelilauta().getLauta().get(0).length) * 55;
+        int korkeus = (this.neljansuora.getPelilauta().getLauta().size()+ 2) * 50;
         frame.setPreferredSize(new Dimension(leveys, korkeus));
         
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -49,11 +49,12 @@ public class Kayttoliittyma implements Runnable {
         container.setLayout(new BorderLayout());
         
         this.piirtoalusta = new Piirtoalusta(this.neljansuora);
-        container.add(this.piirtoalusta);
+        container.add(new PiirtoPanel(this.neljansuora, this.piirtoalusta), BorderLayout.CENTER);
         
         container.add(new ValikkoPanel(1, 3), BorderLayout.NORTH);
-        container.add(new RivinappulatPanel(this.neljansuora), BorderLayout.SOUTH);
+//        container.add(new RivinappulatPanel(this.neljansuora), BorderLayout.SOUTH);
 //        container.add(new TilannetietoPanel(this.neljansuora), BorderLayout.EAST);
+        
         
         
     }

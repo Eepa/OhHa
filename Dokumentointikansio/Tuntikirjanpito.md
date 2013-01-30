@@ -32,6 +32,8 @@ tarkennus tehty.
 Tiistai 29.1.2013, 2h
 Graafista kayttoliittymaa yritetty saada eteenpain, ei sujunut.
 
-Keskiviikko 30.01.2013
+Keskiviikko 30.01.2013, 3,5h
 Graafista kayttoliittymaa viety eteenpain, sujui opastuksen
-ansiosta paremmin. Tee testit!
+ansiosta paremmin, illalla lisaa kayttoliittymaa. Tee testit!
+
+

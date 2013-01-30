@@ -112,6 +112,36 @@ public class Pelilauta {
         }
 
     }
+    
+     public void teeSiirto(int rivinNumero) {
+        
+        // muokkaa metodia paremmaksi
+
+        for (Pelaaja p : this.pelaajat) {
+
+            if (this.onkoNeljanSuoraa() || this.onkoLautaTaynna()) {
+                return;
+            }
+
+            String nimi = "Pelaaja" + p.getVuoronumero();
+            boolean jatketaanko = true;
+
+            int vaakarivinNumero = rivinNumero;
+            while (jatketaanko) {
+
+                if (this.nappulaKasittelija.onkoMahdollinenSiirto(vaakarivinNumero)) {
+                    this.nappulaKasittelija.teeSiirto(vaakarivinNumero, p);
+                    jatketaanko = false;
+                } 
+                
+            }
+
+            this.lautaKasittelija.lisaaNappulatKenttaan(this.pelaajat);
+            this.tulostaPelilauta();
+            this.paivitettava.paivita();
+        }
+
+    }
 
     public boolean onkoNeljanSuoraa() {
         return this.nappulaKasittelija.onkoRiittavanPitkiaSuoria(this.merkkijononPituus);

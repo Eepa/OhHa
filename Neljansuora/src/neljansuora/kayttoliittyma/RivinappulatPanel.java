@@ -37,6 +37,9 @@ public class RivinappulatPanel extends JPanel{
         }
         
         for(JButton nappi : nappilista){
+            nappi.addActionListener(new NappulanPudotusListener(this.neljansuora.getPelilauta(), 
+                    nappi.getText()));
+            
             add(nappi);
         }
         
