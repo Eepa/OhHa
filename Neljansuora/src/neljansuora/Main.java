@@ -29,7 +29,7 @@ public class Main {
         }
         
         neljansuora.setPaivitettava(kayttoliittyma.getPaivitettava());
-        neljansuora.kaynnista();
+        kayttoliittyma.kaynnistaPeli();
    
     }
 }

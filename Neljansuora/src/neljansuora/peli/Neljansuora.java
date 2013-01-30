@@ -8,7 +8,7 @@ import java.util.Timer;
 import neljansuora.kayttoliittyma.Paivitettava;
 import neljansuora.kayttoliittyma.Piirtoalusta;
 
-public class Neljansuora extends Timer implements ActionListener{
+public class Neljansuora {
 
     private Pelilauta pelilauta;
     private Scanner lukija;
@@ -20,13 +20,14 @@ public class Neljansuora extends Timer implements ActionListener{
         this.lukija = lukija;
 
         this.luoPelilauta(leveys, korkeus, merkkijononPituus);
-
+        
         this.lisaaPelaajat();
 
     }
 
     public void luoPelilauta(int leveys, int korkeus, int merkkijononPituus) {
         this.pelilauta = new Pelilauta(leveys, korkeus, merkkijononPituus, this.lukija);
+        
     }
     
     public Pelilauta getPelilauta(){
@@ -39,11 +40,13 @@ public class Neljansuora extends Timer implements ActionListener{
     
     public void setPaivitettava(Paivitettava paivitettava){
         this.paivitettava = paivitettava;
+        this.pelilauta.setPaivitettava(paivitettava);
     }
 
     public void kaynnista() {
 
         this.pelilauta.tulostaPelilauta();
+        this.paivitettava.paivita();
         
         while (true) {
             
@@ -56,26 +59,33 @@ public class Neljansuora extends Timer implements ActionListener{
             System.out.println("-----------------");
 
             this.pelaaKierros();
-
+            this.paivitettava.paivita();
         }
 
         System.out.println("-----------------------");
         this.pelilauta.tulostaPelilauta();
 
         System.out.println("Loppu");
+        System.exit(0);
     }
 
     public void pelaaKierros() {
         this.pelilauta.teeSiirrot();
-        
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        this.pelilauta.teeSiirrot();
-        
         this.paivitettava.paivita();
     }
 
     
+
+    public void taulukonLapiKaynti(){
+        int[][] taulu = new int[5][5];
+        
+        for (int i = 0; i < taulu.length; i++) {
+            for (int j = 0; j < taulu[i].length; j++) {
+                System.out.println("koordinaatit on " + i + ", " + j);
+                taulu[i][j] = 5;
+                
+            }
+            
+        }
+    }
 }

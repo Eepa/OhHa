@@ -18,9 +18,14 @@ public class ValikkoPanel extends JPanel{
     
     private void luoKomponentit(){
         
-        add(new JButton("Uusi peli"));
-        add(new JButton("Väriasetukset"));
-        add(new JButton("Joku nappi"));
+        JButton uusiPeli = new JButton("Uusi peli");
+        JButton variasetukset = new JButton("Väriasetukset");
+        
+        JButton jokuNappi = new JButton("Joku nappi");
+        
+        add(uusiPeli);
+        add(variasetukset);
+        add(jokuNappi);
         
     }
     

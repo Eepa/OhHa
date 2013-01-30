@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import neljansuora.peli.Neljansuora;
+import neljansuora.peli.Pelilauta;
 
 
 public class Kayttoliittyma implements Runnable {
@@ -29,13 +30,14 @@ public class Kayttoliittyma implements Runnable {
     public void run() {
         frame = new JFrame("Neljän Suora");
         
-        int leveys = (this.neljansuora.getPelilauta().getLauta().get(0).length +1) * 50;
-        int korkeus = (this.neljansuora.getPelilauta().getLauta().size()+1) * 50;
+        int leveys = (this.neljansuora.getPelilauta().getLauta().get(0).length) * 52;
+        int korkeus = (this.neljansuora.getPelilauta().getLauta().size()+ 2) * 48;
         frame.setPreferredSize(new Dimension(leveys, korkeus));
         
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         luoKomponentit(frame.getContentPane());
+        
         
         frame.pack();
         frame.setVisible(true);
@@ -43,14 +45,39 @@ public class Kayttoliittyma implements Runnable {
     }
     
     private void luoKomponentit(Container container){
+                
+        container.setLayout(new BorderLayout());
         
         this.piirtoalusta = new Piirtoalusta(this.neljansuora);
         container.add(this.piirtoalusta);
         
-        container.setLayout(new BorderLayout());
-        
         container.add(new ValikkoPanel(1, 3), BorderLayout.NORTH);
-        container.add(new PeliruudukkoPanel(this.neljansuora, this.piirtoalusta));
+        container.add(new RivinappulatPanel(this.neljansuora), BorderLayout.SOUTH);
+//        container.add(new TilannetietoPanel(this.neljansuora), BorderLayout.EAST);
+        
+        
+    }
+    
+    public void kaynnistaPeli(){
+        
+//        neljansuora.kaynnista();
+        
+        Pelilauta lauta = this.neljansuora.getPelilauta();
+        
+        while(true){
+            
+            if(lauta.onkoLautaTaynna() || lauta.onkoNeljanSuoraa()){
+                break;
+            }
+            
+            neljansuora.pelaaKierros();
+            
+        }
+        
+        
+        
+        System.exit(0);
+    
         
     }
     

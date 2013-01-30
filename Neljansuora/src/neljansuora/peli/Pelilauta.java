@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 import neljansuora.domain.Nappula;
 import neljansuora.domain.Pelaaja;
+import neljansuora.kayttoliittyma.Paivitettava;
 
 public class Pelilauta {
 
@@ -18,13 +19,14 @@ public class Pelilauta {
     private List<Pelaaja> pelaajat;
     private LautaKasittelija lautaKasittelija;
     private NappulaKasittelija nappulaKasittelija;
+    private Paivitettava paivitettava;
 
     public Pelilauta(int leveys, int korkeus, int merkkijononPituus, Scanner lukija) {
         this.leveys = leveys;
         this.korkeus = korkeus;
         this.merkkijononPituus = merkkijononPituus;
         this.lukija = lukija;
-
+        
         this.lauta = new HashMap<Integer, String[]>();
         this.pelaajat = new ArrayList<Pelaaja>();
         this.lautaKasittelija = new LautaKasittelija(this.lauta, this.pelaajat, this.lukija);
@@ -73,6 +75,10 @@ public class Pelilauta {
         this.lautaKasittelija.kirjoitaLaudalle(".");
 
     }
+    
+    public void setPaivitettava(Paivitettava paivitettava){
+        this.paivitettava = paivitettava;
+    }
 
     public void teeSiirrot() {
         
@@ -102,6 +108,7 @@ public class Pelilauta {
 
             this.lautaKasittelija.lisaaNappulatKenttaan(this.pelaajat);
             this.tulostaPelilauta();
+            this.paivitettava.paivita();
         }
 
     }

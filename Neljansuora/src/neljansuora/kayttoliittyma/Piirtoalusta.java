@@ -11,6 +11,7 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
     private Neljansuora neljansuora;
 
     public Piirtoalusta(Neljansuora neljansuora) {
+        super.setBackground(Color.blue);
         this.neljansuora = neljansuora;
 
     }
@@ -18,44 +19,41 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+      
+        this.piirraKentta(g);
 
-        g.setColor(Color.WHITE);
 
-        Map<Integer, String[]> lauta = this.neljansuora.getPelilauta().getLauta();
+    }
 
-        for (int i = 0; i < lauta.size(); i++) {
+    public void piirraKentta(Graphics g) {
+        int leveys = this.neljansuora.getPelilauta().getLauta().get(0).length;
+        int korkeus = this.neljansuora.getPelilauta().getLauta().size();
+        for (int i = 0; i < korkeus; i++) {
 
-            String[] rivi = lauta.get(i);
+            String[] rivi = this.neljansuora.getPelilauta().getLauta().get(i);
 
-            for (int j = 0; j < rivi.length; j++) {
+            for (int j = 0; j < leveys; j++) {
 
                 String merkki = rivi[j];
 
                 if (merkki.equals(".")) {
+                    g.setColor(Color.white);
+                    g.fillOval(j * 50, i * 50, 50, 50);
                     
-                    g.fillOval(i, j, lauta.get(0).length *20, lauta.size() *20);
-                    
+                } else if (merkki.equals("X")) {
+                    g.setColor(Color.red);
+                    g.fillOval(j * 50, i * 50, 50, 50);
+                } else if (merkki.equals("O")) {
+                    g.setColor(Color.yellow);
+                    g.fillOval(j * 50, i * 50, 50, 50);
                 }
-
             }
-
         }
 
-
-
-    }
-
-    public void lisaaEkanPelaajanRuutu() {
-    }
-
-    public void lisaaTokanPelaajanRuutu() {
-    }
-
-    public void lisaaTyhjaRuutu(Color vari) {
     }
 
     @Override
     public void paivita() {
-        this.repaint();
+       this.repaint();
     }
 }
