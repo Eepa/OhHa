@@ -6,7 +6,12 @@ import javax.swing.SwingUtilities;
 import neljansuora.kayttoliittyma.Kayttoliittyma;
 import neljansuora.peli.Neljansuora;
 
-
+/**
+ * Main-luokka käynnistää uuden Neljansuora-pelin annettujen parametrien mukaan
+ * ja luo ja käynnistää peliin graafisen käyttöliittymän.
+ * 
+ * @author Eveliina Pakarinen
+ */
 
 public class Main {
     
