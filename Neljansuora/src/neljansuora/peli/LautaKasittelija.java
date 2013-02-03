@@ -6,11 +6,40 @@ import java.util.Scanner;
 import neljansuora.domain.Nappula;
 import neljansuora.domain.Pelaaja;
 
+/**
+ * LautaKasittelija-luokka kuvaa LautaKasittelijaa, joka käsittelee ja muokkaa Pelilaudan tilaa.
+ * Kasittelijan avulla lisataan laudalle nappuloita, tulostetaan tekstikäyttöliittymän tuloste ja
+ * luetaan Pelaajan siirtoja.
+ * 
+ * @author Eveliina Pakarinen
+ */
+
 public class LautaKasittelija {
+    
+    /**
+     * Attribuutti lauta kuvaa Map-muotoista pelilautaa, jonka avaimet kuvaavat laudan y-akselin
+     * rivejä ja String[]-taulukon indeksit x-akselin paikkoja.
+     */
 
     private Map<Integer, String[]> lauta;
+    
+    /**
+     * Lukija on Scanner-luokan ilmentymä, joka lukee käyttäjän syötteitä.
+     */
     private Scanner lukija;
+    
+    /**
+     * Lista pelaajat sisältää pelin pelaajat.
+     */
+    
     private List<Pelaaja> pelaajat;
+    
+    /**
+     * Konstruktori asettaa LautaKasittelijan attribuuttien arvot parametreina annetuiksi arvoiksi.
+     * @param lauta Kuvaa Neljansuora-pelin pelilautaa HashMapin avulla.
+     * @param pelaajat Kuvaa Neljansuora-pelin pelaajia ArrayListin avulla.
+     * @param lukija Scanner-luokan ilmentymä, joka lukee käyttäjän syötteitä.
+     */
 
     public LautaKasittelija(Map<Integer, String[]> lauta, List<Pelaaja> pelaajat, Scanner lukija) {
         this.lauta = lauta;

@@ -18,9 +18,7 @@ public class PelaajaTest {
         this.pelaaja = new Pelaaja(2);
         
     }
-    
-    
-    
+     
     @Test
     public void luotuPelaajaOlemassa(){
         assertTrue(pelaaja != null);

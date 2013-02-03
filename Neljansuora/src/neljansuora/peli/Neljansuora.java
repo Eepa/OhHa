@@ -8,14 +8,46 @@ import java.util.Timer;
 import neljansuora.kayttoliittyma.Paivitettava;
 import neljansuora.kayttoliittyma.Piirtoalusta;
 
+/**
+ * Luokka Neljansuora kuvaa Neljansuora-peliä. Luokka luo pelille pelilaudan ja käyttää pelilaudan
+ * toimintoja. Luokka käyttää myös Neljansuoran tekstikäyttöliittymää.
+ * 
+ * @author Eveliina Pakarinen
+ */
+
 public class Neljansuora {
+    
+    /**
+     * Pelilauta kuvaa Neljansuora-pelin pelilautaa.
+     * @see Pelilauta
+     */
 
     private Pelilauta pelilauta;
+    
+    /**
+     * Scanner kuvaa lukijaa, jonka avulla käyttäjän syötteitä luetaan.
+     */
+    
     private Scanner lukija;
+    
+    /**
+     * Paivitettavan avulla Neljansuora päivittää graafista käyttöliittymää.
+     */
+    
     private Paivitettava paivitettava;
+    
+    /**
+     * Konstruktorissa luodaan uusi pelilauta ja ja pelaajat Neljansuora-pelille. 
+     * Lisäksi luokan lukija-attribuuttiin asetetaan arvo.
+     * 
+     * @param leveys Asetetaan pelilaudan leveydeksi.
+     * @param korkeus Asetetaan pelilaudan korkeudeksi.
+     * @param merkkijononPituus Kertoo, kuinka monta merkkiä lyhyimmässä hyväksytyssä voittojonossa on.
+     * @param lukija Lukija, joka lukee käyttäjän syötteet.
+     */
 
     public Neljansuora(int leveys, int korkeus, int merkkijononPituus, Scanner lukija) {
-        super();
+        
                
         this.lukija = lukija;
 

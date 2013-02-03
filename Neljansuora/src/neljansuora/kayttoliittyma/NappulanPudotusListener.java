@@ -25,6 +25,10 @@ public class NappulanPudotusListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        if(!this.lauta.getNappulaKasittelija().onkoMahdollinenSiirto(nappulanNumero)){
+            return;
+        }
+        
         this.lauta.teeSiirto(nappulanNumero, this.tilannetietoPanel.getVuoronumero());
         this.tilannetietoPanel.paivita();
     }

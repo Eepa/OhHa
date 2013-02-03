@@ -19,7 +19,6 @@ public class NappulaTest {
         this.nappula = new Nappula(5, 9);
     }
     
-    
     @Test
     public void luotuNappulaOlemassa(){
         assertTrue(nappula != null);

@@ -6,6 +6,11 @@ import java.util.Map;
 import javax.swing.JPanel;
 import neljansuora.peli.Neljansuora;
 
+/**
+ * 
+ * @author Eveliina Pakarinen
+ */
+
 public class Piirtoalusta extends JPanel implements Paivitettava {
 
     private Neljansuora neljansuora;

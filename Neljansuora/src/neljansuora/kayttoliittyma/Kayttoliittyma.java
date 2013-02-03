@@ -13,13 +13,41 @@ import javax.swing.WindowConstants;
 import neljansuora.peli.Neljansuora;
 import neljansuora.peli.Pelilauta;
 
+/**
+ * Kayttoliittyma-luokka kuvaa Neljansuora-pelin graafista käyttöliittymää. Kayttoliittymassa 
+ * käynnistetään pelin graafinen käyttöliittymä ja luodaan käyttöliittymän komponentit ja 
+ * asetetaan ne käyttöliittymään.
+ * 
+ * 
+ * @author Eveliina Pakarinen
+ */
 
 public class Kayttoliittyma implements Runnable {
     
+    /**
+     * JFrame-luokan ilmentymä frame
+     */
+    
     private JFrame frame;
+    
+    /**
+     * Kuvaa Neljansuora-luokkaa ja samannimistä peliä.
+     * @see Neljansuora
+     */
+    
     private Neljansuora neljansuora;
+    
+    /**
+     * Piirtoalusta, joka piirtää käyttöliittymän peliruudukon.
+     * @see Piirtoalusta
+     */
+    
     private Piirtoalusta piirtoalusta;
     
+    /**
+     * Konstruktorissa asetetaan attribuutteihin konstruktorin parametrien arvot.
+     * @param neljansuora Kuvaa Neljansuora-peliä
+     */
     
     public Kayttoliittyma(Neljansuora neljansuora){
         this.neljansuora = neljansuora;
@@ -44,6 +72,13 @@ public class Kayttoliittyma implements Runnable {
         
     }
     
+    /**
+     * Metodissa luodaan käyttöliittymän eri komponentit ja asetetaan käyttöliittymän layout.
+     * Layouttiin asetetaan käyttöliittymän eri komponenttien osat oikeille paikoilleen.
+     * Metodi luo myös uuden Piirtoalustan, joka piirtää käyttöliittymään peliruudukon.
+     * @param container 
+     */
+    
     private void luoKomponentit(Container container){
                 
         container.setLayout(new BorderLayout());
@@ -64,6 +99,10 @@ public class Kayttoliittyma implements Runnable {
         
         
     }
+    
+    /**
+     * Metodi käynnistää uuden Neljansuora-pelin ja pelin loputtua sulkee pelin.
+     */
     
     public void kaynnistaPeli(){
         

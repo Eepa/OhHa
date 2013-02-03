@@ -6,14 +6,45 @@ import java.util.Map;
 import neljansuora.domain.Nappula;
 import neljansuora.domain.Pelaaja;
 
+/**
+ * NappulaKasittelija-luokka muokkaa Pelilaudan Pelaajien nappuloiden tilaa ja tarkistaa, 
+ * onko laudalle tullut riittävän pitkiä suoria. Kasittelija tekee myös laudalle siirrot.
+ * 
+ * @author Eveliina Pakarinen
+ */
+
 public class NappulaKasittelija {
+    
+    /**
+     * Attribuutti lauta kuvaa Map-muotoista pelilautaa, jonka avaimet kuvaavat laudan y-akselin
+     * rivejä ja String[]-taulukon indeksit x-akselin paikkoja.
+     */
 
     private Map<Integer, String[]> lauta;
+    
+    /**
+     * Lista pelaajat sisältää pelin pelaajat.
+     */
+    
     private List<Pelaaja> pelaajat;
+    
+    /**
+     * Merkkijononpituus kertoo lyhimmän voittoon riittävän merkkijonon pituuden.
+     */
+    
+    private int merkkijononPituus;
+    
+    /**
+     * Konstruktori asettaa LautaKasittelijan attribuuttien arvot parametreina annetuiksi arvoiksi.
+     * @param lauta Kuvaa Neljansuora-pelin pelilautaa HashMapin avulla.
+     * @param pelaajat Kuvaa Neljansuora-pelin pelaajia ArrayListin avulla.
+     * @param merkkijononPituus Kertoo lyhimmän voittoon riittävän merkkijonon pituuden.
+     */
 
-    public NappulaKasittelija(Map<Integer, String[]> lauta, List<Pelaaja> pelaajat) {
+    public NappulaKasittelija(Map<Integer, String[]> lauta, List<Pelaaja> pelaajat, int merkkijononPituus) {
         this.lauta = lauta;
         this.pelaajat = pelaajat;
+        this.merkkijononPituus = merkkijononPituus;
     }
 
     public boolean onkoMahdollinenSiirto(int vaakarivinNumero) {
@@ -42,13 +73,13 @@ public class NappulaKasittelija {
 
     }
 
-    public boolean onkoRiittavanPitkiaSuoria(int merkkijononPituus) {
+    public boolean onkoRiittavanPitkiaSuoria() {
 
         String merkki = "";
 
         for (Pelaaja p : this.pelaajat) {
 
-            if (p.getNappulat().size() < merkkijononPituus) {
+            if (p.getNappulat().size() < this.merkkijononPituus) {
                 return false;
             }
 
@@ -58,10 +89,10 @@ public class NappulaKasittelija {
                 merkki = "O";
             }
 
-            if (this.onkoVaakasuorasti(merkki, merkkijononPituus)
-                    || this.onkoPystysuorasti(merkki, merkkijononPituus)
-                    || this.onkoVinostiKoillinenKaakko(merkki, merkkijononPituus)
-                    || this.onkoVinostiLounasLuode(merkki, merkkijononPituus)) {
+            if (this.onkoVaakasuorasti(merkki, this.merkkijononPituus)
+                    || this.onkoPystysuorasti(merkki, this.merkkijononPituus)
+                    || this.onkoVinostiKoillinenKaakko(merkki, this.merkkijononPituus)
+                    || this.onkoVinostiLounasLuode(merkki, this.merkkijononPituus)) {
                 return true;
             }
         }
@@ -80,7 +111,7 @@ public class NappulaKasittelija {
                 testattavaJono = testattavaJono + rivi[j];
             }
 
-            if (this.testaaMerkkijononPituus(testattavaJono, merkki, pituus) >= 4) {
+            if (this.testaaMerkkijononPituus(testattavaJono, merkki, pituus) >= pituus) {
                 return true;
             }
         }
@@ -189,7 +220,7 @@ public class NappulaKasittelija {
 
         String tarkistusjono = teeJono(maksimipituus, merkki);
 
-        int pisinMahdollinenSuora = this.selvitaLaudanLyhimmanSivunPituus();
+        int pisinMahdollinenSuora = this.selvitaLaudanPisimmanSivunPituus();
 
         for (int i = maksimipituus; i <= pisinMahdollinenSuora; i++) {
             if (testattavaJono.contains(tarkistusjono)) {
@@ -241,11 +272,11 @@ public class NappulaKasittelija {
         return false;
     }
 
-    public int selvitaLaudanLyhimmanSivunPituus() {
+    public int selvitaLaudanPisimmanSivunPituus() {
         int korkeus = this.lauta.size();
         int leveys = this.lauta.get(0).length;
 
-        if (korkeus < leveys) {
+        if (korkeus > leveys) {
             return korkeus;
         } else {
             return leveys;
