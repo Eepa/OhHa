@@ -57,7 +57,7 @@ public class Kayttoliittyma implements Runnable {
         container.add(new PiirtoPanel(this.neljansuora, this.piirtoalusta, tilannetietoPanel), 
                 BorderLayout.CENTER);
         
-        container.add(new ValikkoPanel(1, 3), BorderLayout.NORTH);
+        container.add(new ValikkoPanel(1, 3, this.neljansuora, tilannetietoPanel, this), BorderLayout.NORTH);
 //        container.add(new RivinappulatPanel(this.neljansuora), BorderLayout.SOUTH);
         
         
