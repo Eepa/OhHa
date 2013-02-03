@@ -8,6 +8,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Testiluokka PelaajaTest testaa Pelaaja-luokan toimivuutta yksikkötesteillä.
+ * @author Eveliina Pakarinen
+ */
 
 public class PelaajaTest {
     

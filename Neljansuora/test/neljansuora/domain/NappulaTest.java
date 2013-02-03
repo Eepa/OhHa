@@ -8,6 +8,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Testiluokka NappulaTest tekee Nappula-luokalle yksikkötestit, jotka testaavat luokan toimivuutta.
+ * @author Eveliina Pakarinen
+ */
 
 public class NappulaTest {
     

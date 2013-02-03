@@ -9,6 +9,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
+/**
+ * Testiluokka NappulaKasittelijaTest testaa NappulaKasittelija-luokan toimivuutta yksikkötesteillä.
+ * @author Eveliina Pakarinen
+ */
+
 public class NappulaKasittelijaTest {
     
     public NappulaKasittelijaTest() {

@@ -76,7 +76,7 @@ public class Kayttoliittyma implements Runnable {
      * Metodissa luodaan käyttöliittymän eri komponentit ja asetetaan käyttöliittymän layout.
      * Layouttiin asetetaan käyttöliittymän eri komponenttien osat oikeille paikoilleen.
      * Metodi luo myös uuden Piirtoalustan, joka piirtää käyttöliittymään peliruudukon.
-     * @param container 
+     * @param container Container-luokan ilmentymä
      */
     
     private void luoKomponentit(Container container){

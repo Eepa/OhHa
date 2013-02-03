@@ -7,13 +7,27 @@ import javax.swing.JPanel;
 import neljansuora.peli.Neljansuora;
 
 /**
+ * Piirtoalusta-luokka piirtää graafiseen käyttöliittymään peliruudukon, jossa näkyvät pelaajien 
+ * nappulat ja tyhjät ruudut. Piirtoalustalle voi asettaa eri värejä taustaksi ja pelaajien nappuloiden 
+ * väreiksi.
  * 
  * @author Eveliina Pakarinen
  */
 
 public class Piirtoalusta extends JPanel implements Paivitettava {
+    
+    /**
+     * Neljansuora kuvaa Neljansuora-pelin samannimistä luokkaa.
+     * @see Neljansuora
+     */
 
     private Neljansuora neljansuora;
+    
+    /**
+     * Konstruktori asettaa piirtoalustan oletustaustavärin ja asettaa attribuutteihin konstruktorin 
+     * parametrien arvot.
+     * @param neljansuora Kuvaa Neljansuora-peliä
+     */
 
     public Piirtoalusta(Neljansuora neljansuora) {
         super.setBackground(Color.blue);
@@ -29,6 +43,12 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
 
 
     }
+    
+    /**
+     * Metodi piirtää Piirtoalustalle Neljansuora-pelin pelikentän, jossa näkyvät tyhjät 
+     * ruudut ja pelaajien nappulat. Piirtämisen apuna metodi käyttää Neljansuora-pelin pelilautaa.
+     * @param g Graphics-luokan ilmentymä
+     */
 
     public void piirraKentta(Graphics g) {
         int leveys = this.neljansuora.getPelilauta().getLauta().get(0).length;

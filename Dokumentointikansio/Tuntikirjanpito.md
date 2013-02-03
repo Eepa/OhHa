@@ -40,5 +40,6 @@ Perjantai 01.02.2013, 2h
 Javadoc aloitettu, luokkakaaviota tarkennettu ja graafista mietitty
 eteenpäin.
 
-Sunnuntai 03.02.2013, 1,5h
-Graafista kayttoliittymaa jatkettu (pelaajien vuorot oikein).
+Sunnuntai 03.02.2013, 4h
+Graafista kayttoliittymaa jatkettu (pelaajien vuorot oikein), 
+Javadocia jatkettu kaikille luokille ja osalle metodeista.

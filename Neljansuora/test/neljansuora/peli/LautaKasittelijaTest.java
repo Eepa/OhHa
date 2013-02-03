@@ -8,6 +8,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Testiluokka LautaKasittelijaTest testaa luokan LautaKasittelija toimivuutta yksikkötesteillä.
+ * @author Eveliina Pakarinen
+ */
 
 public class LautaKasittelijaTest {
     

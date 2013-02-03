@@ -12,6 +12,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * Testiluokka PelilautaTest testaa luokan Pelilauta toimivuutta yksikkötesteillä.
+ * @author Eveliina Pakarinen
+ */
 
 public class PelilautaTest {
     

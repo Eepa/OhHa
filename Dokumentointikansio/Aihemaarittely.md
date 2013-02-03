@@ -19,3 +19,5 @@ Kayttajat: Kaksi pelaajaa
 
 Kayttajien toiminnot:
 - Oman nappulan pudottaminen
+- Pelilaudan varin vaihtaminen
+- Uuden pelin aloittaminen

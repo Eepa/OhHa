@@ -6,12 +6,47 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import neljansuora.peli.Neljansuora;
 
+/**
+ * TilannetietoPanel-luokka kertoo kulloisenkin pelitilanteen ja pitää kirjaa siitä, kumman 
+ * pelaajan vuoro on siirtää seuraava nappula kentälle.
+ * @author Eveliina Pakarinen
+ */
+
 public class TilannetietoPanel extends JPanel implements Paivitettava {
+    
+    /**
+     * Neljansuora kuvaa Neljansuora-pelin samannimistä luokkaa.
+     * @see Neljansuora
+     */
 
     private Neljansuora neljansuora;
+    
+    /**
+     * Kertoo, kumman pelaajan vuoro on siirtää pelissä.
+     */
+    
     private int vuoronumero;
+    
+    /**
+     * Antaa vuorossaolevan pelaajan nimen tekstimuodossa.
+     */
+    
     private String vuorossaoleva;
+    
+    /**
+     * Sisältää tiedon vuorossaolevasta pelaajasta.
+     */
+    
     private JTextArea kukaVuorossa;
+    
+    /**
+     * Konstruktori asettaa Tilannetietopaneelille uuden layoutin ja asettaa attribuuttien arvoksi 
+     * parametreinaan saamansa arvon. Lisäksi konstruktori alustaa vuoronumeroinnin alkamaan ykkösestä. 
+     * Konstruktori kutsuu myös luokan omia metodeja: setVuorossaoleva(), joka alustaa ja asettaa 
+     * vuorossaolevalle pelaajalle tekstimuotoisen attribuutin; luoTietopaneeli(), joka luo uuden 
+     * tietopaneelin.
+     * @param neljansuora Kuvaa Neljansuora-peliä
+     */
 
     public TilannetietoPanel(Neljansuora neljansuora) {
         super(new GridLayout(1, 2));
@@ -36,12 +71,21 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
     public void setVuorossaoleva() {
         this.vuorossaoleva = "Pelaaja" + this.vuoronumero;
     }
+    
+    /**
+     * Metodi asettaa aina seuraavan pelaajan vuorossaolevaksi pelaajaksi ja muuttaa 
+     * attribuuttia vuorossaoleva.
+     */
 
     private void setKukaVuorossa() {
         this.setVuorossaoleva();
         this.kukaVuorossa.setText(vuorossaoleva);
 
     }
+    
+    /**
+     * Metodi luo uudet komponentit TilannetietoPaneliin ja asettaa ne layouttiin.
+     */
 
     private void luoTietopaneeli() {
         JLabel vuorossa = new JLabel("Vuorossa:");

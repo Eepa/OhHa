@@ -10,6 +10,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
+/**
+ * Testiluokka NeljansuoraTest testaa luokan Neljansuora toimivuutta yksikkötesteillä.
+ * @author Eveliina Pakarinen
+ */
+
 public class NeljansuoraTest {
     
     Scanner lukija;
