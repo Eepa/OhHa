@@ -29,11 +29,15 @@ Perjantai 25.01.2013, 2,5h
 Graafisen kayttoliittyman ohjelmoiminen aloitettu, luokkakaavion 
 tarkennus tehty.
 
-Tiistai 29.1.2013, 2h
+Tiistai 29.01.2013, 2h
 Graafista kayttoliittymaa yritetty saada eteenpain, ei sujunut.
 
 Keskiviikko 30.01.2013, 3,5h
 Graafista kayttoliittymaa viety eteenpain, sujui opastuksen
 ansiosta paremmin, illalla lisaa kayttoliittymaa. Tee testit!
+
+Perjantai 01.02.2013, 2h
+Javadoc aloitettu, luokkakaaviota tarkennettu ja graafista mietitty
+eteenpäin.
 
 
