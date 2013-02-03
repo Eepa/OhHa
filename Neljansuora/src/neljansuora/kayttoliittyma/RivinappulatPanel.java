@@ -15,13 +15,13 @@ import neljansuora.peli.Neljansuora;
 public class RivinappulatPanel extends JPanel{
     
     private Neljansuora neljansuora;
+    private TilannetietoPanel tilannetietoPanel;
     
-    
-    public RivinappulatPanel(Neljansuora neljansuora){
+    public RivinappulatPanel(Neljansuora neljansuora, TilannetietoPanel tilannetietoPanel){
                        
         super(new GridLayout(1, neljansuora.getPelilauta().getLauta().get(0).length));
         this.neljansuora = neljansuora;
-                
+        this.tilannetietoPanel = tilannetietoPanel;        
         this.luoNappulat();
     }
     
@@ -38,7 +38,7 @@ public class RivinappulatPanel extends JPanel{
         
         for(JButton nappi : nappilista){
             nappi.addActionListener(new NappulanPudotusListener(this.neljansuora.getPelilauta(), 
-                    nappi.getText()));
+                    nappi.getText(), this.tilannetietoPanel));
             
             add(nappi);
         }

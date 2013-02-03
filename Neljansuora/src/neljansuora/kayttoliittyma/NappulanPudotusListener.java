@@ -10,9 +10,12 @@ public class NappulanPudotusListener implements ActionListener{
     
     private Pelilauta lauta;
     private int nappulanNumero;
+    private TilannetietoPanel tilannetietoPanel;
     
-    public NappulanPudotusListener(Pelilauta lauta, String nappulanNumero){
+    public NappulanPudotusListener(Pelilauta lauta, String nappulanNumero, 
+            TilannetietoPanel tilannetietoPanel){
         this.lauta = lauta;
+        this.tilannetietoPanel = tilannetietoPanel;
         
         try{
             this.nappulanNumero = Integer.parseInt(nappulanNumero);
@@ -24,7 +27,8 @@ public class NappulanPudotusListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        this.lauta.teeSiirto(nappulanNumero);
+        this.lauta.teeSiirto(nappulanNumero, this.tilannetietoPanel.getVuoronumero());
+        this.tilannetietoPanel.paivita();
     }
     
 }
