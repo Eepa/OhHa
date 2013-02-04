@@ -102,22 +102,22 @@ public class Neljansuora {
     }
 
     public void pelaaKierros() {
-        this.pelilauta.teeSiirrot();
+        this.pelilauta.teeTekstikayttoliittymanSiirrotKaikillePelaajille();
         this.paivitettava.paivita();
     }
 
     
-
-    public void taulukonLapiKaynti(){
-        int[][] taulu = new int[5][5];
-        
-        for (int i = 0; i < taulu.length; i++) {
-            for (int j = 0; j < taulu[i].length; j++) {
-                System.out.println("koordinaatit on " + i + ", " + j);
-                taulu[i][j] = 5;
-                
-            }
-            
-        }
-    }
+// Opetetaan, kuinka voi käyttää kaksiulotteista taulukkoa. Pitäisikö neljansuoran logiikka muuttaa siihen.
+//    public void taulukonLapiKaynti(){
+//        int[][] taulu = new int[5][5];
+//        
+//        for (int i = 0; i < taulu.length; i++) {
+//            for (int j = 0; j < taulu[i].length; j++) {
+//                System.out.println("koordinaatit on " + i + ", " + j);
+//                taulu[i][j] = 5;
+//                
+//            }
+//            
+//        }
+//    }
 }

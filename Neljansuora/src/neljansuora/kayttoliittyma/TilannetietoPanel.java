@@ -59,6 +59,10 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
     public int getVuoronumero() {
         return this.vuoronumero;
     }
+    
+    public void alustaVuoronumero(){
+        this.vuoronumero = 1;
+    }
 
     public void setVuoronumero() {
         if (this.vuoronumero == 1) {
@@ -80,7 +84,6 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
     private void setKukaVuorossa() {
         this.setVuorossaoleva();
         this.kukaVuorossa.setText(vuorossaoleva);
-
     }
     
     /**
@@ -101,8 +104,7 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
         this.setVuoronumero();
         this.setKukaVuorossa();
         
-        if(this.neljansuora.getPelilauta().onkoLautaTaynna() 
-               || this.neljansuora.getPelilauta().onkoNeljanSuoraa()){
+        if(this.neljansuora.getPelilauta().onkoNeljanSuoraa()){
             this.removeAll();
             
             this.setVuoronumero();
@@ -111,6 +113,18 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
             JLabel voittaja = new JLabel("Voittaja: " + this.vuorossaoleva 
                     + "        ONNEKSI OLKOON!     :)");
             add(voittaja);            
+        } 
+        
+        else if(this.neljansuora.getPelilauta().onkoLautaTaynna()){
+            this.removeAll();
+            
+            this.alustaVuoronumero();
+            this.setKukaVuorossa();
+            
+            JLabel lautaTaynna = new JLabel("Lauta täyttyi, aloita uusi peli!");
+            
+            add(lautaTaynna);
+            
         }
         
     }

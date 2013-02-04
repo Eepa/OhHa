@@ -41,7 +41,7 @@ public class PelaajaTest {
     }
     
     @Test
-    public void nappulataPalautetaan(){
+    public void nappulatPalautetaanOikein(){
         assertTrue(pelaaja.getNappulat() != null);
     }
 }
