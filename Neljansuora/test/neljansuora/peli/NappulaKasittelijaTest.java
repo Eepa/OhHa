@@ -70,29 +70,55 @@ public class NappulaKasittelijaTest {
     public void testaaMerkkijononPituusPalauttaaOikeinJosAlleMaksimipituus() {
         assertEquals(this.nappulakasittelija.testaaMerkkijononPituus("XXXX", "X", 5), 0);
     }
-    
+
     @Test
     public void testaaMerkkijononPituusPalauttaaOikeinJosTasanMaksimipituus() {
         assertEquals(this.nappulakasittelija.testaaMerkkijononPituus("XXXXX", "X", 5), 5);
     }
-    
+
     @Test
-    public void onkoRiittavanPitkiaSuoriaPalauttaaOikeinJosEiSuoria(){
+    public void onkoRiittavanPitkiaSuoriaPalauttaaOikeinJosEiSuoria() {
         assertTrue(!this.nappulakasittelija.onkoRiittavanPitkiaSuoria());
     }
-    
+
     @Test
-    public void onkoRiittavanPitkiaSuoriaPalauttaaOikeinJosSuora(){
+    public void onkoRiittavanPitkiaSuoriaPalauttaaOikeinJosSuora() {
         //TODO
     }
-    
+
     @Test
-    public void onkoMahdollinenSiirtoPalauttaaOikeinJosOnMahdollinen(){
-        //TODO
+    public void onkoMahdollinenSiirtoPalauttaaOikeinJosOnMahdollinen() {
+
+        int totuuksienMaara = 8;
+
+        for (int i = 0; i < 8; i++) {
+            if (this.nappulakasittelija.onkoMahdollinenSiirto(i)) {
+                totuuksienMaara--;
+            }
+        }
+        assertEquals(totuuksienMaara, 0);
     }
-    
+
     @Test
-    public void onkoMahdollinenSiirtoPalauttaaOikeinJosEiOleMahdollinen(){
-        //TODO
+    public void onkoMahdollinenSiirtoPalauttaaOikeinJosEiOleMahdollinen() {
+
+//        for (int j = 0; j < 9; j++) {
+//           String[] rivi = this.neljansuora.getPelilauta().getLauta().get(j);
+//        
+//            for (int i = 0; i < rivi.length; i++) {
+//                this.neljansuora.getPelilauta().teeYhdenPelaajanSiirto(j, 1);
+//            }
+//        }
+//        
+//        int epatotuuksienMaara = 8;
+//
+//        for (int i = 0; i < 8; i++) {
+//            if (!this.nappulakasittelija.onkoMahdollinenSiirto(i)) {
+//                epatotuuksienMaara--;
+//            }
+//        }
+//        assertEquals(epatotuuksienMaara, 0);
+        
+        //MITEN SAA LAUDAN TÄYTEEN ILMAN ETTÄ TULEE NELJAN SUORIA??
     }
 }
