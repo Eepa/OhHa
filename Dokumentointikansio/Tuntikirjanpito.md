@@ -44,5 +44,6 @@ Sunnuntai 03.02.2013, 4h
 Graafista kayttoliittymaa jatkettu (pelaajien vuorot oikein), 
 Javadocia jatkettu kaikille luokille ja osalle metodeista.
 
-Maanantai 04.02.2013, 2h
-Testeja kirjoiteltu eteenpain kaikille tekstikayttoliittyman luokille.
+Maanantai 04.02.2013, 4h
+Testeja kirjoiteltu eteenpain kaikille tekstikayttoliittyman 
+luokille, sekvenssikaaviot piirretty.
