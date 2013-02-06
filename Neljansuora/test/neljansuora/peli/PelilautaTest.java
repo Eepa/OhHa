@@ -223,7 +223,7 @@ public class PelilautaTest {
 
     @Test
     public void onkoNeljanSuoraaPalauttaaOikeinJosOnSuoria() {
-        // MIKÄ VIKANA..??
+        // MIKÄ VIKANA..?? AssertionFailedError
        
 //        Pelilauta pelilauta = new Pelilauta(8, 9, 4, this.lukija);
 //        
