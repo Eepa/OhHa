@@ -21,15 +21,17 @@ import static org.junit.Assert.*;
  */
 public class PelilautaTest {
 
+    Neljansuora neljansuora;
     Pelilauta pelilauta;
     Scanner lukija;
 
     @Before
     public void setUp() {
 
-
         this.lukija = new Scanner(System.in);
-        this.pelilauta = new Pelilauta(8, 9, 4, lukija);
+
+        this.pelilauta = new Pelilauta(8, 9, 4, this.lukija);
+        
     }
 
     @Test
@@ -175,6 +177,74 @@ public class PelilautaTest {
         assertTrue(true);
     }
 
+    
+
+    @Test
+    public void siirtojenTekeminenToimiiAntamallaSyotteenPelaajastaJaRivista() {
+        Neljansuora neljansuora = new Neljansuora(8, 9, 4, this.lukija);
+        Paivitettava paivitettava = new Piirtoalusta(neljansuora);
+        Pelilauta pelilauta = neljansuora.getPelilauta();
+
+        pelilauta.setPaivitettava(paivitettava);
+
+        pelilauta.teeYhdenPelaajanSiirto(2, 1);
+
+        String[] alinRivi = pelilauta.getLauta().get(8);
+
+        String merkki = alinRivi[2];
+
+        assertEquals("X", merkki);
+    }
+
+    @Test
+    public void onkoLautaTaynnaPalauttaaOikeinJosTaynna() {
+
+        for (int i = 0; i < this.pelilauta.getLauta().size(); i++) {
+            String[] rivi = this.pelilauta.getLauta().get(i);
+
+            for (int j = 0; j < rivi.length; j++) {
+                rivi[j] = "X";
+            }
+
+        }
+
+        assertTrue(this.pelilauta.onkoLautaTaynna());
+    }
+
+    @Test
+    public void onkoLautaTaynnaPalauttaaOikeinJosEiTaynna() {
+        assertTrue(!this.pelilauta.onkoLautaTaynna());
+    }
+
+    @Test
+    public void onkoNeljanSuoraaPalauttaaOikeinJosEiSuoria() {
+        assertTrue(!this.pelilauta.onkoNeljanSuoraa());
+    }
+
+    @Test
+    public void onkoNeljanSuoraaPalauttaaOikeinJosOnSuoria() {
+        // MIKÄ VIKANA..??
+       
+//        Pelilauta pelilauta = new Pelilauta(8, 9, 4, this.lukija);
+//        
+//        pelilauta.luoPelaajat();
+//
+//        Pelaaja pelaaja1 = pelilauta.getPelaajat().get(0);
+//        Pelaaja pelaaja2 = pelilauta.getPelaajat().get(1);
+//
+//        for (int i = 0; i < pelilauta.getLauta().size(); i++) {
+//
+//            String[] rivi = pelilauta.getLauta().get(i);
+//
+//            for (int j = 0; j < rivi.length; j++) {
+//                pelaaja1.lisaaUusiNappula(j, i);
+//                pelaaja2.lisaaUusiNappula(j, i);
+//            }
+//        }
+//
+//        assertTrue(pelilauta.onkoNeljanSuoraa());
+    }
+    
     @Test
     public void tulostaminenToimiiOikein() {
         //Miten voi testata tulostamista?
@@ -184,41 +254,4 @@ public class PelilautaTest {
     public void siirtojenTekeminenToimiiScanneriaKayttamallaTekstikayttoliittymassa() {
         // Miten testataan scanneria?
     }
-
-    @Test
-    public void siirtojenTekeminenToimiiAntamallaSyotteenPelaajastaJaRivista() {
-        // MIKSI TULEE NULLPOINTER EXCEPTION???
-        
-//        this.pelilauta.teeYhdenPelaajanSiirto(2, 1);
-//        
-//        String[] alinRivi = this.pelilauta.getLauta().get(0);
-//        
-//        String ensimmainenMerkki = alinRivi[1];
-//
-//        assertEquals("X", ensimmainenMerkki);
-    }
-    
-    @Test
-    public void onkoLautaTaynnaPalauttaaOikeinJosTaynna(){
-        //TODO
-    }
-    
-    @Test
-    public void onkoLautaTaynnaPalauttaaOikeinJosEiTaynna(){
-        assertTrue(!this.pelilauta.onkoLautaTaynna());
-    }
-    
-    @Test
-    public void onkoNeljanSuoraaPalauttaaOikeinJosEiSuoria(){
-        assertTrue(!this.pelilauta.onkoNeljanSuoraa());
-    }
-    
-    @Test
-    public void onkoNeljanSuoraaPalauttaaOikeinJosOnSuoria(){
-        //TODO
-    }
-    
-    
-    
-    
 }

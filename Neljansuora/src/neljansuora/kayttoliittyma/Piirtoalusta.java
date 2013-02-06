@@ -23,6 +23,11 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
 
     private Neljansuora neljansuora;
     
+    private Color taustavari;
+    private Color pelaajanXVari;
+    private Color pelaajanOVari;
+    
+    
     /**
      * Konstruktori asettaa piirtoalustan oletustaustavärin ja asettaa attribuutteihin konstruktorin 
      * parametrien arvot.
@@ -32,7 +37,9 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
     public Piirtoalusta(Neljansuora neljansuora) {
         super.setBackground(Color.blue);
         this.neljansuora = neljansuora;
-
+        this.taustavari = Color.blue;
+        this.pelaajanXVari = Color.red;
+        this.pelaajanOVari = Color.yellow;
     }
 
     @Override
@@ -66,15 +73,27 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
                     g.fillOval(j * 50, i * 50, 50, 50);
                     
                 } else if (merkki.equals("X")) {
-                    g.setColor(Color.red);
+                    g.setColor(this.pelaajanXVari);
                     g.fillOval(j * 50, i * 50, 50, 50);
                 } else if (merkki.equals("O")) {
-                    g.setColor(Color.yellow);
+                    g.setColor(this.pelaajanOVari);
                     g.fillOval(j * 50, i * 50, 50, 50);
                 }
             }
         }
 
+    }
+    
+    public void vaihdaTaustavaria(Color vari){
+        this.taustavari = vari;
+    }
+    
+    public void vaihdaPelaajanVaria(Color vari, int pelaajanNumero){
+        if(pelaajanNumero == 1){
+            this.pelaajanXVari = vari;
+        } else if(pelaajanNumero == 2){
+            this.pelaajanOVari = vari;
+        }
     }
 
     @Override
