@@ -47,3 +47,6 @@ Javadocia jatkettu kaikille luokille ja osalle metodeista.
 Maanantai 04.02.2013, 4h
 Testeja kirjoiteltu eteenpain kaikille tekstikayttoliittyman 
 luokille, sekvenssikaaviot piirretty.
+
+Keskiviikko 06.02.2013, 2h
+Ohjelman toiminnallisuutta korjailtu, lisatty varinvaihto.

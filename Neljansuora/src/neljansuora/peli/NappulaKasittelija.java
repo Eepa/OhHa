@@ -201,8 +201,26 @@ public class NappulaKasittelija {
 
     public String laskeSeuraavatPisteetKoillinenKaakko(int y, int x, String merkkijono) {
 
-        y++;
-        x--;
+        return laskeGeneerinen(y, x, 1, -1, merkkijono);
+//        y++;
+//        x--;
+//
+//        if (x < 0 || y > this.lauta.size() - 1) {
+//            return merkkijono;
+//        } else {
+//            String seuraavaPiste = this.lauta.get(y)[x];
+//
+//            merkkijono = merkkijono + seuraavaPiste;
+//
+//            return this.laskeSeuraavatPisteetKoillinenKaakko(y, x, merkkijono);
+//        }
+    }
+    
+    
+     public String laskeGeneerinen(int y, int x, int yynlisays, int xnlisays, String merkkijono) {
+
+        y = y + yynlisays;
+        x = x + xnlisays;
 
         if (x < 0 || y > this.lauta.size() - 1) {
             return merkkijono;
@@ -211,7 +229,7 @@ public class NappulaKasittelija {
 
             merkkijono = merkkijono + seuraavaPiste;
 
-            return this.laskeSeuraavatPisteetKoillinenKaakko(y, x, merkkijono);
+            return this.laskeGeneerinen(y, x, yynlisays, xnlisays, merkkijono);
         }
     }
 

@@ -35,6 +35,8 @@ public class ValikkoPanel extends JPanel{
     
     private Kayttoliittyma kayttoliittyma;
     
+    private Piirtoalusta piirtoalusta;
+    
     /**
      * Konstruktori asettaa ValikkoPaneelille layoutin ja sijoittaa olion attribuutteihin konstruktorin
      * parametreina annetut tiedot. Konstruktorissa kutsutaan myös ValikkoPanelin omaa metodia, jossa
@@ -48,11 +50,13 @@ public class ValikkoPanel extends JPanel{
      */
     
     public ValikkoPanel(int korkeus, int leveys, 
-            Neljansuora neljansuora, TilannetietoPanel tilannetietoPanel, Kayttoliittyma kayttoliittyma){
+            Neljansuora neljansuora, TilannetietoPanel tilannetietoPanel, Kayttoliittyma kayttoliittyma, Piirtoalusta piirtoalusta){
         super(new GridLayout(korkeus, leveys));
         
         this.neljansuora = neljansuora;
         this.tilannetietoPanel = tilannetietoPanel;
+        this.kayttoliittyma = kayttoliittyma;
+        this.piirtoalusta = piirtoalusta;
         luoKomponentit();
     }
     
@@ -69,11 +73,12 @@ public class ValikkoPanel extends JPanel{
         
         JButton variasetukset = new JButton("Väriasetukset");
         
-        JButton jokuNappi = new JButton("Joku nappi");
+        variasetukset.addActionListener(new VarinvaihtoListener(this.neljansuora, this.piirtoalusta));
+        
         
         add(uusiPeli);
         add(variasetukset);
-        add(jokuNappi);
+       
         
     }
     

@@ -86,6 +86,7 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
     
     public void vaihdaTaustavaria(Color vari){
         this.taustavari = vari;
+        this.setBackground(vari);
     }
     
     public void vaihdaPelaajanVaria(Color vari, int pelaajanNumero){
