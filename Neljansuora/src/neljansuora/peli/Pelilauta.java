@@ -143,39 +143,38 @@ public class Pelilauta {
         return this.paivitettava;
     }
 
-    public void teeTekstikayttoliittymanSiirrotKaikillePelaajille() {
-
-        // muokkaa metodia paremmaksi
-
-        for (Pelaaja p : this.pelaajat) {
-
-            if (this.onkoNeljanSuoraa() || this.onkoLautaTaynna()) {
-                return;
-            }
-
-            String nimi = "Pelaaja" + p.getVuoronumero();
-            boolean jatketaanko = true;
-
-            int vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
-            while (jatketaanko) {
-
-                if (this.nappulaKasittelija.onkoMahdollinenSiirto(vaakarivinNumero)) {
-                    this.nappulaKasittelija.teeSiirto(vaakarivinNumero, p);
-                    jatketaanko = false;
-                } else {
-                    System.out.println("Ei mahdollinen siirto!");
-                    vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
-                    jatketaanko = true;
-                }
-            }
-
-            this.lautaKasittelija.lisaaNappulatKenttaan(this.pelaajat);
-            this.tulostaPelilauta();
-            this.paivitettava.paivita();
-        }
-
-    }
-
+//    public void teeTekstikayttoliittymanSiirrotKaikillePelaajille() {
+//
+//        // muokkaa metodia paremmaksi
+//
+//        for (Pelaaja p : this.pelaajat) {
+//
+//            if (this.onkoNeljanSuoraa() || this.onkoLautaTaynna()) {
+//                return;
+//            }
+//
+//            String nimi = "Pelaaja" + p.getVuoronumero();
+//            boolean jatketaanko = true;
+//
+//            int vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
+//            while (jatketaanko) {
+//
+//                if (this.nappulaKasittelija.onkoMahdollinenSiirto(vaakarivinNumero)) {
+//                    this.nappulaKasittelija.teeSiirto(vaakarivinNumero, p);
+//                    jatketaanko = false;
+//                } else {
+//                    System.out.println("Ei mahdollinen siirto!");
+//                    vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
+//                    jatketaanko = true;
+//                }
+//            }
+//
+//            this.lautaKasittelija.lisaaNappulatKenttaan(this.pelaajat);
+//            this.tulostaPelilauta();
+//            this.paivitettava.paivita();
+//        }
+//
+//    }
     public void teeYhdenPelaajanSiirto(int rivinNumero, int pelaajanVuoronumero) {
 
         for (Pelaaja p : this.pelaajat) {
@@ -192,7 +191,7 @@ public class Pelilauta {
         }
 
         this.lautaKasittelija.lisaaNappulatKenttaan(this.pelaajat);
-        this.tulostaPelilauta();
+//        this.tulostaPelilauta();
         this.paivitettava.paivita();
 
     }
@@ -203,5 +202,14 @@ public class Pelilauta {
 
     public boolean onkoLautaTaynna() {
         return this.nappulaKasittelija.onkoLautaTaynna();
+    }
+
+    public void lopetaPeli() {
+        for (Pelaaja p : this.pelaajat) {
+            p.poistaNappulat();
+        }
+
+        this.taytaPelilauta();
+        this.paivitettava.paivita();
     }
 }

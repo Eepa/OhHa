@@ -33,8 +33,8 @@ public class NappulanPudotusListener implements ActionListener {
     private TilannetietoPanel tilannetietoPanel;
     
     /**
-     * Konstruktori luo asettaa luokan attribuuttien arvoiksi konstruktorin parametreina 
-     * annetut arvot.
+     * Konstruktori luo uuden NappulanPudotusListenerin ja asettaa luokan attribuuttien arvoiksi 
+     * konstruktorin parametreina annetut arvot.
      * @param lauta Kuvaa Pelilauta-luokan ilmentymää, joka sisältää pelilaudan.
      * @param nappulanNumero Kuvaa jokaisen nappulan indeksiä pelilaudalla
      * @param tilannetietoPanel Kuvaa TilanneTietoPanelin ilmentymää, joka kertoo pelitilanteen.

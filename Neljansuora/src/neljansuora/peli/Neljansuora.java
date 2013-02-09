@@ -75,35 +75,41 @@ public class Neljansuora {
         this.pelilauta.setPaivitettava(paivitettava);
     }
 
-    public void kaynnista() {
+    // TEKSTIKAYTTOLIITTYMAA VARTEN KAYNNISTAMETODI
+//    public void kaynnista() {
+//
+//        this.pelilauta.tulostaPelilauta();
+//        this.paivitettava.paivita();
+//        
+//        while (true) {
+//            
+//            if (this.pelilauta.onkoNeljanSuoraa() || this.pelilauta.onkoLautaTaynna()) {
+//                //lisaa tarkistus kumpi pelaaja sai suoran sout esim pelaaja1 voitti
+//                System.out.println("Lopetuksen kautta tarkistus");
+//                break;
+//            }
+//            
+//            System.out.println("-----------------");
+//
+//            this.pelaaKierros();
+//            this.paivitettava.paivita();
+//        }
+//
+//        System.out.println("-----------------------");
+//        this.pelilauta.tulostaPelilauta();
+//
+//        System.out.println("Loppu");
+//        System.exit(0);
+//    }
 
-        this.pelilauta.tulostaPelilauta();
-        this.paivitettava.paivita();
+//    public void pelaaKierros() {
+//        this.pelilauta.teeTekstikayttoliittymanSiirrotKaikillePelaajille();
+//        this.paivitettava.paivita();
+//    }
+    
+    public void lopetaPeli(){
+        this.pelilauta.lopetaPeli();
         
-        while (true) {
-            
-            if (this.pelilauta.onkoNeljanSuoraa() || this.pelilauta.onkoLautaTaynna()) {
-                //lisaa tarkistus kumpi pelaaja sai suoran sout esim pelaaja1 voitti
-                System.out.println("Lopetuksen kautta tarkistus");
-                break;
-            }
-            
-            System.out.println("-----------------");
-
-            this.pelaaKierros();
-            this.paivitettava.paivita();
-        }
-
-        System.out.println("-----------------------");
-        this.pelilauta.tulostaPelilauta();
-
-        System.out.println("Loppu");
-        System.exit(0);
-    }
-
-    public void pelaaKierros() {
-        this.pelilauta.teeTekstikayttoliittymanSiirrotKaikillePelaajille();
-        this.paivitettava.paivita();
     }
 
     

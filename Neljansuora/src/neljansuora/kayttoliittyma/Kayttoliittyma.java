@@ -65,7 +65,7 @@ public class Kayttoliittyma implements Runnable {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setResizable(false);
         luoKomponentit(frame.getContentPane());
-        
+        this.setNeljansuoranPiirtoalusta();
         
         frame.pack();
         frame.setVisible(true);
@@ -116,15 +116,25 @@ public class Kayttoliittyma implements Runnable {
                 break;
             }
             
-            neljansuora.pelaaKierros();
+//            neljansuora.pelaaKierros();
             
         }
-        
-        
-        
-        System.exit(0);
+                       
+//        System.exit(0);
     
         
+    }
+    
+    public void setNeljansuoranPiirtoalusta(){
+         while(getPaivitettava() == null){
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                System.out.println("Piirtoalustaa ei ole vielä luotu.");
+            }
+        }
+        
+        neljansuora.setPaivitettava(this.getPaivitettava());
     }
     
     public Paivitettava getPaivitettava(){

@@ -59,5 +59,9 @@ public class Pelaaja {
         this.nappulat.add(new Nappula(x, y));
     }
     
+    public void poistaNappulat(){
+        this.nappulat.removeAll(this.nappulat);
+    }
+    
     
 }

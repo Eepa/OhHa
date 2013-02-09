@@ -48,7 +48,6 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
       
         this.piirraKentta(g);
 
-
     }
     
     /**

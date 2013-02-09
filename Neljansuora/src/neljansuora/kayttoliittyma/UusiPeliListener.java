@@ -3,6 +3,7 @@ package neljansuora.kayttoliittyma;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import neljansuora.peli.Neljansuora;
 
 /**
  * Luokka kuvaa tapahtumankuuntelijaa, joka tarkkailee painetaanko ValikkoPanelin nappulaa "Uusi peli".
@@ -19,14 +20,28 @@ public class UusiPeliListener implements ActionListener{
     
     private Kayttoliittyma kayttoliittyma;
     
-    public UusiPeliListener(Kayttoliittyma kayttoliittyma){
+    private TilannetietoPanel tilannetietopanel;
+    
+    private Neljansuora neljansuora;
+    
+    private Piirtoalusta piirtoalusta;
+    
+    public UusiPeliListener(Neljansuora neljansuora, Kayttoliittyma kayttoliittyma,
+            TilannetietoPanel tilannetietopanel, Piirtoalusta piirtoalusta){
         this.kayttoliittyma = kayttoliittyma;
+        this.neljansuora = neljansuora;
+        this.tilannetietopanel = tilannetietopanel;
+        this.piirtoalusta = piirtoalusta;
     }
     
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-//        this.kayttoliittyma.kaynnistaPeli();
+
+        this.neljansuora.lopetaPeli();
+        this.tilannetietopanel.aloitaUusiPeli();
+        this.piirtoalusta.paivita();
+
     }
     
 }

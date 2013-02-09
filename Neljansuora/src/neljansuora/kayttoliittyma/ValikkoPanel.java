@@ -69,7 +69,8 @@ public class ValikkoPanel extends JPanel{
         
         JButton uusiPeli = new JButton("Uusi peli");
         
-        uusiPeli.addActionListener(new UusiPeliListener(this.kayttoliittyma));
+        uusiPeli.addActionListener(new UusiPeliListener(this.neljansuora, this.kayttoliittyma, 
+                this.tilannetietoPanel, this.piirtoalusta));
         
         JButton variasetukset = new JButton("Väriasetukset");
         

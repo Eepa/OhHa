@@ -50,3 +50,6 @@ luokille, sekvenssikaaviot piirretty.
 
 Keskiviikko 06.02.2013, 2h
 Ohjelman toiminnallisuutta korjailtu, lisatty varinvaihto.
+
+Sunnuntai 10.02.2013, 1,5h
+Lisatty uusi sekvenssikaavio, lisatty uusi peli-napin toiminta.
