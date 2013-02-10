@@ -68,6 +68,9 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
     }
 
     public void setVuorossaoleva() {
+        
+        //Hae oikean Pelaajan nimi
+        
         this.vuorossaoleva = "Pelaaja" + this.vuoronumero;
     }
 

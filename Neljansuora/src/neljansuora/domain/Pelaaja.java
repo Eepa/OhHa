@@ -24,7 +24,7 @@ public class Pelaaja {
      * @see Nappula
      */
     private List<Nappula> nappulat;
-//    private String nimi;
+    private String nimi;
     
     /**
      * Konstruktori luo uuden Pelaaja-olion ja asettaa pelaajan oliomuuttujan vuoronumero arvon. 
@@ -32,9 +32,9 @@ public class Pelaaja {
      * @param vuoronumero Kertoo, mikä numero pelaajan vuoronumeroksi tulee.
      */
     
-    public Pelaaja(int vuoronumero){
+    public Pelaaja(int vuoronumero, String nimi){
         this.vuoronumero = vuoronumero;
-//        this.nimi = nimi; 
+        this.nimi = nimi; 
         this.nappulat = new ArrayList<Nappula>();
         
     }
@@ -65,6 +65,10 @@ public class Pelaaja {
     
     public void poistaNappulat(){
         this.nappulat.removeAll(this.nappulat);
+    }
+    
+    public String getNimi(){
+        return this.nimi;
     }
     
     

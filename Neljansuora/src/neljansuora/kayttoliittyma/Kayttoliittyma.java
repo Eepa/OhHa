@@ -54,29 +54,41 @@ public class Kayttoliittyma implements Runnable {
         this.neljansuora = new Neljansuora(leveys, korkeus, suoranPituus, lukija);
 
     }
-    
-    public int asetaPituus(String pituudenNimi){
-        
+
+    public int asetaPituus(String pituudenNimi) {
+
         String pituus = pituudenNimi;
-        
+
         int palautettavaPituus = 0;
-        
-        pituus = JOptionPane.showInputDialog(null, "Anna " + pituudenNimi + ": ", pituudenNimi, 1);
-        
-        if(pituus == null){
+
+        pituus = JOptionPane.showInputDialog(null, "Tyjä asettaa oletusarvon. "
+                + "Anna " + pituudenNimi + ": ", pituudenNimi, 1);
+
+        if (pituus == null) {
             System.exit(0);
         }
-        
+
+        //Asettaa oletuspituuden ja leveyden
+
+        if (pituus.isEmpty()) {
+
+            if (pituudenNimi.equals("leveys")) {
+                return 7;
+            }
+
+            return 6;
+        }
+
         try {
             palautettavaPituus = Integer.parseInt(pituus);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Syötteen pitää olla joku luku!", 
+            JOptionPane.showMessageDialog(null, "Syötteen pitää olla joku luku!",
                     "Luvun antaminen epäonnistui", 0);
             this.asetaPituus(pituudenNimi);
         }
 
         return palautettavaPituus;
-        
+
     }
 
     public int asetaLeveys(String pituudenNimi) {
@@ -89,35 +101,48 @@ public class Kayttoliittyma implements Runnable {
 
     public int asetaSuoranPituus(int leveys, int korkeus, String pituudenNimi) {
         String pituus = pituudenNimi;
-        
+
         int palautettavaPituus = 0;
         
-        pituus = JOptionPane.showInputDialog(null, "Anna " + pituudenNimi + ": ", pituudenNimi, 1);
-        
-        if(pituus == null){
+        int pisin = this.selvitaPisin(leveys, korkeus);
+
+        pituus = JOptionPane.showInputDialog(null, "Tyhjä asettaa oletusarvon. "
+                + "Anna " + pituudenNimi + " väliltä 0-" + pisin + ": ", pituudenNimi, 1);
+
+        if (pituus == null) {
             System.exit(0);
         }
-                
+
+        if (pituus.isEmpty()) {
+            return 4;
+        }
+
         try {
             palautettavaPituus = Integer.parseInt(pituus);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Syötteen pitää olla joku luku!", 
+            JOptionPane.showMessageDialog(null, "Syötteen pitää olla joku luku!",
                     "Luvun antaminen epäonnistui", 0);
             this.asetaSuoranPituus(leveys, korkeus, pituudenNimi);
         }
-        
-        try{
-            if(palautettavaPituus > leveys || palautettavaPituus > korkeus){
+
+        try {
+            if (palautettavaPituus > pisin) {
                 throw new IllegalArgumentException();
             }
-        } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Syötteen luku oli liian suuri!", 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Syötteen luku oli liian suuri!",
                     "Luvun antaminen epäonnistui", 0);
             this.asetaSuoranPituus(leveys, korkeus, pituudenNimi);
         }
 
         return palautettavaPituus;
-        
+
+    }
+    
+    public int selvitaPisin(int leveys, int korkeus){
+        if(leveys > korkeus){
+            return leveys;
+        } return korkeus;
     }
 
     @Override

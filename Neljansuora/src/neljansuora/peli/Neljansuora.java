@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.Timer;
 import neljansuora.kayttoliittyma.Paivitettava;
 import neljansuora.kayttoliittyma.Piirtoalusta;
+import javax.swing.JOptionPane;
 
 /**
  * Luokka Neljansuora kuvaa Neljansuora-peliä. Luokka luo pelille pelilaudan ja
@@ -15,7 +16,7 @@ import neljansuora.kayttoliittyma.Piirtoalusta;
  *
  * @author Eveliina Pakarinen
  */
-public class Neljansuora {
+public class Neljansuora{
 
     /**
      * Pelilauta kuvaa Neljansuora-pelin pelilautaa.
@@ -49,8 +50,8 @@ public class Neljansuora {
 
         this.luoPelilauta(leveys, korkeus, merkkijononPituus);
 
-        this.lisaaPelaajat();
-
+//        this.lisaaPelaajat();
+        this.lisaaPelaajatGraafiseenKayttoliittymaan();
     }
 
     public void luoPelilauta(int leveys, int korkeus, int merkkijononPituus) {
@@ -63,11 +64,16 @@ public class Neljansuora {
     }
 
     public void lisaaPelaajat() {
-        int pelaajaMaara = 0;
+        this.pelilauta.luoPelaajat();
+    }
+    
+    public void lisaaPelaajatGraafiseenKayttoliittymaan() {
+        int pelaajaMaara = 2;
         
-         // JATKA T'st'
+//        String maara = JOptionPane.showInputDialog(null, "Anna pelaajien määrä", "Pelaajamäärä", 1);
         
-        this.pelilauta.luoPelaajatGraafiseenKayttoliittymaan(0);
+        
+        this.pelilauta.luoPelaajatGraafiseenKayttoliittymaan(pelaajaMaara);
     }
 
     public void setPaivitettava(Paivitettava paivitettava) {
@@ -121,4 +127,5 @@ public class Neljansuora {
 //            
 //        }
 //    }
+
 }

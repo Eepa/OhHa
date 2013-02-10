@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import neljansuora.domain.Nappula;
 import neljansuora.domain.Pelaaja;
 import neljansuora.kayttoliittyma.Paivitettava;
@@ -113,8 +114,8 @@ public class Pelilauta {
         for (int i = 1; i <= 2; i++) {
 //            System.out.println("Anna pelaajan nimi:");
 //            String nimi = lukija.nextLine();
-
-            Pelaaja pelaaja = new Pelaaja(i);
+            
+            Pelaaja pelaaja = new Pelaaja(i, "Pelaaja" + i);
             this.pelaajat.add(pelaaja);
         }
 
@@ -122,14 +123,34 @@ public class Pelilauta {
     
     public void luoPelaajatGraafiseenKayttoliittymaan(int pelaajaMaara) {
 
-        for (int i = 1; i <= 2; i++) {
-//            System.out.println("Anna pelaajan nimi:");
-//            String nimi = lukija.nextLine();
-
-            Pelaaja pelaaja = new Pelaaja(i);
+        for (int i = 1; i <= pelaajaMaara; i++) {
+           
+            Pelaaja pelaaja = new Pelaaja(i, this.kysyPelaajanNimi(i));
             this.pelaajat.add(pelaaja);
         }
 
+    }
+    
+    public String kysyPelaajanNimi(int indeksi){
+        
+        String nimi = JOptionPane.showInputDialog(null, "Tyhjä asettaa oletusarvon. "
+                + "Anna pelaajan nimi: ", "Pelaajan nimi", 1);
+        
+        if(nimi == null){
+            System.exit(0);
+        } 
+        
+        if(nimi.isEmpty()){
+            return "Pelaaja" + indeksi;
+        }
+        
+        if(nimi.length() > 10){
+            JOptionPane.showMessageDialog(null, "Nimi ei saa olla 10 merkkiä pidempi", 
+                    "Nimen antaminen epäonnistui", 0);
+            this.kysyPelaajanNimi(indeksi);
+        }
+        
+        return nimi;
     }
 
     public void luoPelilauta() {
@@ -165,10 +186,9 @@ public class Pelilauta {
                 return;
             }
 
-            String nimi = "Pelaaja" + p.getVuoronumero();
             boolean jatketaanko = true;
 
-            int vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
+            int vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(p.getNimi());
             while (jatketaanko) {
 
                 if (this.nappulaKasittelija.onkoMahdollinenSiirto(vaakarivinNumero)) {
@@ -176,7 +196,7 @@ public class Pelilauta {
                     jatketaanko = false;
                 } else {
                     System.out.println("Ei mahdollinen siirto!");
-                    vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
+                    vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(p.getNimi());
                     jatketaanko = true;
                 }
             }
