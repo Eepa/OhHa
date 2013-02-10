@@ -59,7 +59,7 @@ public class NappulanPudotusListener implements ActionListener {
             return;
         }
         
-        this.lauta.teeYhdenPelaajanSiirto(nappulanNumero, this.tilannetietoPanel.getVuoronumero());
+        this.lauta.teeYhdenPelaajanSiirtoGraafistaKayttoliittymaaVarten(nappulanNumero, this.tilannetietoPanel.getVuoronumero());
         this.tilannetietoPanel.paivita();
     }
 }

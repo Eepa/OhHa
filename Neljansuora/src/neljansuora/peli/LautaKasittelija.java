@@ -91,29 +91,29 @@ public class LautaKasittelija {
 
     }
 
-//    public int luePelaajanSiirto(String nimi) {
-//
-//        System.out.println(nimi + " syötä numero 0:n ja " + (this.lauta.get(0).length - 1)
-//                + ":n väliltä");
-//
-//        while (true) {
-//            try {
-//
-//                int numero = Integer.parseInt(lukija.nextLine());
-//
-//                if (numero < 0) {
-//                    throw new IllegalArgumentException();
-//                } else if (numero > this.lauta.get(0).length - 1) {
-//                    throw new IllegalArgumentException();
-//                }
-//
-//                return numero;
-//
-//            } catch (Exception e) {
-//
-//                System.out.println("Ei kunnollinen numero!");
-//
-//            }
-//        }
-//    }
+    public int luePelaajanSiirto(String nimi) {
+
+        System.out.println(nimi + " syötä numero 0:n ja " + (this.lauta.get(0).length - 1)
+                + ":n väliltä");
+
+        while (true) {
+            try {
+
+                int numero = Integer.parseInt(lukija.nextLine());
+
+                if (numero < 0) {
+                    throw new IllegalArgumentException();
+                } else if (numero > this.lauta.get(0).length - 1) {
+                    throw new IllegalArgumentException();
+                }
+
+                return numero;
+
+            } catch (Exception e) {
+
+                System.out.println("Ei kunnollinen numero!");
+
+            }
+        }
+    }
 }

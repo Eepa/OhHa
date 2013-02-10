@@ -6,23 +6,28 @@ import neljansuora.kayttoliittyma.Kayttoliittyma;
 import neljansuora.peli.Neljansuora;
 
 /**
- * Main-luokka käynnistää uuden Neljansuora-pelin annettujen parametrien mukaan
- * ja luo ja käynnistää peliin graafisen käyttöliittymän.
+ * Main-luokka käynnistää uuden Neljansuora-pelin joko graafisessa käyttöliittymässä
+ * tai tekstikäyttöliittymässä.
  *
  * @author Eveliina Pakarinen
  */
 public class Main {
 
     public static void main(String[] args) {
-        // TODO code application logic here
 
         Scanner lukija = new Scanner(System.in);
-        Neljansuora neljansuora = new Neljansuora(7, 6, 4, lukija);
 
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(neljansuora);
+        // Graafinen kayttoliittyma
+
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
         SwingUtilities.invokeLater(kayttoliittyma);
 
         kayttoliittyma.kaynnistaPeli();
+
+//        // Tekstikayttoliittyma
+//        
+//        Neljansuora neljansuora = new Neljansuora(7,6,4,lukija);
+//        neljansuora.kaynnista();
 
     }
 }

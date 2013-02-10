@@ -34,7 +34,7 @@ public class Pelaaja {
     
     public Pelaaja(int vuoronumero){
         this.vuoronumero = vuoronumero;
-//        this.nimi = nimi;
+//        this.nimi = nimi; 
         this.nappulat = new ArrayList<Nappula>();
         
     }
@@ -58,6 +58,10 @@ public class Pelaaja {
     public void lisaaUusiNappula(int x, int y){
         this.nappulat.add(new Nappula(x, y));
     }
+    
+    /**
+     * Poistaa kaikki pelaajan nappulat pelaajan nappulalistalta.
+     */
     
     public void poistaNappulat(){
         this.nappulat.removeAll(this.nappulat);

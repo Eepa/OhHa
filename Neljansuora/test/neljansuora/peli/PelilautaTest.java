@@ -187,7 +187,7 @@ public class PelilautaTest {
 
         pelilauta.setPaivitettava(paivitettava);
 
-        pelilauta.teeYhdenPelaajanSiirto(2, 1);
+        pelilauta.teeYhdenPelaajanSiirtoGraafistaKayttoliittymaaVarten(2, 1);
 
         String[] alinRivi = pelilauta.getLauta().get(8);
 

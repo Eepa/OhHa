@@ -143,39 +143,41 @@ public class Pelilauta {
         return this.paivitettava;
     }
 
-//    public void teeTekstikayttoliittymanSiirrotKaikillePelaajille() {
-//
-//        // muokkaa metodia paremmaksi
-//
-//        for (Pelaaja p : this.pelaajat) {
-//
-//            if (this.onkoNeljanSuoraa() || this.onkoLautaTaynna()) {
-//                return;
-//            }
-//
-//            String nimi = "Pelaaja" + p.getVuoronumero();
-//            boolean jatketaanko = true;
-//
-//            int vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
-//            while (jatketaanko) {
-//
-//                if (this.nappulaKasittelija.onkoMahdollinenSiirto(vaakarivinNumero)) {
-//                    this.nappulaKasittelija.teeSiirto(vaakarivinNumero, p);
-//                    jatketaanko = false;
-//                } else {
-//                    System.out.println("Ei mahdollinen siirto!");
-//                    vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
-//                    jatketaanko = true;
-//                }
-//            }
-//
-//            this.lautaKasittelija.lisaaNappulatKenttaan(this.pelaajat);
-//            this.tulostaPelilauta();
-//            this.paivitettava.paivita();
-//        }
-//
-//    }
-    public void teeYhdenPelaajanSiirto(int rivinNumero, int pelaajanVuoronumero) {
+    public void teeTekstikayttoliittymanSiirrotKaikillePelaajille() {
+
+        // muokkaa metodia paremmaksi
+
+        for (Pelaaja p : this.pelaajat) {
+
+            if (this.onkoNeljanSuoraa() || this.onkoLautaTaynna()) {
+                return;
+            }
+
+            String nimi = "Pelaaja" + p.getVuoronumero();
+            boolean jatketaanko = true;
+
+            int vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
+            while (jatketaanko) {
+
+                if (this.nappulaKasittelija.onkoMahdollinenSiirto(vaakarivinNumero)) {
+                    this.nappulaKasittelija.teeSiirto(vaakarivinNumero, p);
+                    jatketaanko = false;
+                } else {
+                    System.out.println("Ei mahdollinen siirto!");
+                    vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(nimi);
+                    jatketaanko = true;
+                }
+            }
+
+            this.lautaKasittelija.lisaaNappulatKenttaan(this.pelaajat);
+            this.tulostaPelilauta();
+
+        }
+
+    }
+
+    public void teeYhdenPelaajanSiirtoGraafistaKayttoliittymaaVarten(int rivinNumero, 
+            int pelaajanVuoronumero) {
 
         for (Pelaaja p : this.pelaajat) {
 
