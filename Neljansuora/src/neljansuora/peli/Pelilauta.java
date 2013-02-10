@@ -119,6 +119,18 @@ public class Pelilauta {
         }
 
     }
+    
+    public void luoPelaajatGraafiseenKayttoliittymaan(int pelaajaMaara) {
+
+        for (int i = 1; i <= 2; i++) {
+//            System.out.println("Anna pelaajan nimi:");
+//            String nimi = lukija.nextLine();
+
+            Pelaaja pelaaja = new Pelaaja(i);
+            this.pelaajat.add(pelaaja);
+        }
+
+    }
 
     public void luoPelilauta() {
 

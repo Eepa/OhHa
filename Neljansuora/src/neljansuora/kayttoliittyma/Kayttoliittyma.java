@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import neljansuora.peli.Neljansuora;
@@ -47,8 +48,76 @@ public class Kayttoliittyma implements Runnable {
      * @param neljansuora Kuvaa Neljansuora-peliä
      */
     public Kayttoliittyma(Scanner lukija) {
-        this.neljansuora = new Neljansuora(7, 6, 4, lukija);;
+        int leveys = this.asetaLeveys("leveys");
+        int korkeus = this.asetaKorkeus("korkeus");
+        int suoranPituus = this.asetaSuoranPituus(leveys, korkeus, "suoran pituus");
+        this.neljansuora = new Neljansuora(leveys, korkeus, suoranPituus, lukija);
 
+    }
+    
+    public int asetaPituus(String pituudenNimi){
+        
+        String pituus = pituudenNimi;
+        
+        int palautettavaPituus = 0;
+        
+        pituus = JOptionPane.showInputDialog(null, "Anna " + pituudenNimi + ": ", pituudenNimi, 1);
+        
+        if(pituus == null){
+            System.exit(0);
+        }
+        
+        try {
+            palautettavaPituus = Integer.parseInt(pituus);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Syötteen pitää olla joku luku!", 
+                    "Luvun antaminen epäonnistui", 0);
+            this.asetaPituus(pituudenNimi);
+        }
+
+        return palautettavaPituus;
+        
+    }
+
+    public int asetaLeveys(String pituudenNimi) {
+        return this.asetaPituus(pituudenNimi);
+    }
+
+    public int asetaKorkeus(String pituudenNimi) {
+        return this.asetaPituus(pituudenNimi);
+    }
+
+    public int asetaSuoranPituus(int leveys, int korkeus, String pituudenNimi) {
+        String pituus = pituudenNimi;
+        
+        int palautettavaPituus = 0;
+        
+        pituus = JOptionPane.showInputDialog(null, "Anna " + pituudenNimi + ": ", pituudenNimi, 1);
+        
+        if(pituus == null){
+            System.exit(0);
+        }
+                
+        try {
+            palautettavaPituus = Integer.parseInt(pituus);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Syötteen pitää olla joku luku!", 
+                    "Luvun antaminen epäonnistui", 0);
+            this.asetaSuoranPituus(leveys, korkeus, pituudenNimi);
+        }
+        
+        try{
+            if(palautettavaPituus > leveys || palautettavaPituus > korkeus){
+                throw new IllegalArgumentException();
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Syötteen luku oli liian suuri!", 
+                    "Luvun antaminen epäonnistui", 0);
+            this.asetaSuoranPituus(leveys, korkeus, pituudenNimi);
+        }
+
+        return palautettavaPituus;
+        
     }
 
     @Override

@@ -63,7 +63,11 @@ public class Neljansuora {
     }
 
     public void lisaaPelaajat() {
-        this.pelilauta.luoPelaajat();
+        int pelaajaMaara = 0;
+        
+         // JATKA T'st'
+        
+        this.pelilauta.luoPelaajatGraafiseenKayttoliittymaan(0);
     }
 
     public void setPaivitettava(Paivitettava paivitettava) {
