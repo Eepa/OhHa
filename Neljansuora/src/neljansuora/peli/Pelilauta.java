@@ -12,7 +12,7 @@ import neljansuora.kayttoliittyma.Paivitettava;
 
 /**
  * Luokka Pelilauta kuvaa Neljansuora-pelin pelilautaa. Pelilaudalla on tietty
- * koko ja kaksi pelaajaa. Pelilauta tietää myös luokkia, jotka auttavat
+ * koko ja kaksi pelaajaa. Pelilauta tietää ja käyttää myös luokkia, jotka auttavat
  * muokkaamaan pelilaudan tilaa.
  *
  * @author Eveliina Pakarinen
@@ -62,6 +62,7 @@ public class Pelilauta {
     private NappulaKasittelija nappulaKasittelija;
     /**
      * Paivitettavan avulla Pelilauta päivittää graafista käyttöliittymää.
+     * @see Paivitettava
      */
     private Paivitettava paivitettava;
 
@@ -70,7 +71,7 @@ public class Pelilauta {
      * lautaa kuvaava HashMap ja pelaajat sisältävä ArrayList. Lisäksi
      * konstruktorissa luodaan uudet LautaKasittelija- ja
      * NappulaKasittelija-luokat. Lisäksi konstruktorissa kutsutaan luokan omaa
-     * metodia, jossa taytetaan HashMap lauta.
+     * metodia, jossa täytetään HashMap-lauta.
      *
      * @param leveys Pelilaudan leveys
      * @param korkeus Pelilaudan korkeus
@@ -91,6 +92,11 @@ public class Pelilauta {
         this.luoPelilauta();
 
     }
+    
+    /**
+     * Metodi kutsuu LautaKasittelijan tulostaPelilauta() -metodia, jonka avulla tekstikäyttöliittymä tulostaa Pelilaudan.
+     * @see LautaKasittelija
+     */
 
     public void tulostaPelilauta() {
         this.lautaKasittelija.tulostaPelilauta();
@@ -108,18 +114,36 @@ public class Pelilauta {
     public NappulaKasittelija getNappulaKasittelija() {
         return this.nappulaKasittelija;
     }
+    
+    /**
+     * Metodi luo tekstikäyttöliittymään pelaajat ja lisää ne Pelilaudan pelaajat-listalle. 
+     * Pelaajalle pitää itse antaa nimi. Jos nimeä ei anna, metodi asettaa pelaajan nimeksi oletusarvoisen 
+     * nimen "Pelaaja[pelaajanIndeksi]"
+     * @see Pelaaja
+     */
 
     public void luoPelaajat() {
 
         for (int i = 1; i <= 2; i++) {
-//            System.out.println("Anna pelaajan nimi:");
-//            String nimi = lukija.nextLine();
+            System.out.println("Anna pelaajan nimi:");
+            String nimi = lukija.nextLine();
             
-            Pelaaja pelaaja = new Pelaaja(i, "Pelaaja" + i);
+            if(nimi.isEmpty()){
+                nimi = "Pelaaja"+i;
+            }
+            
+            Pelaaja pelaaja = new Pelaaja(i, nimi);
             this.pelaajat.add(pelaaja);
         }
 
     }
+    
+    /**
+     * Metodi luo Pelaajat graafiseen käyttöliittymään kutsumalla luokan omaa metodia kysyPelaajanNimi(i), jotta 
+     * Pelaajalle voidaan asettaa nimi.
+     * @param pelaajaMaara Kertoo, kuinka monta pelaajaa peliin luodaan.
+     * @see Pelaaja
+     */
     
     public void luoPelaajatGraafiseenKayttoliittymaan(int pelaajaMaara) {
 
@@ -133,8 +157,7 @@ public class Pelilauta {
     
     public String kysyPelaajanNimi(int indeksi){
         
-        String nimi = JOptionPane.showInputDialog(null, "Tyhjä asettaa oletusarvon. "
-                + "Anna pelaajan nimi: ", "Pelaajan nimi", 1);
+        String nimi = JOptionPane.showInputDialog(null, "Anna pelaajan nimi. Tyhjä asettaa oletusarvon. ", "Pelaajan nimi", 1);
         
         if(nimi == null){
             System.exit(0);
@@ -147,7 +170,7 @@ public class Pelilauta {
         if(nimi.length() > 10){
             JOptionPane.showMessageDialog(null, "Nimi ei saa olla 10 merkkiä pidempi", 
                     "Nimen antaminen epäonnistui", 0);
-            this.kysyPelaajanNimi(indeksi);
+            return this.kysyPelaajanNimi(indeksi);
         }
         
         return nimi;

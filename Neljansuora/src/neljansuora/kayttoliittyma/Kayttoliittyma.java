@@ -16,7 +16,7 @@ import neljansuora.peli.Pelilauta;
 
 /**
  * Kayttoliittyma-luokka kuvaa Neljansuora-pelin graafista käyttöliittymää.
- * Kayttoliittymassa käynnistetään pelin graafinen käyttöliittymä ja luodaan
+ * Käyttöliittymässä käynnistetään pelin graafinen käyttöliittymä ja luodaan
  * käyttöliittymän komponentit ja asetetaan ne käyttöliittymään.
  *
  *
@@ -40,110 +40,34 @@ public class Kayttoliittyma implements Runnable {
      * @see Piirtoalusta
      */
     private Piirtoalusta piirtoalusta;
+    
+    /**
+     * Kuvaa PituudenAsettelija-luokkaa, joka asettelee uuden Neljansuora-pelin 
+     * Pelilaudan koon ja voittosuoran vähimmäispituuden.
+     * @see PituudenAsettelija
+     * @see Neljansuora
+     */
+    private PituudenAsettelija pituudenasettelija;
 
     /**
-     * Konstruktorissa asetetaan attribuutteihin konstruktorin parametrien
-     * arvot.
+     * Konstruktorissa luodaan uusi Neljansuora-peli. johon asetetaan PituudenAsettelijan 
+     * avulla laudan koko ja voittosuoran pituus. Konstruktori asettaa myös parametrina saamansa 
+     * lukijan arvon oliomuuttujaan.
      *
-     * @param neljansuora Kuvaa Neljansuora-peliä
+     * @param lukija Scanner-luokan ilmentymä, joka lukee pelaajan syötteitä.
+     * @see PituudenAsettelija
      */
     public Kayttoliittyma(Scanner lukija) {
-        int leveys = this.asetaLeveys("leveys");
-        int korkeus = this.asetaKorkeus("korkeus");
-        int suoranPituus = this.asetaSuoranPituus(leveys, korkeus, "suoran pituus");
-        this.neljansuora = new Neljansuora(leveys, korkeus, suoranPituus, lukija);
-
-    }
-
-    public int asetaPituus(String pituudenNimi) {
-
-        String pituus = pituudenNimi;
-
-        int palautettavaPituus = 0;
-
-        pituus = JOptionPane.showInputDialog(null, "Tyjä asettaa oletusarvon. "
-                + "Anna " + pituudenNimi + ": ", pituudenNimi, 1);
-
-        if (pituus == null) {
-            System.exit(0);
-        }
-
-        //Asettaa oletuspituuden ja leveyden
-
-        if (pituus.isEmpty()) {
-
-            if (pituudenNimi.equals("leveys")) {
-                return 7;
-            }
-
-            return 6;
-        }
-
-        try {
-            palautettavaPituus = Integer.parseInt(pituus);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Syötteen pitää olla joku luku!",
-                    "Luvun antaminen epäonnistui", 0);
-            this.asetaPituus(pituudenNimi);
-        }
-
-        return palautettavaPituus;
-
-    }
-
-    public int asetaLeveys(String pituudenNimi) {
-        return this.asetaPituus(pituudenNimi);
-    }
-
-    public int asetaKorkeus(String pituudenNimi) {
-        return this.asetaPituus(pituudenNimi);
-    }
-
-    public int asetaSuoranPituus(int leveys, int korkeus, String pituudenNimi) {
-        String pituus = pituudenNimi;
-
-        int palautettavaPituus = 0;
+        this.pituudenasettelija = new PituudenAsettelija();
         
-        int pisin = this.selvitaPisin(leveys, korkeus);
-
-        pituus = JOptionPane.showInputDialog(null, "Tyhjä asettaa oletusarvon. "
-                + "Anna " + pituudenNimi + " väliltä 0-" + pisin + ": ", pituudenNimi, 1);
-
-        if (pituus == null) {
-            System.exit(0);
-        }
-
-        if (pituus.isEmpty()) {
-            return 4;
-        }
-
-        try {
-            palautettavaPituus = Integer.parseInt(pituus);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Syötteen pitää olla joku luku!",
-                    "Luvun antaminen epäonnistui", 0);
-            this.asetaSuoranPituus(leveys, korkeus, pituudenNimi);
-        }
-
-        try {
-            if (palautettavaPituus > pisin) {
-                throw new IllegalArgumentException();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Syötteen luku oli liian suuri!",
-                    "Luvun antaminen epäonnistui", 0);
-            this.asetaSuoranPituus(leveys, korkeus, pituudenNimi);
-        }
-
-        return palautettavaPituus;
-
+        int leveys = this.pituudenasettelija.asetaLeveys("leveys");
+        int korkeus = this.pituudenasettelija.asetaKorkeus("korkeus");
+        int suoranPituus = this.pituudenasettelija.asetaEtsittavanSuoranPituus(leveys, korkeus, "suoran pituus");
+        
+        this.neljansuora = new Neljansuora(leveys, korkeus, suoranPituus, lukija, "graafinen");
     }
+
     
-    public int selvitaPisin(int leveys, int korkeus){
-        if(leveys > korkeus){
-            return leveys;
-        } return korkeus;
-    }
 
     @Override
     public void run() {

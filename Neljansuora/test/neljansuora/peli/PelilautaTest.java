@@ -154,7 +154,7 @@ public class PelilautaTest {
 
     @Test
     public void luotuPaivitettavaAsetetaanJaPalautetaanOikein() {
-        Paivitettava paivitettava = new Piirtoalusta(new Neljansuora(8, 9, 4, this.lukija));
+        Paivitettava paivitettava = new Piirtoalusta(new Neljansuora(8, 9, 4, this.lukija, "teksti"));
         this.pelilauta.setPaivitettava(paivitettava);
 
         assertTrue(this.pelilauta.getPaivitettava() != null);
@@ -181,7 +181,7 @@ public class PelilautaTest {
 
     @Test
     public void siirtojenTekeminenToimiiAntamallaSyotteenPelaajastaJaRivista() {
-        Neljansuora neljansuora = new Neljansuora(8, 9, 4, this.lukija);
+        Neljansuora neljansuora = new Neljansuora(8, 9, 4, this.lukija, "teksti");
         Paivitettava paivitettava = new Piirtoalusta(neljansuora);
         Pelilauta pelilauta = neljansuora.getPelilauta();
 

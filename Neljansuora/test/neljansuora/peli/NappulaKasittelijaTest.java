@@ -24,7 +24,7 @@ public class NappulaKasittelijaTest {
     public void setUp() {
         this.lukija = new Scanner(System.in);
 
-        this.neljansuora = new Neljansuora(8, 9, 4, this.lukija);
+        this.neljansuora = new Neljansuora(8, 9, 4, this.lukija, "teksti");
 
         this.nappulakasittelija = new NappulaKasittelija(this.neljansuora.getPelilauta().getLauta(),
                 this.neljansuora.getPelilauta().getPelaajat(), 4);

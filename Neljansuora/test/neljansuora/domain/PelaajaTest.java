@@ -19,7 +19,7 @@ public class PelaajaTest {
     
     @Before
     public void setUp() {
-        this.pelaaja = new Pelaaja(2);
+        this.pelaaja = new Pelaaja(2, "Pekka");
         
     }
      
@@ -43,5 +43,18 @@ public class PelaajaTest {
     @Test
     public void nappulatPalautetaanOikein(){
         assertTrue(pelaaja.getNappulat() != null);
+    }
+    
+    @Test
+    public void palauttaaPelaajanNimenOikein(){
+        assertEquals("Pekka", pelaaja.getNimi());
+    }
+    
+    @Test
+    public void tyhjentaaNappulalistanOikein(){
+        this.pelaaja.lisaaUusiNappula(4, 3);
+        this.pelaaja.poistaNappulat();
+        
+        assertEquals(0, pelaaja.getNappulat().size());
     }
 }

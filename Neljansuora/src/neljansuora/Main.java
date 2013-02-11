@@ -23,10 +23,10 @@ public class Main {
         SwingUtilities.invokeLater(kayttoliittyma);
 
         kayttoliittyma.kaynnistaPeli();
-
+//
 //        // Tekstikayttoliittyma
 //        
-//        Neljansuora neljansuora = new Neljansuora(7,6,4,lukija);
+//        Neljansuora neljansuora = new Neljansuora(7,6,4,lukija, "teksti");
 //        neljansuora.kaynnista();
 
     }

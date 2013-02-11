@@ -1,9 +1,11 @@
 package neljansuora.kayttoliittyma;
 
 import java.awt.GridLayout;
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import neljansuora.domain.Pelaaja;
 import neljansuora.peli.Neljansuora;
 
 /**
@@ -32,11 +34,18 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
      * Sisältää tiedon vuorossaolevasta pelaajasta.
      */
     private JTextArea kukaVuorossa;
+    
+    /**
+     * Kertoo Neljansuora-pelin Pelaajien määrän.
+     */
+    
+    private int pelaajienMaara;
 
     /**
      * Konstruktori asettaa Tilannetietopaneelille uuden layoutin ja asettaa
-     * attribuuttien arvoksi parametreinaan saamansa arvon. Lisäksi konstruktori
-     * alustaa vuoronumeroinnin alkamaan ykkösestä. Konstruktori kutsuu myös
+     * neljansuora attribuutin arvoksi parametreinaan saamansa arvon. Lisäksi konstruktori
+     * alustaa vuoronumeroinnin alkamaan ykkösestä ja selvittää Neljänsuora-pelin 
+     * pelaajien määrän. Konstruktori kutsuu myös
      * luokan omia metodeja: setVuorossaoleva(), joka alustaa ja asettaa
      * vuorossaolevalle pelaajalle tekstimuotoisen attribuutin;
      * luoTietopaneeli(), joka luo uuden tietopaneelin.
@@ -47,6 +56,7 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
         super(new GridLayout(1, 2));
         this.neljansuora = neljansuora;
         this.vuoronumero = 1;
+        this.pelaajienMaara = this.neljansuora.getPelilauta().getPelaajat().size();
         this.setVuorossaoleva();
         this.luoTietopaneeli();
     }
@@ -56,22 +66,36 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
     }
 
     public void alustaVuoronumero() {
-        this.vuoronumero = 2;
+        this.vuoronumero = this.pelaajienMaara;
     }
 
     public void setVuoronumero() {
-        if (this.vuoronumero == 1) {
+        if (this.vuoronumero < this.pelaajienMaara) {
             vuoronumero++;
-        } else if (this.vuoronumero == 2) {
-            vuoronumero--;
+        } else if (this.vuoronumero == this.pelaajienMaara) {
+            vuoronumero = 1;
         }
     }
 
     public void setVuorossaoleva() {
         
-        //Hae oikean Pelaajan nimi
+        this.vuorossaoleva = this.haeOikeanPelaajanNimi();
+    }
+    
+    public String haeOikeanPelaajanNimi(){
+        String nimi = "";
         
-        this.vuorossaoleva = "Pelaaja" + this.vuoronumero;
+        List<Pelaaja> pelaajat = this.neljansuora.getPelilauta().getPelaajat();
+        
+        for(Pelaaja p : pelaajat){
+            if(p.getVuoronumero() == this.vuoronumero){
+                return p.getNimi();
+            } else {
+                continue;
+            }
+        }
+        
+        return nimi;
     }
 
     /**

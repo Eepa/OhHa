@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Luokka Pelaaja kuvaa yhtä Neljansuora-pelin pelaajaa. Pelaajalla on oma 
- * vuoronumeronsa ja lista hänen omistamistaan Nappula-luokan nappuloista.
+ * Luokka Pelaaja kuvaa yhtä Neljansuora-pelin pelaajaa. Pelaajalla on oma nimi, 
+ * vuoronumero ja lista hänen omistamistaan Nappula-luokan nappuloista.
  * 
  * @author Eveliina Pakarinen
  */
@@ -24,12 +24,17 @@ public class Pelaaja {
      * @see Nappula
      */
     private List<Nappula> nappulat;
+    
+    /**
+     * Nimi on pelaajan nimi.
+     */
     private String nimi;
     
     /**
-     * Konstruktori luo uuden Pelaaja-olion ja asettaa pelaajan oliomuuttujan vuoronumero arvon. 
+     * Konstruktori luo uuden Pelaaja-olion ja asettaa pelaajan oliomuuttujien nimi ja vuoronumero arvot. 
      * Lisäksi konstruktori alustaa Pelaajan Nappula-listan.
      * @param vuoronumero Kertoo, mikä numero pelaajan vuoronumeroksi tulee.
+     * @param nimi Kertoo Pelaajan nimen.
      */
     
     public Pelaaja(int vuoronumero, String nimi){

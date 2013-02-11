@@ -25,7 +25,7 @@ public class LautaKasittelijaTest {
     public void setUp() {
         this.lukija = new Scanner(System.in);
 
-        this.neljansuora = new Neljansuora(8, 9, 4, this.lukija);
+        this.neljansuora = new Neljansuora(8, 9, 4, this.lukija, "teksti");
 
         this.lautakasittelija = new LautaKasittelija(this.neljansuora.getPelilauta().getLauta(),
                 this.neljansuora.getPelilauta().getPelaajat(), this.lukija);
