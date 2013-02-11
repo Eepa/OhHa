@@ -55,7 +55,7 @@ public class Neljansuora {
 
         if (kayttoliittymanTyyppi.equals("graafinen")) {
             this.lisaaPelaajatGraafiseenKayttoliittymaan();
-        } else {
+        } else if(kayttoliittymanTyyppi.equals("teksti")) {
 
             this.lisaaPelaajat();
         }

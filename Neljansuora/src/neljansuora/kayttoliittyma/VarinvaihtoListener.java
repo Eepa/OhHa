@@ -9,8 +9,15 @@ import java.util.List;
 import java.util.Map;
 import neljansuora.peli.Neljansuora;
 
-public class VarinvaihtoListener implements ActionListener {
+/**
+ * Luokka VarinvaihtoListener säätelee Piirtoalustan värejä ja asettaa 
+ * uusia värejä Piirtoalustan värivalikoimaan.
+ * @author evpa
+ * @see Piirtoalusta
+ */
 
+public class VarinvaihtoListener implements ActionListener {
+    
     private Neljansuora neljansuora;
     private Piirtoalusta piirtoalusta;
     private int varipaletinNumero;

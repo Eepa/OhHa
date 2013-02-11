@@ -23,7 +23,8 @@ public class LautaKasittelijaTest {
 
     @Before
     public void setUp() {
-        this.lukija = new Scanner(System.in);
+        String teksti ="Pekka\n" + "Jukka\n";
+        this.lukija = new Scanner(teksti);
 
         this.neljansuora = new Neljansuora(8, 9, 4, this.lukija, "teksti");
 

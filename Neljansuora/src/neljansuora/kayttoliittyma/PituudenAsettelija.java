@@ -2,11 +2,17 @@ package neljansuora.kayttoliittyma;
 
 import javax.swing.JOptionPane;
 
+/**
+ * Luokka PituudenAsettelija asettaa uudelle Neljansuora-pelille pelilaudan 
+ * leveyden ja pituuden ja voittosuoran vähimmäispituuden.
+ * @author evpa
+ * @see Neljansuora
+ * @see Kayttoliittyma
+ */
+
 public class PituudenAsettelija {
 
-    public PituudenAsettelija() {
-    }
-
+    
     public int asetaLaudanSivunPituus(String pituudenNimi) {
 
         int palautettavaPituus = 0;

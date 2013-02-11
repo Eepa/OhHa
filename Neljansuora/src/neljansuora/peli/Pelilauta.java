@@ -155,6 +155,12 @@ public class Pelilauta {
 
     }
     
+    /**
+     * Kysyy graafista käyttöliittymää varten pelaajan nimen.
+     * @param indeksi Kertoo pelaajan vuoronumeron.
+     * @return Palauttaa pelaajalle annetun nimen.
+     */
+    
     public String kysyPelaajanNimi(int indeksi){
         
         String nimi = JOptionPane.showInputDialog(null, "Anna pelaajan nimi. Tyhjä asettaa oletusarvon. ", "Pelaajan nimi", 1);
@@ -175,6 +181,11 @@ public class Pelilauta {
         
         return nimi;
     }
+    
+    /**
+     * Alustaa uuden pelilaudan String[] taulukot Neljansuora-peliä varten ja täyttää 
+     * taulukot tyhjillä arvoilla.
+     */
 
     public void luoPelilauta() {
 
@@ -185,10 +196,13 @@ public class Pelilauta {
 
         this.taytaPelilauta();
     }
+    
+    /**
+     * Täyttää laudan tyhjää paikkaa merkitsevillä merkeillä eli pisteillä ".".
+     */
 
     public void taytaPelilauta() {
         this.lautaKasittelija.kirjoitaLaudalle(".");
-
     }
 
     public void setPaivitettava(Paivitettava paivitettava) {
@@ -199,6 +213,14 @@ public class Pelilauta {
         return this.paivitettava;
     }
 
+    /**
+     * Tekee tekstikäyttöliittymää varten siirrot kaikille pelaajille. 
+     * Metodi kutsuu NappulaKasittelija-luokan metodeita, joiden avulla se tarkistaa siirtojen 
+     * oikeellisuuden. Lisäksi metodissa kutsutaan LautaKasittelija-luokan metodeita, 
+     * joiden avulla pelaajan siirto luetaan ja lisätään nappulat kenttään.
+     * @see LautaKasittelija
+     * @see NappulaKasittelija
+     */
     public void teeTekstikayttoliittymanSiirrotKaikillePelaajille() {
 
         // muokkaa metodia paremmaksi
@@ -230,6 +252,13 @@ public class Pelilauta {
         }
 
     }
+    
+    /**
+     * Tekee yhdelle pelaajalle siirron graafista käyttöliittymää varten. 
+     * Siirto tarkoittaa sitä, että pelaaja pudottaa yhden nappulan kentälle.
+     * @param rivinNumero Kertoo rivin, jolle pelaajan nappula pudotetaan.
+     * @param pelaajanVuoronumero Kertoo pelaajan vuoronumeron.
+     */
 
     public void teeYhdenPelaajanSiirtoGraafistaKayttoliittymaaVarten(int rivinNumero, 
             int pelaajanVuoronumero) {
@@ -248,19 +277,35 @@ public class Pelilauta {
         }
 
         this.lautaKasittelija.lisaaNappulatKenttaan(this.pelaajat);
-//        this.tulostaPelilauta();
         this.paivitettava.paivita();
 
     }
+    
+    /**
+     * Palauttaa totuusarvon siitä, onko laudalla riittävän pitkää suoraa.
+     * @return true - on suora, false - ei ole suoraa
+     * @see NappulaKasittelija
+     */
 
     public boolean onkoNeljanSuoraa() {
         return this.nappulaKasittelija.onkoRiittavanPitkiaSuoria();
     }
+    
+    /**
+     * Palauttaa totuusarvon siitä, onko lauta täynnä nappuloita.
+     * @return true - täynnä, false - ei vielä täynnä
+     * @see NappulaKasittelija
+     */
 
     public boolean onkoLautaTaynna() {
         return this.nappulaKasittelija.onkoLautaTaynna();
     }
 
+    /**
+     * Metodi tyhjentää pelaajien nappulalistat ja täyttää pelilaudan tyhjillä merkeillä. 
+     * Lisäksi päivittää graafisen käyttöliittymän ruudun.
+     * @see Pelaaja
+     */
     public void lopetaPeli() {
         for (Pelaaja p : this.pelaajat) {
             p.poistaNappulat();

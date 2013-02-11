@@ -27,11 +27,11 @@ public class PelilautaTest {
 
     @Before
     public void setUp() {
-
-        this.lukija = new Scanner(System.in);
+        String teksti = "Pekka\n" + "Jukka\n";
+        this.lukija = new Scanner(teksti);
 
         this.pelilauta = new Pelilauta(8, 9, 4, this.lukija);
-        
+
     }
 
     @Test
@@ -177,8 +177,6 @@ public class PelilautaTest {
         assertTrue(true);
     }
 
-    
-
     @Test
     public void siirtojenTekeminenToimiiAntamallaSyotteenPelaajastaJaRivista() {
         Neljansuora neljansuora = new Neljansuora(8, 9, 4, this.lukija, "teksti");
@@ -224,7 +222,6 @@ public class PelilautaTest {
     @Test
     public void onkoNeljanSuoraaPalauttaaOikeinJosOnSuoria() {
         // MIKÄ VIKANA..?? AssertionFailedError
-       
 //        Pelilauta pelilauta = new Pelilauta(8, 9, 4, this.lukija);
 //        
 //        pelilauta.luoPelaajat();
@@ -244,7 +241,7 @@ public class PelilautaTest {
 //
 //        assertTrue(pelilauta.onkoNeljanSuoraa());
     }
-    
+
     @Test
     public void tulostaminenToimiiOikein() {
         //Miten voi testata tulostamista?
