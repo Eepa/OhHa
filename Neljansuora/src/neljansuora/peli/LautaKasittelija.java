@@ -8,7 +8,7 @@ import neljansuora.domain.Pelaaja;
 
 /**
  * LautaKasittelija-luokka kuvaa LautaKasittelijaa, joka käsittelee ja muokkaa
- * Pelilaudan tilaa. Kasittelijan avulla lisataan laudalle nappuloita,
+ * Pelilaudan tilaa. Käsittelijän avulla lisätään laudalle nappuloita,
  * tulostetaan tekstikäyttöliittymän tuloste ja luetaan Pelaajan siirtoja.
  *
  * @author Eveliina Pakarinen
