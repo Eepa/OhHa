@@ -1,4 +1,4 @@
-package neljansuora.kayttoliittyma;
+package neljansuora.kayttoliittyma.grafiikka;
 
 import java.awt.Color;
 import java.awt.Graphics;

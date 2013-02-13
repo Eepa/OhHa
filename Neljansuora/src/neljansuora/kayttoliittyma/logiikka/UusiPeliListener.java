@@ -1,8 +1,11 @@
 
-package neljansuora.kayttoliittyma;
+package neljansuora.kayttoliittyma.logiikka;
 
+import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import neljansuora.kayttoliittyma.Kayttoliittyma;
+import neljansuora.kayttoliittyma.Kayttoliittyma;
 import neljansuora.peli.Neljansuora;
 
 /**

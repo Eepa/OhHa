@@ -1,8 +1,8 @@
 package neljansuora.peli;
 
 import java.util.Scanner;
-import neljansuora.kayttoliittyma.Paivitettava;
-import neljansuora.kayttoliittyma.Piirtoalusta;
+import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
+import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

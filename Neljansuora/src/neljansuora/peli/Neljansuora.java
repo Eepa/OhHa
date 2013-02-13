@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Timer;
-import neljansuora.kayttoliittyma.Paivitettava;
-import neljansuora.kayttoliittyma.Piirtoalusta;
+import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
+import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
 import javax.swing.JOptionPane;
 
 /**

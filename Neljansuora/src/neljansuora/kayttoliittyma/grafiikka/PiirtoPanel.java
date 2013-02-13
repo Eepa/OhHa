@@ -1,5 +1,5 @@
 
-package neljansuora.kayttoliittyma;
+package neljansuora.kayttoliittyma.grafiikka;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import neljansuora.kayttoliittyma.logiikka.RivinappulatPanel;
+import neljansuora.kayttoliittyma.logiikka.TilannetietoPanel;
 import neljansuora.peli.Neljansuora;
 
 /**

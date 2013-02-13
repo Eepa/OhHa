@@ -8,7 +8,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import neljansuora.domain.Nappula;
 import neljansuora.domain.Pelaaja;
-import neljansuora.kayttoliittyma.Paivitettava;
+import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
 
 /**
  * Luokka Pelilauta kuvaa Neljansuora-pelin pelilautaa. Pelilaudalla on tietty

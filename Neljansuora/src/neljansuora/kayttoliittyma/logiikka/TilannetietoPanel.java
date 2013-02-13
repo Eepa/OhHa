@@ -1,5 +1,6 @@
-package neljansuora.kayttoliittyma;
+package neljansuora.kayttoliittyma.logiikka;
 
+import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
 import java.awt.GridLayout;
 import java.util.List;
 import javax.swing.JLabel;

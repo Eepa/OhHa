@@ -1,5 +1,11 @@
 package neljansuora.kayttoliittyma;
 
+import neljansuora.kayttoliittyma.logiikka.TilannetietoPanel;
+import neljansuora.kayttoliittyma.logiikka.PituudenAsettelija;
+import neljansuora.kayttoliittyma.logiikka.ValikkoPanel;
+import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
+import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
+import neljansuora.kayttoliittyma.grafiikka.PiirtoPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;

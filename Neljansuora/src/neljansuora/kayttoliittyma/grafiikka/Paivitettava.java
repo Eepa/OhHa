@@ -1,5 +1,5 @@
 
-package neljansuora.kayttoliittyma;
+package neljansuora.kayttoliittyma.grafiikka;
 
 /**
  * Rajapinta Paivitettava maarittelee metodin paivita(), joka kaikkien rajapinnan toteuttavien 

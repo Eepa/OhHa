@@ -1,5 +1,5 @@
 
-package neljansuora.kayttoliittyma;
+package neljansuora.kayttoliittyma.logiikka;
 
 import java.awt.Canvas;
 import java.awt.Color;

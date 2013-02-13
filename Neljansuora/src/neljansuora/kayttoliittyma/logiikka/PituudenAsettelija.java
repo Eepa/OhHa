@@ -1,4 +1,4 @@
-package neljansuora.kayttoliittyma;
+package neljansuora.kayttoliittyma.logiikka;
 
 import javax.swing.JOptionPane;
 

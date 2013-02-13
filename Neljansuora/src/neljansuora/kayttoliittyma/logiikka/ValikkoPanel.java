@@ -1,8 +1,11 @@
-package neljansuora.kayttoliittyma;
+package neljansuora.kayttoliittyma.logiikka;
 
+import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
+import neljansuora.kayttoliittyma.grafiikka.VarinvaihtoListener;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import neljansuora.kayttoliittyma.Kayttoliittyma;
 import neljansuora.peli.Neljansuora;
 
 /**
