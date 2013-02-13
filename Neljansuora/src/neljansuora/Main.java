@@ -18,12 +18,12 @@ public class Main {
         Scanner lukija = new Scanner(System.in);
 
         // Graafinen kayttoliittyma
-
+//
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
         SwingUtilities.invokeLater(kayttoliittyma);
 
         kayttoliittyma.kaynnistaPeli();
-//
+
 //        // Tekstikayttoliittyma
 //        
 //        Neljansuora neljansuora = new Neljansuora(7,6,4,lukija, "teksti");

@@ -96,8 +96,5 @@ public class LautaKasittelijaTest {
         // MITEN TESTATAAN SCANNERIA?
     }
 
-    @Test
-    public void tulostaPelilautaToimiiOikein() {
-        //TODO
-    }
+   
 }

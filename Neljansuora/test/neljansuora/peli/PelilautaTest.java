@@ -41,16 +41,6 @@ public class PelilautaTest {
 
     @Test
     public void luoKaksiPelaajaa() {
-
-//        String syote1 = "Pekka\n";
-//
-//        this.lukija = new Scanner(syote1);
-//
-//        String syote2 = "Jukka\n";
-//
-//        this.lukija = new Scanner(syote2);
-//        Miten scanneria pystyy testaamaan
-
         this.pelilauta.luoPelaajat();
 
         assertEquals(2, pelilauta.getPelaajat().size());
@@ -242,10 +232,7 @@ public class PelilautaTest {
 //        assertTrue(pelilauta.onkoNeljanSuoraa());
     }
 
-    @Test
-    public void tulostaminenToimiiOikein() {
-        //Miten voi testata tulostamista?
-    }
+  
 
     @Test
     public void siirtojenTekeminenToimiiScanneriaKayttamallaTekstikayttoliittymassa() {

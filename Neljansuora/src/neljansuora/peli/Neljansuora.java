@@ -48,7 +48,6 @@ public class Neljansuora {
      */
     public Neljansuora(int leveys, int korkeus, int merkkijononPituus, Scanner lukija, String kayttoliittymanTyyppi) {
 
-
         this.lukija = lukija;
 
         this.luoPelilauta(leveys, korkeus, merkkijononPituus);
@@ -56,7 +55,6 @@ public class Neljansuora {
         if (kayttoliittymanTyyppi.equals("graafinen")) {
             this.lisaaPelaajatGraafiseenKayttoliittymaan();
         } else if(kayttoliittymanTyyppi.equals("teksti")) {
-
             this.lisaaPelaajat();
         }
 
@@ -98,9 +96,6 @@ public class Neljansuora {
     public void lisaaPelaajatGraafiseenKayttoliittymaan() {
         int pelaajaMaara = 2;
 
-//        String maara = JOptionPane.showInputDialog(null, "Anna pelaajien määrä", "Pelaajamäärä", 1);
-
-
         this.pelilauta.luoPelaajatGraafiseenKayttoliittymaan(pelaajaMaara);
     }
 
@@ -123,7 +118,7 @@ public class Neljansuora {
         while (true) {
 
             if (this.pelilauta.onkoNeljanSuoraa() || this.pelilauta.onkoLautaTaynna()) {
-                //lisaa tarkistus kumpi pelaaja sai suoran sout esim pelaaja1 voitti
+                //lisaa ehkä tarkistus kumpi pelaaja sai suoran sout esim pelaaja1 voitti
                 System.out.println("Lopetuksen kautta tarkistus");
                 break;
             }

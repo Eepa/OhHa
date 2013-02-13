@@ -17,7 +17,7 @@ public class PituudenAsettelija {
 
         int palautettavaPituus = 0;
 
-        String pituus = JOptionPane.showInputDialog(null, "Anna " + pituudenNimi + ". "
+        String pituus = JOptionPane.showInputDialog(null, "Anna " + pituudenNimi + " väliltä 5-20. "
                 + "Tyhjä asettaa oletusarvon. ", "Sivun pituuden asetus", 1);
 
         if (pituus == null) {
@@ -32,7 +32,7 @@ public class PituudenAsettelija {
 
         palautettavaPituus = this.testaaOlikoAnnettuSivunPituusLuku(pituus, pituudenNimi, palautettavaPituus);
         
-        palautettavaPituus = this.testaaKuuluukoPituusAnnetulleValille(palautettavaPituus, 0, 0, 25, 5, pituudenNimi);
+        palautettavaPituus = this.testaaKuuluukoPituusAnnetulleValille(palautettavaPituus, 0, 0, 20, 5, pituudenNimi);
 
         return palautettavaPituus;
 
@@ -53,7 +53,7 @@ public class PituudenAsettelija {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Syötteen pitää olla joku luku!",
                     "Luvun antaminen epäonnistui", 0);
-            this.asetaLaudanSivunPituus(pituudenNimi);
+            palautettavaPituus = this.asetaLaudanSivunPituus(pituudenNimi);
         }
         return palautettavaPituus;
     }

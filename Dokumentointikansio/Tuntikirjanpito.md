@@ -57,3 +57,6 @@ Lisatty uusi sekvenssikaavio, lisatty uusi peli-napin toiminta.
 Maanantai 11.02.2013, 2h
 Jatkettu kayttoliittymien ohjelmointia, korjailtu testeja.
 
+Keskiviikko 13.02.2013, 2h
+Refaktoroitu koodia ja korjattu bugi.
+

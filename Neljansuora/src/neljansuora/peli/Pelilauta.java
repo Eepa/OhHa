@@ -177,7 +177,7 @@ public class Pelilauta {
         }
 
         if (nimi.length() > 10) {
-            JOptionPane.showMessageDialog(null, "Nimi ei saa olla 10 merkkiä pidempi",
+            JOptionPane.showMessageDialog(null, "Nimi ei saa olla 10:tä merkkiä pidempi",
                     "Nimen antaminen epäonnistui", 0);
             return this.kysyPelaajanNimi(indeksi);
         }
@@ -234,18 +234,16 @@ public class Pelilauta {
                 return;
             }
 
-            boolean jatketaanko = true;
+            int pystyrivinNumero = this.lautaKasittelija.luePelaajanSiirto(p.getNimi());
+            
+            while (true) {
 
-            int vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(p.getNimi());
-            while (jatketaanko) {
-
-                if (this.nappulaKasittelija.onkoMahdollinenSiirto(vaakarivinNumero)) {
-                    this.nappulaKasittelija.teeSiirto(vaakarivinNumero, p);
-                    jatketaanko = false;
+                if (this.nappulaKasittelija.onkoMahdollinenSiirto(pystyrivinNumero)) {
+                    this.nappulaKasittelija.teeSiirto(pystyrivinNumero, p);
+                    break;
                 } else {
                     System.out.println("Ei mahdollinen siirto!");
-                    vaakarivinNumero = this.lautaKasittelija.luePelaajanSiirto(p.getNimi());
-                    jatketaanko = true;
+                    pystyrivinNumero = this.lautaKasittelija.luePelaajanSiirto(p.getNimi());
                 }
             }
 
@@ -260,25 +258,22 @@ public class Pelilauta {
      * Tekee yhdelle pelaajalle siirron graafista käyttöliittymää varten. Siirto
      * tarkoittaa sitä, että pelaaja pudottaa yhden nappulan kentälle.
      *
-     * @param rivinNumero Kertoo rivin, jolle pelaajan nappula pudotetaan.
+     * @param pystyrivinNumero Kertoo rivin, jolle pelaajan nappula pudotetaan.
      * @param pelaajanVuoronumero Kertoo pelaajan vuoronumeron.
      */
-    public void teeYhdenPelaajanSiirtoGraafistaKayttoliittymaaVarten(int rivinNumero,
+    public void teeYhdenPelaajanSiirtoGraafistaKayttoliittymaaVarten(int pystyrivinNumero,
             int pelaajanVuoronumero) {
 
         for (Pelaaja p : this.pelaajat) {
 
-            if (p.getVuoronumero() != pelaajanVuoronumero) {
-                continue;
-            }
+            if (p.getVuoronumero() == pelaajanVuoronumero) {
+                if (this.onkoNeljanSuoraa() || this.onkoLautaTaynna()) {
+                    return;
+                }
 
-            if (this.onkoNeljanSuoraa() || this.onkoLautaTaynna()) {
-                return;
+                this.nappulaKasittelija.teeSiirto(pystyrivinNumero, p);
             }
-
-            this.nappulaKasittelija.teeSiirto(rivinNumero, p);
         }
-
         this.lautaKasittelija.lisaaNappulatKenttaan(this.pelaajat);
         this.paivitettava.paivita();
 

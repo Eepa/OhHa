@@ -53,7 +53,7 @@ public class NeljansuoraTest {
     }
 
     @Test
-    public void kaynnistaMetodinSuoritusLoppuu() {
+    public void tekstikayttoliittymanKaynnistaMetodinSuoritusLoppuu() {
         // tehdaan sisalto kun osataan
         // ei osata vielakaan.. kysytaan pajassa
         // ei osaa scanner-testeja tehda, eika testata Piirtoalustaa
