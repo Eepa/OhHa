@@ -226,8 +226,6 @@ public class Pelilauta {
      */
     public void teeTekstikayttoliittymanSiirrotKaikillePelaajille() {
 
-        // muokkaa metodia paremmaksi
-
         for (Pelaaja p : this.pelaajat) {
 
             if (this.onkoNeljanSuoraa() || this.onkoLautaTaynna()) {
@@ -235,7 +233,7 @@ public class Pelilauta {
             }
 
             int pystyrivinNumero = this.lautaKasittelija.luePelaajanSiirto(p.getNimi());
-            
+
             while (true) {
 
                 if (this.nappulaKasittelija.onkoMahdollinenSiirto(pystyrivinNumero)) {

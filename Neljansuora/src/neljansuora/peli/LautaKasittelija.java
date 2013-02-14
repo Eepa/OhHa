@@ -42,6 +42,10 @@ public class LautaKasittelija {
         this.lukija = lukija;
         this.pelaajat = pelaajat;
     }
+    
+    /**
+     * Tulostaa Neljansuora-pelin pelilaudan tekstikäyttöliittymää varten.
+     */
 
     public void tulostaPelilauta() {
         for (String[] rivi : this.lauta.values()) {
@@ -52,7 +56,11 @@ public class LautaKasittelija {
             System.out.println("");
         }
     }
-
+    
+/**
+ * Kirjoittaa laudalle syötteen mukaisen merkin jokaiseen laudan pisteeseen.
+ * @param syote Merkki, joka kirjoitetaan laudalle
+ */
     public void kirjoitaLaudalle(String syote) {
 
         for (String[] taulukko : this.lauta.values()) {
@@ -62,6 +70,12 @@ public class LautaKasittelija {
             }
         }
     }
+    
+    /**
+     * Lisää parametrina annetun listan pelaajien nappulat kenttään kutsumalla 
+     * luokan omaa metodia pelaajakohtaisesti.
+     * @param pelaajat Pelaajalista, jonka pelaajien nappulat lisätään kenttään
+     */
 
     public void lisaaNappulatKenttaan(List<Pelaaja> pelaajat) {
 
@@ -76,6 +90,13 @@ public class LautaKasittelija {
         }
 
     }
+    
+    /**
+     * Lisää yhden pelaajan nappulalistan nappulat kenttään. Pelaajan nappulan merkki 
+     * annetaan metodille parametrina.
+     * @param merkki Pelaajan nappulan merkki
+     * @param nappulat Pelaajan nappulalista
+     */
 
     public void lisaaPelaajanNappulat(String merkki, List<Nappula> nappulat) {
 
@@ -84,12 +105,27 @@ public class LautaKasittelija {
         }
 
     }
+    
+    /**
+     * Kirjoittaa laudalle yhden nappulan, jolla on parametrina annettu merkki.
+     * @param nappulanMerkki Laudalle kirjoitettava merkki.
+     * @param x Laudan x-akselin koordinaatti
+     * @param y Laudan y-akselin koordinaatti
+     */
 
-    public void kirjoitaLaudalleNappula(String syote, int x, int y) {
+    public void kirjoitaLaudalleNappula(String nappulanMerkki, int x, int y) {
 
-        this.lauta.get(y)[x] = syote;
+        this.lauta.get(y)[x] = nappulanMerkki;
 
     }
+    
+    /**
+     * Lukee tekstikäyttöliittymää varten pelaajan siirron ja palauttaa laudan x-
+     * akselin koordinaatin, jos annettu numero oli oikeanmuotoinen. Muuten metodi 
+     * käsittelee poikkeuksen ja pyytää antamaan numeron uudestaan.
+     * @param nimi Pelaajan nimi
+     * @return Palauttaa x-akselin koordinaatin
+     */
 
     public int luePelaajanSiirto(String nimi) {
 
@@ -98,7 +134,6 @@ public class LautaKasittelija {
 
         while (true) {
             try {
-
                 int numero = Integer.parseInt(lukija.nextLine());
 
                 if (numero < 0) {
@@ -110,9 +145,7 @@ public class LautaKasittelija {
                 return numero;
 
             } catch (Exception e) {
-
                 System.out.println("Ei kunnollinen numero!");
-
             }
         }
     }
