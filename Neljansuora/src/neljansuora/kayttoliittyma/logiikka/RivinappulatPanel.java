@@ -52,8 +52,7 @@ public class RivinappulatPanel extends JPanel{
     
     /**
      * Metodi luo ja asettaa layouttiin RivinappulatPanelille uudet nappulat, joiden avulla 
-     * pelaajat voivat tehdä siirtojansa. Metodi myös lisää jokaiselle nappulalle 
-     * tapahtumankuuntelijan NappulanPudotusListener, joka kertoo, kun nappulaa painetaan.
+     * pelaajat voivat tehdä siirtoja.
      */
     
     private void luoNappulat(){
@@ -62,19 +61,29 @@ public class RivinappulatPanel extends JPanel{
         List<JButton> nappilista = new ArrayList<JButton>();
         
         for(int i = 0; i < nappuloidenMaara; i++){
-            String nappulanIndeksi = "" + i;
-            JButton uusiNappi = new JButton(nappulanIndeksi);   
+            
+            JButton uusiNappi = new JButton("" +i);   
             nappilista.add(uusiNappi);
         }
         
+        this.lisaaActionListenerNappiinJaNappiPaneeliin(nappilista);
+        
+    }
+    
+    /**
+     * Metodi lisää jokaiselle nappulalle tapahtumankuuntelijan N
+     * appulanPudotusListener, joka kertoo, kun nappulaa painetaan. Nappi lisätään 
+     * samalla RivinappulatPaneeliin.
+     * @param nappilista Lista napeista, joille lisätään ActionListener
+     */
+    
+    private void lisaaActionListenerNappiinJaNappiPaneeliin(List<JButton> nappilista){
         for(JButton nappi : nappilista){
             nappi.addActionListener(new NappulanPudotusListener(this.neljansuora.getPelilauta(), 
                     nappi.getText(), this.tilannetietoPanel));
             
             add(nappi);
         }
-        
-        
     }
     
         

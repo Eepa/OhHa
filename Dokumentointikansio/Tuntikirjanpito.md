@@ -60,3 +60,5 @@ Jatkettu kayttoliittymien ohjelmointia, korjailtu testeja.
 Keskiviikko 13.02.2013, 2h
 Refaktoroitu koodia ja korjattu bugi.
 
+Torstai 14.02.2013, 1,5h
+Refaktoroitu vahan, Javadocia eteenpain.

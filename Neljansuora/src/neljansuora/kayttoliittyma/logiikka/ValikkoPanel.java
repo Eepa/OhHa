@@ -35,6 +35,12 @@ public class ValikkoPanel extends JPanel {
      * @see Kayttoliittyma
      */
     private Kayttoliittyma kayttoliittyma;
+    
+    /**
+     * Piirtoalusta, joka piirtää käyttöliittymän peliruudukon.
+     * @see Piirtoalusta
+     */
+    
     private Piirtoalusta piirtoalusta;
 
     /**
@@ -48,6 +54,7 @@ public class ValikkoPanel extends JPanel {
      * @param neljansuora Viite Neljansuora-luokkaan
      * @param tilannetietoPanel Viite TilannetietoPanel-luokkaan
      * @param kayttoliittyma Viite Kayttoliittyma- luokkaan
+     * @param piirtoalusta Kuvaa piirtoalustaa, joka piirtää peliruudukon.
      */
     public ValikkoPanel(int korkeus, int leveys,
             Neljansuora neljansuora, TilannetietoPanel tilannetietoPanel, Kayttoliittyma kayttoliittyma, Piirtoalusta piirtoalusta) {

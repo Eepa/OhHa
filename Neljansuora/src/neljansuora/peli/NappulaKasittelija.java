@@ -150,15 +150,19 @@ public class NappulaKasittelija {
         for (int i = 0; i < this.lauta.size(); i++) {
             String[] rivi = this.lauta.get(i);
 
+//            if(this.muodostaMerkkijonoVinolleSuoralle(rivi, merkki, pituus, i, "koillinenlounas")) {
+//                return true;
+//            }
+
             for (int j = 0; j < rivi.length; j++) {
                 String merkkijono = "";
                 String alkuPiste = rivi[j];
 
                 merkkijono = merkkijono + alkuPiste;
 
-                merkkijono = this.laskeSeuraavatPisteetKoillinenKaakko(i, j, merkkijono);
+                merkkijono = this.laskeSeuraavatPisteetKoillinenLounas(i, j, merkkijono, "koillinenlounas");
 
-
+//
                 if (this.testaaMerkkijononPituus(merkkijono, merkki, pituus) == pituus) {
                     return true;
                 }
@@ -167,11 +171,36 @@ public class NappulaKasittelija {
 
         return false;
     }
+
+//    public boolean muodostaMerkkijonoVinolleSuoralle(String[] rivi, String merkki, int pituus, int i, String suoranSuunta) {
+//        String merkkijono = "";
+//        for (int j = 0; j < rivi.length; j++) {
+//
+//            String alkuPiste = rivi[j];
+//
+//            merkkijono = merkkijono + alkuPiste;
+//
+//            if (suoranSuunta.equals("koillinenlounas")) {
+//                merkkijono = this.laskeSeuraavatPisteetKoillinenLounas(i, j, merkkijono, suoranSuunta);
+//            } else {
+//                merkkijono = this.laskeSeuraavatPisteetKaakkoLuode(i, j, merkkijono, suoranSuunta);
+//            }
+//            
+//            if (this.testaaMerkkijononPituus(merkkijono, merkki, pituus) == pituus) {
+//                    return true;
+//                }
+//                     
+//        }
+//
+//        return false;
+//    }
 
     public boolean onkoVinostiKaakkoLuode(String merkki, int pituus) {
 
         for (int i = this.lauta.size() - 1; i >= 0; i--) {
             String[] rivi = this.lauta.get(i);
+            
+//            String merkkijono = this.muodostaMerkkijonoVinolleSuoralle(rivi, merkki, pituus, i, "kaakkoluode");
 
             for (int j = 0; j < rivi.length; j++) {
                 String merkkijono = "";
@@ -179,7 +208,7 @@ public class NappulaKasittelija {
 
                 merkkijono = merkkijono + alkuPiste;
 
-                merkkijono = this.laskeSeuraavatPisteetLounasLuode(i, j, merkkijono);
+                merkkijono = this.laskeSeuraavatPisteetKaakkoLuode(i, j, merkkijono, "kaakkoluode");
 
 
                 if (this.testaaMerkkijononPituus(merkkijono, merkki, pituus) == pituus) {
@@ -191,57 +220,64 @@ public class NappulaKasittelija {
         return false;
     }
 
-    public String laskeSeuraavatPisteetLounasLuode(int y, int x, String merkkijono) {
+    public String laskeSeuraavatPisteetKaakkoLuode(int y, int x, String merkkijono, String suoranSuunta) {
 
-        y--;
-        x--;
-
-        if (x < 0 || y < 0) {
-            return merkkijono;
-        } else {
-            String seuraavaPiste = this.lauta.get(y)[x];
-
-            merkkijono = merkkijono + seuraavaPiste;
-
-            return this.laskeSeuraavatPisteetLounasLuode(y, x, merkkijono);
-        }
-    }
-
-    public String laskeSeuraavatPisteetKoillinenKaakko(int y, int x, String merkkijono) {
-
-//        return laskeGeneerinen(y, x, 1, -1, merkkijono);
-        y++;
-        x--;
-
-        if (x < 0 || y > this.lauta.size() - 1) {
-            return merkkijono;
-        } else {
-            String seuraavaPiste = this.lauta.get(y)[x];
-
-            merkkijono = merkkijono + seuraavaPiste;
-
-            return this.laskeSeuraavatPisteetKoillinenKaakko(y, x, merkkijono);
-        }
-    }
-    
-    //TARKISTA MITEN SAISI GENEERISYYTEEN IF-EHDOT OIKEIN
-
-//    public String laskeGeneerinen(int y, int x, int yynlisays, int xnlisays, String merkkijono) {
+        return laskeSeuraavaPiste(y, x, -1, -1, merkkijono, suoranSuunta);
+//        y--;
+//        x--;
 //
-//        y = y + yynlisays;
-//        x = x + xnlisays;
-//
-//        if (x < 0 || y > this.lauta.size()-1) {
+//        if (x < 0 || y < 0) {
 //            return merkkijono;
 //        } else {
 //            String seuraavaPiste = this.lauta.get(y)[x];
 //
 //            merkkijono = merkkijono + seuraavaPiste;
 //
-//            return this.laskeGeneerinen(y, x, yynlisays, xnlisays, merkkijono);
+//            return this.laskeSeuraavatPisteetKaakkoLuode(y, x, merkkijono);
 //        }
-//    }
-    
+    }
+
+    public boolean tarkistaYEhtoGeneerisyydessa(int y, String suoranSuunta) {
+        if (suoranSuunta.equals("koillinenlounas")) {
+            return y > this.lauta.size() - 1;
+        }
+
+        return y < 0;
+    }
+
+    public String laskeSeuraavatPisteetKoillinenLounas(int y, int x, String merkkijono, String suoranSuunta) {
+
+        return laskeSeuraavaPiste(y, x, 1, -1, merkkijono, suoranSuunta);
+//        y++;
+//        x--;
+//
+//        if (x < 0 || y > this.lauta.size() - 1) {
+//            return merkkijono;
+//        } else {
+//            String seuraavaPiste = this.lauta.get(y)[x];
+//
+//            merkkijono = merkkijono + seuraavaPiste;
+//
+//            return this.laskeSeuraavatPisteetKoillinenLounas(y, x, merkkijono);
+//        }
+    }
+
+    public String laskeSeuraavaPiste(int y, int x, int yLisays, int xLisays, String merkkijono, String suoranSuunta) {
+
+        y = y + yLisays;
+        x = x + xLisays;
+
+        if (x < 0 || this.tarkistaYEhtoGeneerisyydessa(y, suoranSuunta)) {
+            return merkkijono;
+        } else {
+            String seuraavaPiste = this.lauta.get(y)[x];
+
+            merkkijono = merkkijono + seuraavaPiste;
+
+            return this.laskeSeuraavaPiste(y, x, yLisays, xLisays, merkkijono, suoranSuunta);
+        }
+    }
+
     public int testaaMerkkijononPituus(String testattavaJono, String merkki, int maksimipituus) {
 
         String tarkistusjono = teeJono(maksimipituus, merkki);
@@ -270,7 +306,7 @@ public class NappulaKasittelija {
         //Tarkistetaan jokaiselta vaakariviltä sisältääkö se tyhjiä paikkoja
 
         for (int i = 0; i < this.lauta.size(); i++) {
-                      
+
             String rivinMerkit = luoTestattavaJono(this.lauta.get(i));
 
             if (rivinMerkit.contains(".")) {

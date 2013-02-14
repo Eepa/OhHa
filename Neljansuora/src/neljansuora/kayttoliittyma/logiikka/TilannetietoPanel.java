@@ -35,21 +35,19 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
      * Sisältää tiedon vuorossaolevasta pelaajasta.
      */
     private JTextArea kukaVuorossa;
-    
     /**
      * Kertoo Neljansuora-pelin Pelaajien määrän.
      */
-    
     private int pelaajienMaara;
 
     /**
      * Konstruktori asettaa Tilannetietopaneelille uuden layoutin ja asettaa
-     * neljansuora attribuutin arvoksi parametreinaan saamansa arvon. Lisäksi konstruktori
-     * alustaa vuoronumeroinnin alkamaan ykkösestä ja selvittää Neljänsuora-pelin 
-     * pelaajien määrän. Konstruktori kutsuu myös
-     * luokan omia metodeja: setVuorossaoleva(), joka alustaa ja asettaa
-     * vuorossaolevalle pelaajalle tekstimuotoisen attribuutin;
-     * luoTietopaneeli(), joka luo uuden tietopaneelin.
+     * neljansuora attribuutin arvoksi parametreinaan saamansa arvon. Lisäksi
+     * konstruktori alustaa vuoronumeroinnin alkamaan ykkösestä ja selvittää
+     * Neljänsuora-pelin pelaajien määrän. Konstruktori kutsuu myös luokan omia
+     * metodeja: setVuorossaoleva(), joka alustaa ja asettaa vuorossaolevalle
+     * pelaajalle tekstimuotoisen attribuutin; luoTietopaneeli(), joka luo uuden
+     * tietopaneelin.
      *
      * @param neljansuora Kuvaa Neljansuora-peliä
      */
@@ -65,12 +63,20 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
     public int getVuoronumero() {
         return this.vuoronumero;
     }
+    
+    /**
+     * Alustaa vuoronumeron vastaamaan pelaajien määrää.
+     */
 
     public void alustaVuoronumero() {
         this.vuoronumero = this.pelaajienMaara;
     }
+    
+    /**
+     * Alustaa vuoronumeron kertomaan, mitä kierrosta pelataan.
+     */
 
-    public void setVuoronumero() {
+    public void alustaKierroksenVuoronumero() {
         if (this.vuoronumero < this.pelaajienMaara) {
             vuoronumero++;
         } else if (this.vuoronumero == this.pelaajienMaara) {
@@ -79,24 +85,26 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
     }
 
     public void setVuorossaoleva() {
-        
         this.vuorossaoleva = this.haeOikeanPelaajanNimi();
     }
     
-    public String haeOikeanPelaajanNimi(){
-        String nimi = "";
+    /**
+     * Palauttaa pelaajan nimen, jos oikean vuoronumeron omaava pelaaja löytyy 
+     * pelaajalistasta. Muuten palauttaa tyhjän merkkijonon.
+     * @return Palautettava merkkijono (pelaajan nimi tai tyhjä)
+     */
+
+    public String haeOikeanPelaajanNimi() {
         
         List<Pelaaja> pelaajat = this.neljansuora.getPelilauta().getPelaajat();
-        
-        for(Pelaaja p : pelaajat){
-            if(p.getVuoronumero() == this.vuoronumero){
+
+        for (Pelaaja p : pelaajat) {
+            if (p.getVuoronumero() == this.vuoronumero) {
                 return p.getNimi();
-            } else {
-                continue;
             }
         }
-        
-        return nimi;
+
+        return "";
     }
 
     /**
@@ -122,8 +130,8 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
 
     @Override
     public void paivita() {
-        
-        this.setVuoronumero();
+
+        this.alustaKierroksenVuoronumero();
         this.setKukaVuorossa();
 
         if (this.neljansuora.getPelilauta().onkoNeljanSuoraa()) {
@@ -134,17 +142,26 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
 
     }
 
+    /**
+     * Ilmoittaa kuka voitti Neljansuora-pelin. Paneelista poistetaan ensin
+     * kaikki sisältö ja sitten lisätään uusi JLabel kertomaan, kuka voitti.
+     */
     public void ilmoitaVoittaja() {
         this.removeAll();
 
-        this.setVuoronumero();
+        this.alustaKierroksenVuoronumero();
         this.setKukaVuorossa();
 
         JLabel voittaja = new JLabel("Voittaja: " + this.vuorossaoleva
                 + "        ONNEKSI OLKOON!     :)");
+
         add(voittaja);
     }
 
+    /**
+     * Ilmoittaa pelaajalle, jos pelilauta täyttyy. Paneelista poistetaan ensin
+     * kaikki sisältö ja sitten lisätään uusi JLabel kertomaan laudan täyttymisestä.
+     */
     public void ilmoitaLaudanTayttymisesta() {
         this.removeAll();
 
@@ -155,14 +172,20 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
 
         add(lautaTaynna);
     }
+    
+    /**
+     * Alustaa uuden pelin, jos jompikumpi pelaaja sai riittävän pitkän suoran. 
+     * Paneelista poistetaan ensin kaikki sisältö ja sitten alustetaan paneeli samanlaiseksi 
+     * kuin Neljänsuora-pelin ensimmäisellä käynnistyskerralla.
+     */
 
     public void aloitaUusiPeli() {
         this.removeAll();
         this.alustaVuoronumero();
         this.setVuorossaoleva();
-        
+
         this.luoTietopaneeli();
         this.paivita();
-        
+
     }
 }

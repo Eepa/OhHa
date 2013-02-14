@@ -133,6 +133,12 @@ public class Kayttoliittyma implements Runnable {
         }
 
     }
+    
+    /**
+     * Asettaa Neljansuoralle uuden Paivitettava-rajapinnan toteuttavan luokan.
+     * @see Neljansuora
+     * @see Paivitettava
+     */
 
     public void setNeljansuoranPiirtoalusta() {
         while (getPaivitettava() == null) {

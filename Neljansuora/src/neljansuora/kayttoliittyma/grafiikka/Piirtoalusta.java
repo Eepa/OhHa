@@ -7,33 +7,39 @@ import javax.swing.JPanel;
 import neljansuora.peli.Neljansuora;
 
 /**
- * Piirtoalusta-luokka piirtää graafiseen käyttöliittymään peliruudukon, jossa näkyvät pelaajien 
- * nappulat ja tyhjät ruudut. Piirtoalustalle voi asettaa eri värejä taustaksi ja pelaajien nappuloiden 
- * väreiksi.
- * 
+ * Piirtoalusta-luokka piirtää graafiseen käyttöliittymään peliruudukon, jossa
+ * näkyvät pelaajien nappulat ja tyhjät ruudut. Piirtoalustalle voi asettaa eri
+ * värejä taustaksi ja pelaajien nappuloiden väreiksi.
+ *
  * @author Eveliina Pakarinen
  */
-
 public class Piirtoalusta extends JPanel implements Paivitettava {
-    
+
     /**
      * Neljansuora kuvaa Neljansuora-pelin samannimistä luokkaa.
+     *
      * @see Neljansuora
      */
-
     private Neljansuora neljansuora;
-    
-    private Color taustavari;
-    private Color pelaajanXVari;
-    private Color pelaajanOVari;
-    
-    
     /**
-     * Konstruktori asettaa piirtoalustan oletustaustavärin ja asettaa attribuutteihin konstruktorin 
-     * parametrien arvot.
+     * Kertoo Piirtoalustan taustavärin.
+     */
+    private Color taustavari;
+    /**
+     * Kertoo nappulanvärin pelaajalle, joka käyttää pelimerkkinään "X"-merkkiä.
+     */
+    private Color pelaajanXVari;
+    /**
+     * Kertoo nappulanvärin pelaajalle, joka käyttää pelimerkkinään "O"-merkkiä.
+     */
+    private Color pelaajanOVari;
+
+    /**
+     * Konstruktori asettaa piirtoalustan oletustaustavärin ja asettaa
+     * attribuutteihin konstruktorin parametrien arvot.
+     *
      * @param neljansuora Kuvaa Neljansuora-peliä
      */
-
     public Piirtoalusta(Neljansuora neljansuora) {
         super.setBackground(Color.blue);
         this.neljansuora = neljansuora;
@@ -45,20 +51,22 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-      
+
         this.piirraKentta(g);
 
     }
-    
+
     /**
-     * Metodi piirtää Piirtoalustalle Neljansuora-pelin pelikentän, jossa näkyvät tyhjät 
-     * ruudut ja pelaajien nappulat. Piirtämisen apuna metodi käyttää Neljansuora-pelin pelilautaa.
+     * Metodi piirtää Piirtoalustalle Neljansuora-pelin pelikentän, jossa
+     * näkyvät tyhjät ruudut ja pelaajien nappulat. Piirtämisen apuna metodi
+     * käyttää Neljansuora-pelin pelilautaa.
+     *
      * @param g Graphics-luokan ilmentymä
      */
-
     public void piirraKentta(Graphics g) {
         int leveys = this.neljansuora.getPelilauta().getLauta().get(0).length;
         int korkeus = this.neljansuora.getPelilauta().getLauta().size();
+        
         for (int i = 0; i < korkeus; i++) {
 
             String[] rivi = this.neljansuora.getPelilauta().getLauta().get(i);
@@ -70,7 +78,6 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
                 if (merkki.equals(".")) {
                     g.setColor(Color.white);
                     g.fillOval(j * 50, i * 50, 50, 50);
-                    
                 } else if (merkki.equals("X")) {
                     g.setColor(this.pelaajanXVari);
                     g.fillOval(j * 50, i * 50, 50, 50);
@@ -83,21 +90,32 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
 
     }
     
-    public void vaihdaTaustavaria(Color vari){
+    /**
+     * Vaihtaa Piirtoalustan taustaväriä.
+     * @param vari Kertoo uuden värin.
+     */
+
+    public void vaihdaTaustavaria(Color vari) {
         this.taustavari = vari;
         this.setBackground(vari);
     }
+
+    /**
+     * Vaihtaa pelaajan nappulan väriä.
+     * @param vari Kertoo uuden värin.
+     * @param pelaajanNumero Kertoo mille pelaajalle väri asetetaan.
+     */
     
-    public void vaihdaPelaajanVaria(Color vari, int pelaajanNumero){
-        if(pelaajanNumero == 1){
+    public void vaihdaPelaajanVaria(Color vari, int pelaajanNumero) {
+        if (pelaajanNumero == 1) {
             this.pelaajanXVari = vari;
-        } else if(pelaajanNumero == 2){
+        } else if (pelaajanNumero == 2) {
             this.pelaajanOVari = vari;
         }
     }
 
     @Override
     public void paivita() {
-       this.repaint();
+        this.repaint();
     }
 }
