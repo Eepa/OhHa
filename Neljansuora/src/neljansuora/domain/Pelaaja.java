@@ -14,24 +14,24 @@ import java.util.List;
 public class Pelaaja {
     
     /**
-     * Vuoronumero kertoo, onko Pelaajan siirtovuoro pelissä ensimmäinen eli aloittaja vai toinen.
+     * Kertoo, onko Pelaajan siirtovuoro pelissä ensimmäinen eli aloittaja vai toinen.
      */
     
     private int vuoronumero;
     
     /**
-     * Nappulalista nappulat sisältää viitteet kaikkiin pelaajalle kuuluviin Nappula-olioihin. 
+     * Sisältää viitteet kaikkiin pelaajalle kuuluviin Nappula-olioihin. 
      * @see Nappula
      */
     private List<Nappula> nappulat;
     
     /**
-     * Nimi on pelaajan nimi.
+     * Pelaajan nimi
      */
     private String nimi;
     
     /**
-     * Konstruktori luo uuden Pelaaja-olion ja asettaa pelaajan oliomuuttujien nimi ja vuoronumero arvot. 
+     * Luo uuden Pelaaja-olion ja asettaa pelaajan oliomuuttujien nimi ja vuoronumero arvot. 
      * Lisäksi konstruktori alustaa Pelaajan Nappula-listan.
      * @param vuoronumero Kertoo, mikä numero pelaajan vuoronumeroksi tulee.
      * @param nimi Kertoo Pelaajan nimen.

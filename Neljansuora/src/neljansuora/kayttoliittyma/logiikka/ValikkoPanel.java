@@ -1,7 +1,6 @@
 package neljansuora.kayttoliittyma.logiikka;
 
 import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
-import neljansuora.kayttoliittyma.grafiikka.VarinvaihtoListener;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -18,7 +17,7 @@ import neljansuora.peli.Neljansuora;
 public class ValikkoPanel extends JPanel {
 
     /**
-     * Neljansuora kuvaa Neljansuora-pelin samannimistä luokkaa.
+     * Kuvaa Neljansuora-peliä.
      *
      * @see Neljansuora
      */
@@ -30,7 +29,7 @@ public class ValikkoPanel extends JPanel {
      */
     private TilannetietoPanel tilannetietoPanel;
     /**
-     * Kayttoliittyma kuvaa graafisen käyttöliittymän samannimistä luokkaa.
+     * Kayttoliittyma kuvaa graafista käyttöliittymää.
      *
      * @see Kayttoliittyma
      */
@@ -53,7 +52,7 @@ public class ValikkoPanel extends JPanel {
      * @param leveys ValikkoPanelin GridLayoutin leveys
      * @param neljansuora Viite Neljansuora-luokkaan
      * @param tilannetietoPanel Viite TilannetietoPanel-luokkaan
-     * @param kayttoliittyma Viite Kayttoliittyma- luokkaan
+     * @param kayttoliittyma Viite Kayttoliittyma-luokkaan
      * @param piirtoalusta Kuvaa piirtoalustaa, joka piirtää peliruudukon.
      */
     public ValikkoPanel(int korkeus, int leveys,
@@ -68,7 +67,7 @@ public class ValikkoPanel extends JPanel {
     }
 
     /**
-     * Metodi, jossa luodaan ValikkoPanelin komponentit ja alustetaan niiden
+     * Luodaan ValikkoPanelin komponentit ja alustetaan niiden
      * toiminnot. Komponentit asetetaan GridLayouttiin.
      */
     private void luoKomponentit() {

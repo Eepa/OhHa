@@ -16,7 +16,7 @@ import neljansuora.domain.Pelaaja;
 public class LautaKasittelija {
 
     /**
-     * Attribuutti lauta kuvaa Map-muotoista pelilautaa, jonka avaimet kuvaavat
+     * Kuvaa Map-muotoista pelilautaa, jonka avaimet kuvaavat
      * laudan y-akselin rivejä ja String[]-taulukon indeksit x-akselin paikkoja.
      */
     private Map<Integer, String[]> lauta;
@@ -73,7 +73,7 @@ public class LautaKasittelija {
     
     /**
      * Lisää parametrina annetun listan pelaajien nappulat kenttään kutsumalla 
-     * luokan omaa metodia pelaajakohtaisesti.
+     * luokan omaa nappulanlisäysmetodia pelaajakohtaisesti.
      * @param pelaajat Pelaajalista, jonka pelaajien nappulat lisätään kenttään
      */
 
@@ -92,8 +92,8 @@ public class LautaKasittelija {
     }
     
     /**
-     * Lisää yhden pelaajan nappulalistan nappulat kenttään. Pelaajan nappulan merkki 
-     * annetaan metodille parametrina.
+     * Lisää yhden pelaajan nappulalistan nappulat kenttään. Pelaajan nappulan merkki, 
+     * joka kirjoitetaan pelilaudalle, annetaan metodille parametrina.
      * @param merkki Pelaajan nappulan merkki
      * @param nappulat Pelaajan nappulalista
      */

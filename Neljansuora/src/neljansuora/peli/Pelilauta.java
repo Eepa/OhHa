@@ -11,7 +11,7 @@ import neljansuora.domain.Pelaaja;
 import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
 
 /**
- * Luokka Pelilauta kuvaa Neljansuora-pelin pelilautaa. Pelilaudalla on tietty
+ * Kuvaa Neljansuora-pelin pelilautaa. Pelilaudalla on tietty
  * koko ja kaksi pelaajaa. Pelilauta tietää ja käyttää myös luokkia, jotka
  * auttavat muokkaamaan pelilaudan tilaa.
  *
@@ -20,15 +20,15 @@ import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
 public class Pelilauta {
 
     /**
-     * Leveys kertoo Pelilaudan leveyden.
+     * Kertoo Pelilaudan leveyden.
      */
     private int leveys;
     /**
-     * Korkeus kertoo Pelilaudan korkeuden.
+     * Kertoo Pelilaudan korkeuden.
      */
     private int korkeus;
     /**
-     * MerkkijononPituus kertoo lyhyimmän hyväksytyn voittojonon pituuden.
+     * Kertoo lyhyimmän hyväksytyn voittojonon pituuden.
      */
     private int merkkijononPituus;
     /**
@@ -48,7 +48,7 @@ public class Pelilauta {
     private List<Pelaaja> pelaajat;
     /**
      * LautaKasittelija viittaa LautaKasittelija-luokkaan, jonka avulla
-     * Pelilaudan tilaa muokataan.
+     * Pelilaudan laudan tilaa muokataan.
      *
      * @see LautaKasittelija
      */
@@ -68,7 +68,7 @@ public class Pelilauta {
     private Paivitettava paivitettava;
 
     /**
-     * Konstruktorissa asetetaan Pelilaudan attribuuttien arvot ja alustetaan
+     * Asetetaan Pelilaudan attribuuttien arvot ja alustetaan
      * lautaa kuvaava HashMap ja pelaajat sisältävä ArrayList. Lisäksi
      * konstruktorissa luodaan uudet LautaKasittelija- ja
      * NappulaKasittelija-luokat. Lisäksi konstruktorissa kutsutaan luokan omaa
@@ -159,7 +159,8 @@ public class Pelilauta {
     }
 
     /**
-     * Kysyy graafista käyttöliittymää varten pelaajan nimen.
+     * Kysyy graafista käyttöliittymää varten pelaajan nimen (käytetään 
+     * pelaajien luomisvaiheessa).
      *
      * @param indeksi Kertoo pelaajan vuoronumeron.
      * @return Palauttaa pelaajalle annetun nimen.
@@ -186,7 +187,7 @@ public class Pelilauta {
     }
 
     /**
-     * Alustaa uuden pelilaudan String[] taulukot Neljansuora-peliä varten ja
+     * Alustaa uuden pelilaudan String[]-taulukot Neljansuora-peliä varten ja
      * täyttää taulukot tyhjillä arvoilla.
      */
     public void luoPelilauta() {

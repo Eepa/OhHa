@@ -13,20 +13,20 @@ import neljansuora.peli.Pelilauta;
 public class NappulanPudotusListener implements ActionListener {
 
     /**
-     * Pelilauta kuvaa Neljansuora-pelin pelilautaa.
+     * Kuvaa Neljansuora-pelin pelilautaa.
      * @see Pelilauta
      */
     
     private Pelilauta lauta;
     
     /**
-     * NappulanNumero kuvaa jokaisen nappulan paikkanumeroa eli indeksiä pelilaudalla.
+     * NKuvaa jokaisen nappulan paikkanumeroa eli indeksiä pelilaudalla.
      */
     
     private int nappulanNumero;
     
     /**
-     * TilannetietoPanel kuvaa Neljansuora-pelin pelitilannetta kullakin hetkellä.
+     * Kuvaa Neljansuora-pelin pelitilannetta kullakin hetkellä.
      * @see TilannetietoPanel
      */
     

@@ -24,14 +24,14 @@ public class UusiPeliListener implements ActionListener{
     private Kayttoliittyma kayttoliittyma;
     
     /**
-     * TilannetietoPanel kuvaa Neljansuora-pelin pelitilannetta kullakin hetkellä.
+     * Kuvaa Neljansuora-pelin pelitilannetta kullakin hetkellä.
      * @see TilannetietoPanel
      */
     
     private TilannetietoPanel tilannetietopanel;
     
     /**
-     * Neljansuora kuvaa Neljansuora-pelin samannimistä luokkaa.
+     * Kuvaa Neljansuora-pelin samannimistä luokkaa.
      * @see Neljansuora
      */
     

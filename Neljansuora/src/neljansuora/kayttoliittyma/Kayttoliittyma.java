@@ -25,7 +25,6 @@ import neljansuora.peli.Pelilauta;
  * Käyttöliittymässä käynnistetään pelin graafinen käyttöliittymä ja luodaan
  * käyttöliittymän komponentit ja asetetaan ne käyttöliittymään.
  *
- *
  * @author Eveliina Pakarinen
  */
 public class Kayttoliittyma implements Runnable {
@@ -56,7 +55,7 @@ public class Kayttoliittyma implements Runnable {
     private PituudenAsettelija pituudenasettelija;
 
     /**
-     * Konstruktorissa luodaan uusi Neljansuora-peli. johon asetetaan PituudenAsettelijan 
+     * Konstruktorissa luodaan uusi Neljansuora-peli, johon asetetaan PituudenAsettelijan 
      * avulla laudan koko ja voittosuoran pituus. Konstruktori asettaa myös parametrina saamansa 
      * lukijan arvon oliomuuttujaan.
      *
@@ -66,8 +65,8 @@ public class Kayttoliittyma implements Runnable {
     public Kayttoliittyma(Scanner lukija) {
         this.pituudenasettelija = new PituudenAsettelija();
         
-        int leveys = this.pituudenasettelija.asetaLeveys("leveys");
-        int korkeus = this.pituudenasettelija.asetaKorkeus("korkeus");
+        int leveys = this.pituudenasettelija.setLeveys("leveys");
+        int korkeus = this.pituudenasettelija.setKorkeus("korkeus");
         int suoranPituus = this.pituudenasettelija.asetaEtsittavanSuoranPituus(leveys, korkeus, "suoran pituus");
         
         this.neljansuora = new Neljansuora(leveys, korkeus, suoranPituus, lukija, "graafinen");
@@ -94,7 +93,7 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     * Metodissa luodaan käyttöliittymän eri komponentit ja asetetaan
+     * Luodaan käyttöliittymän eri komponentit ja asetetaan
      * käyttöliittymän layout. Layouttiin asetetaan käyttöliittymän eri
      * komponenttien osat oikeille paikoilleen. Metodi luo myös uuden
      * Piirtoalustan, joka piirtää käyttöliittymään peliruudukon.
@@ -114,12 +113,13 @@ public class Kayttoliittyma implements Runnable {
         container.add(new PiirtoPanel(this.neljansuora, this.piirtoalusta, tilannetietoPanel),
                 BorderLayout.CENTER);
 
-        container.add(new ValikkoPanel(1, 3, this.neljansuora, tilannetietoPanel, this, this.piirtoalusta), BorderLayout.NORTH);
+        container.add(new ValikkoPanel(1, 3, this.neljansuora, tilannetietoPanel, 
+                this, this.piirtoalusta), BorderLayout.NORTH);
 
     }
 
     /**
-     * Metodi käynnistää uuden Neljansuora-pelin ja pelin loputtua sulkee pelin.
+     * Käynnistää uuden Neljansuora-pelin ja pelin loputtua sulkee pelin.
      */
     public void kaynnistaPeli() {
 

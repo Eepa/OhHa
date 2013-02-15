@@ -9,14 +9,14 @@ import neljansuora.domain.Pelaaja;
 /**
  * NappulaKasittelija-luokka muokkaa Pelilaudan Pelaajien nappuloiden tilaa ja
  * tarkistaa, onko laudalle tullut riittävän pitkiä suoria. Kasittelija tekee
- * myös laudalle siirrot.
+ * myös siirrot laudalle.
  *
  * @author Eveliina Pakarinen
  */
 public class NappulaKasittelija {
 
     /**
-     * Attribuutti lauta kuvaa Map-muotoista pelilautaa, jonka avaimet kuvaavat
+     * Kuvaa Map-muotoista pelilautaa, jonka avaimet kuvaavat
      * laudan y-akselin rivejä ja String[]-taulukon indeksit x-akselin paikkoja.
      */
     private Map<Integer, String[]> lauta;
@@ -165,7 +165,7 @@ public class NappulaKasittelija {
 
     /**
      * Luo Pelilaudan pystyrivin merkeistä merkkijonon, joka palautetaan
-     * tarkistusta varten.
+     * merkkijonon sisältötarkistusta varten.
      *
      * @return Palauttaa pystyrivin merkeistä luodun merkkijonon.
      */
@@ -289,7 +289,7 @@ public class NappulaKasittelija {
 
     /**
      * Laskee rekursiivisesti seuraavan pisteen merkkijonoon, jonka metodi saa
-     * parametrina. Kutsuu luokan omaa metodia seuraavan pisteen laskemiseksi.
+     * parametrina. Kutsuu luokan omaa laskeSeuraavaPiste()-metodia seuraavan pisteen laskemiseksi.
      *
      * @param y Y-akselin koordinaatti
      * @param x X-akselin koordinaatti
@@ -303,7 +303,7 @@ public class NappulaKasittelija {
 
     /**
      * Laskee rekursiivisesti seuraavan pisteen merkkijonoon, jonka metodi saa
-     * parametrina. Kutsuu luokan omaa metodia seuraavan pisteen laskemiseksi.
+     * parametrina. Kutsuu luokan omaa laskeSeuraavaPiste()-metodia seuraavan pisteen laskemiseksi.
      *
      * @param y Y-akselin koordinaatti
      * @param x X-akselin koordinaatti
@@ -336,8 +336,8 @@ public class NappulaKasittelija {
      * 
      * @param y Y-akselin koordinaatti
      * @param x X-akselin koordinaatti
-     * @param yLisays Lisäys, joka lisätään y-akselin koordinaattiin
-     * @param xLisays Lisäys, joka lisätään x-akselin koordinaattiin
+     * @param yLisays Lisäys, joka lisätään y-akselin koordinaattiin.
+     * @param xLisays Lisäys, joka lisätään x-akselin koordinaattiin.
      * @param merkkijono Merkkijono, johon merkkejä lisätään.
      * @param suoranSuunta Kertoo, minkä suuntaista suoraa etsitään.
      * @return Palauttaa valmiin merkkijonon.
@@ -362,7 +362,7 @@ public class NappulaKasittelija {
      * Testaa, onko testattavassa merkkijonossa tarpeeksi pitkiä suoria.
      *
      * @param testattavaJono Jono, josta etsitään tietyn merkin tietynpituisia suoria.
-     * @param merkki Merkki, josta muodostettua suoraa etsitään testattavastaJonosta.
+     * @param merkki Merkki, josta muodostettua uutta suoraa etsitään testattavastaJonosta.
      * @param vahimmaispituus Lyhimmän etsityn suoran pituus.
      * @return Palauttaa testatun merkkijonon sisältämän vähimmäispituuden, jos vähimmäispituuden 
      * mittainen suora löytyy merkkijonosta. Muuten palauttaa 0.
@@ -416,8 +416,8 @@ public class NappulaKasittelija {
     }
 
     /**
-     * Selvittää pelilaudan pisimmän sivun pituuden (pisin x- tai y-akselin
-     * pituus).
+     * Selvittää pelilaudan pisimmän sivun pituuden (pidempi pituus laudan x- tai y-akselin
+     * pituuksista).
      *
      * @return Palauttaa pisimmän sivun pituuden.
      */

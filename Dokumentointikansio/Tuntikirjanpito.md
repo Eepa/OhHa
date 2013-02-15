@@ -62,3 +62,6 @@ Refaktoroitu koodia ja korjattu bugi.
 
 Torstai 14.02.2013, 3,5h
 Refaktoroitu koodia, Javadocia kirjoitettu eteenpain.
+
+Perjantai 15.02.2013, 0,5h
+Javadocia jatkettu ja paranneltu.

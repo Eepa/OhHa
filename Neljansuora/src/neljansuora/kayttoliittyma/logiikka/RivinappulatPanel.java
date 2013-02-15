@@ -21,14 +21,14 @@ import neljansuora.peli.Neljansuora;
 public class RivinappulatPanel extends JPanel{
     
     /**
-     * Neljansuora kuvaa Neljansuora-pelin samannimistä luokkaa.
+     * Kuvaa Neljansuora-pelin samannimistä luokkaa.
      * @see Neljansuora
      */
     
     private Neljansuora neljansuora;
     
     /**
-     * TilannetietoPanel kuvaa Neljansuora-pelin pelitilannetta kullakin hetkellä.
+     * Kuvaa Neljansuora-pelin pelitilannetta kullakin hetkellä.
      * @see TilannetietoPanel
      */
     
@@ -71,9 +71,8 @@ public class RivinappulatPanel extends JPanel{
     }
     
     /**
-     * Metodi lisää jokaiselle nappulalle tapahtumankuuntelijan N
-     * appulanPudotusListener, joka kertoo, kun nappulaa painetaan. Nappi lisätään 
-     * samalla RivinappulatPaneeliin.
+     * Metodi lisää jokaiselle nappulalle tapahtumankuuntelijan NappulanPudotusListener, 
+     * joka kertoo, kun nappulaa painetaan. Nappi lisätään samalla RivinappulatPaneeliin.
      * @param nappilista Lista napeista, joille lisätään ActionListener
      */
     

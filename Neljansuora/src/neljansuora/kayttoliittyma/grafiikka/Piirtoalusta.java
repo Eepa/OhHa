@@ -16,7 +16,7 @@ import neljansuora.peli.Neljansuora;
 public class Piirtoalusta extends JPanel implements Paivitettava {
 
     /**
-     * Neljansuora kuvaa Neljansuora-pelin samannimistä luokkaa.
+     * Kuvaa Neljansuora-pelin samannimistä luokkaa.
      *
      * @see Neljansuora
      */

@@ -2,8 +2,7 @@
 package neljansuora.kayttoliittyma.grafiikka;
 
 /**
- * Rajapinta Paivitettava maarittelee metodin paivita(), joka kaikkien rajapinnan toteuttavien 
- * luokkien pitää toteuttaa.
+ * Rajapinta Paivitettava maarittelee metodin paivita().
  * @author Eveliina Pakarinen
  */
 

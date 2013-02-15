@@ -1,20 +1,20 @@
 
 package neljansuora.domain;
 /**
- * Luokka kuvaa Nappula-oliota, joka on kuvaa yksittäistä pelaajalle kuuluvaa nappulaa.
+ * Kuvaa Nappula-oliota, joka kuvaa yksittäistä pelaajalle kuuluvaa nappulaa.
  * @author Eveliina Pakarinen
  */
 
 public class Nappula {
     
     /**
-     * Koordinaatti x kuvaa nappulan sijaintia pelilaudan vaaka-akselilla.
+     * Nappulan sijainti pelilaudan x-akselilla.
      */
     
     private int x;
     
     /**
-     * Koordinaatti y kuvaa nappulan sijaintia pelilaudan pystyakselilla.
+     * Nappulan sijainti pelilaudan y-akselilla.
      */
     private int y;
     

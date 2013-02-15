@@ -18,13 +18,13 @@ import neljansuora.peli.Neljansuora;
 public class TilannetietoPanel extends JPanel implements Paivitettava {
 
     /**
-     * Neljansuora kuvaa Neljansuora-pelin samannimistä luokkaa.
+     * Kuvaa Neljansuora-pelin samannimistä luokkaa.
      *
      * @see Neljansuora
      */
     private Neljansuora neljansuora;
     /**
-     * Kertoo, kumman pelaajan vuoro on siirtää pelissä.
+     * Kertoo, kumman pelaajan vuoro on siirtää pelissä seuraavaksi.
      */
     private int vuoronumero;
     /**
@@ -109,7 +109,7 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
 
     /**
      * Metodi asettaa aina seuraavan pelaajan vuorossaolevaksi pelaajaksi ja
-     * muuttaa attribuuttia vuorossaoleva.
+     * muuttaa luokan attribuuttia vuorossaoleva vastaamaan uutta tilannetta.
      */
     private void setKukaVuorossa() {
         this.setVuorossaoleva();

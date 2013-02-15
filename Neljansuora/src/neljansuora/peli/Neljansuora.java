@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class Neljansuora {
 
     /**
-     * Pelilauta kuvaa Neljansuora-pelin pelilautaa.
+     * Kuvaa Neljansuora-pelin pelilautaa.
      *
      * @see Pelilauta
      */
@@ -62,12 +62,12 @@ public class Neljansuora {
     }
 
     /**
-     * Metodi luo Neljansuora-pelille uuden annettujen parametrien kokoisen
+     * Luo Neljansuora-pelille uuden annettujen parametrien kokoisen
      * Pelilaudan.
      *
-     * @param leveys Kertoo uuden Pelilaudan leveyden.
-     * @param korkeus Kertoo uuden Pelilaudan korkeuden.
-     * @param merkkijononPituus Kertoo. lyhimmän hyväksytyn suoran pituuden.
+     * @param leveys Uuden Pelilaudan leveys.
+     * @param korkeus Uuden Pelilaudan korkeus.
+     * @param merkkijononPituus Kertoo lyhimmän hyväksytyn suoran pituuden.
      * @see Pelilauta
      */
     public void luoPelilauta(int leveys, int korkeus, int merkkijononPituus) {
@@ -148,7 +148,7 @@ public class Neljansuora {
     }
 
     /**
-     * Pelinlopeutsmetodi graafista käyttöliittymää varten.
+     * Pelinlopetusmetodi graafista käyttöliittymää varten.
      *
      * @see Pelilauta
      */
