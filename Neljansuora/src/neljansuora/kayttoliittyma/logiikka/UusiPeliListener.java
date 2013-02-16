@@ -15,14 +15,7 @@ import neljansuora.peli.Neljansuora;
  */
 
 public class UusiPeliListener implements ActionListener{
-    
-    /**
-     * Kuvaa Neljansuora-pelin graafisen käyttöliittymän toteuttavaa luokkaa.
-     * @see Kayttoliittyma
-     */
-    
-    private Kayttoliittyma kayttoliittyma;
-    
+        
     /**
      * Kuvaa Neljansuora-pelin pelitilannetta kullakin hetkellä.
      * @see TilannetietoPanel
@@ -53,9 +46,8 @@ public class UusiPeliListener implements ActionListener{
      * @param piirtoalusta Kuvaa piirtoalustaa, joka piirtää peliruudukon.
      */
     
-    public UusiPeliListener(Neljansuora neljansuora, Kayttoliittyma kayttoliittyma,
+    public UusiPeliListener(Neljansuora neljansuora,
             TilannetietoPanel tilannetietopanel, Piirtoalusta piirtoalusta){
-        this.kayttoliittyma = kayttoliittyma;
         this.neljansuora = neljansuora;
         this.tilannetietopanel = tilannetietopanel;
         this.piirtoalusta = piirtoalusta;

@@ -20,14 +20,6 @@ import neljansuora.peli.Neljansuora;
 public class VarinvaihtoListener implements ActionListener {
     
     /**
-     * Neljansuora kuvaa Neljansuora-pelin samannimistä luokkaa.
-     *
-     * @see Neljansuora
-     */
-    
-    private Neljansuora neljansuora;
-    
-    /**
      * Piirtoalusta, joka piirtää käyttöliittymän peliruudukon.
      * @see Piirtoalusta
      */
@@ -49,13 +41,11 @@ public class VarinvaihtoListener implements ActionListener {
      * Konstruktorissa alustetaan varipaletinNumeron numerointi ja varientalletuslista. 
      * Sen jälkeen alustetaan oletusvärilista luokan omalla metodilla. Lisäksi luokan attribuutteihin 
      * asetetaan konstruktorin parametrien arvot.
-     * @param neljansuora Kuvaa Neljansuora-peliä
      * @param piirtoalusta Kuvaa piirtoalustaa, joka piirtää peliruudukon.
      */
 
-    public VarinvaihtoListener(Neljansuora neljansuora, Piirtoalusta piirtoalusta) {
+    public VarinvaihtoListener(Piirtoalusta piirtoalusta) {
 
-        this.neljansuora = neljansuora;
         this.piirtoalusta = piirtoalusta;
         this.varipaletinNumero = 0;
         this.varientalletuslista = new HashMap<Integer, List<Color>>();

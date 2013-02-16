@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import neljansuora.peli.Neljansuora;
+import neljansuora.peli.Pelilauta;
 
 /**
  * RivinappulatPanel-luokka luo käyttöliittymään nappularivin, jonka nappuloiden avulla pelaaja 
@@ -21,11 +22,11 @@ import neljansuora.peli.Neljansuora;
 public class RivinappulatPanel extends JPanel{
     
     /**
-     * Kuvaa Neljansuora-pelin samannimistä luokkaa.
-     * @see Neljansuora
+     * Kuvaa Neljansuora-pelin pelilautaa.
+     * @see Pelilauta
      */
     
-    private Neljansuora neljansuora;
+    private Pelilauta pelilauta;
     
     /**
      * Kuvaa Neljansuora-pelin pelitilannetta kullakin hetkellä.
@@ -38,14 +39,14 @@ public class RivinappulatPanel extends JPanel{
      * Konstruktori luo RivinappulatPanelille uuden layoutin ja asettaa luokan attribuuttien 
      * arvot konstruktorin parametrien arvoiksi. Konstruktori myös käyttää luokan omaa metodia 
      * luoNappulat(), joka luo paneelille omat nappulat.
-     * @param neljansuora Kuvaa Neljansuora-peliä
+     * @param pelilauta Kuvaa Neljansuora-pelin pelilautaa
      * @param tilannetietoPanel Kuvaa TilannetietoPanelia, joka kertoo tilannetiedot pelistä
      */
     
-    public RivinappulatPanel(Neljansuora neljansuora, TilannetietoPanel tilannetietoPanel){
+    public RivinappulatPanel(Pelilauta pelilauta, TilannetietoPanel tilannetietoPanel){
                        
-        super(new GridLayout(1, neljansuora.getPelilauta().getLauta().get(0).length));
-        this.neljansuora = neljansuora;
+        super(new GridLayout(1, pelilauta.getLauta().get(0).length));
+        this.pelilauta = pelilauta;
         this.tilannetietoPanel = tilannetietoPanel;        
         this.luoNappulat();
     }
@@ -56,7 +57,7 @@ public class RivinappulatPanel extends JPanel{
      */
     
     private void luoNappulat(){
-        int nappuloidenMaara = neljansuora.getPelilauta().getLauta().get(0).length;
+        int nappuloidenMaara = this.pelilauta.getLauta().get(0).length;
         
         List<JButton> nappilista = new ArrayList<JButton>();
         
@@ -78,7 +79,7 @@ public class RivinappulatPanel extends JPanel{
     
     private void lisaaActionListenerNappiinJaNappiPaneeliin(List<JButton> nappilista){
         for(JButton nappi : nappilista){
-            nappi.addActionListener(new NappulanPudotusListener(this.neljansuora.getPelilauta(), 
+            nappi.addActionListener(new NappulanPudotusListener(this.pelilauta, 
                     nappi.getText(), this.tilannetietoPanel));
             
             add(nappi);

@@ -65,7 +65,7 @@ public class PiirtoPanel extends JPanel{
     
     private void luoOsat(){
         add(this.piirtoalusta, BorderLayout.CENTER);
-        add(new RivinappulatPanel(this.neljansuora, this.tilannetietoPanel), BorderLayout.SOUTH);
+        add(new RivinappulatPanel(this.neljansuora.getPelilauta(), this.tilannetietoPanel), BorderLayout.SOUTH);
     }
     
 }

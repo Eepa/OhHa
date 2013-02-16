@@ -28,13 +28,7 @@ public class ValikkoPanel extends JPanel {
      * @see TilannetietoPanel
      */
     private TilannetietoPanel tilannetietoPanel;
-    /**
-     * Kayttoliittyma kuvaa graafista käyttöliittymää.
-     *
-     * @see Kayttoliittyma
-     */
-    private Kayttoliittyma kayttoliittyma;
-    
+   
     /**
      * Piirtoalusta, joka piirtää käyttöliittymän peliruudukon.
      * @see Piirtoalusta
@@ -56,12 +50,11 @@ public class ValikkoPanel extends JPanel {
      * @param piirtoalusta Kuvaa piirtoalustaa, joka piirtää peliruudukon.
      */
     public ValikkoPanel(int korkeus, int leveys,
-            Neljansuora neljansuora, TilannetietoPanel tilannetietoPanel, Kayttoliittyma kayttoliittyma, Piirtoalusta piirtoalusta) {
+            Neljansuora neljansuora, TilannetietoPanel tilannetietoPanel, Piirtoalusta piirtoalusta) {
         super(new GridLayout(korkeus, leveys));
 
         this.neljansuora = neljansuora;
         this.tilannetietoPanel = tilannetietoPanel;
-        this.kayttoliittyma = kayttoliittyma;
         this.piirtoalusta = piirtoalusta;
         luoKomponentit();
     }
@@ -74,12 +67,12 @@ public class ValikkoPanel extends JPanel {
 
         JButton uusiPeli = new JButton("Uusi peli");
 
-        uusiPeli.addActionListener(new UusiPeliListener(this.neljansuora, this.kayttoliittyma,
+        uusiPeli.addActionListener(new UusiPeliListener(this.neljansuora,
                 this.tilannetietoPanel, this.piirtoalusta));
 
         JButton variasetukset = new JButton("Väriasetukset");
 
-        variasetukset.addActionListener(new VarinvaihtoListener(this.neljansuora, this.piirtoalusta));
+        variasetukset.addActionListener(new VarinvaihtoListener(this.piirtoalusta));
 
         add(uusiPeli);
         add(variasetukset);

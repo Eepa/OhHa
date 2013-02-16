@@ -106,7 +106,7 @@ public class Kayttoliittyma implements Runnable {
 
         this.piirtoalusta = new Piirtoalusta(this.neljansuora);
 
-        TilannetietoPanel tilannetietoPanel = new TilannetietoPanel(this.neljansuora);
+        TilannetietoPanel tilannetietoPanel = new TilannetietoPanel(this.neljansuora.getPelilauta());
 
         container.add(tilannetietoPanel, BorderLayout.SOUTH);
 
@@ -114,7 +114,7 @@ public class Kayttoliittyma implements Runnable {
                 BorderLayout.CENTER);
 
         container.add(new ValikkoPanel(1, 3, this.neljansuora, tilannetietoPanel, 
-                this, this.piirtoalusta), BorderLayout.NORTH);
+                this.piirtoalusta), BorderLayout.NORTH);
 
     }
 

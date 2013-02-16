@@ -65,3 +65,6 @@ Refaktoroitu koodia, Javadocia kirjoitettu eteenpain.
 
 Perjantai 15.02.2013, 0,5h
 Javadocia jatkettu ja paranneltu.
+
+Lauantai 16.02.2013, 1,5h
+Luokkakaavio paivitetty.

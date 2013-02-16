@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import neljansuora.domain.Pelaaja;
 import neljansuora.peli.Neljansuora;
+import neljansuora.peli.Pelilauta;
 
 /**
  * TilannetietoPanel-luokka kertoo kulloisenkin pelitilanteen ja pitää kirjaa
@@ -18,11 +19,11 @@ import neljansuora.peli.Neljansuora;
 public class TilannetietoPanel extends JPanel implements Paivitettava {
 
     /**
-     * Kuvaa Neljansuora-pelin samannimistä luokkaa.
+     * Kuvaa Neljansuora-pelin pelilautaa.
      *
-     * @see Neljansuora
+     * @see Pelilauta
      */
-    private Neljansuora neljansuora;
+    private Pelilauta pelilauta;
     /**
      * Kertoo, kumman pelaajan vuoro on siirtää pelissä seuraavaksi.
      */
@@ -39,7 +40,7 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
      * Kertoo Neljansuora-pelin Pelaajien määrän.
      */
     private int pelaajienMaara;
-
+    
     /**
      * Konstruktori asettaa Tilannetietopaneelille uuden layoutin ja asettaa
      * neljansuora attribuutin arvoksi parametreinaan saamansa arvon. Lisäksi
@@ -49,13 +50,13 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
      * pelaajalle tekstimuotoisen attribuutin; luoTietopaneeli(), joka luo uuden
      * tietopaneelin.
      *
-     * @param neljansuora Kuvaa Neljansuora-peliä
+     * @param pelilauta Kuvaa Neljansuora-pelin pelilautaa
      */
-    public TilannetietoPanel(Neljansuora neljansuora) {
+    public TilannetietoPanel(Pelilauta pelilauta) {
         super(new GridLayout(1, 2));
-        this.neljansuora = neljansuora;
+        this.pelilauta = pelilauta;
         this.vuoronumero = 1;
-        this.pelaajienMaara = this.neljansuora.getPelilauta().getPelaajat().size();
+        this.pelaajienMaara = this.pelilauta.getPelaajat().size();
         this.setVuorossaoleva();
         this.luoTietopaneeli();
     }
@@ -96,7 +97,7 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
 
     public String haeOikeanPelaajanNimi() {
         
-        List<Pelaaja> pelaajat = this.neljansuora.getPelilauta().getPelaajat();
+        List<Pelaaja> pelaajat = this.pelilauta.getPelaajat();
 
         for (Pelaaja p : pelaajat) {
             if (p.getVuoronumero() == this.vuoronumero) {
@@ -134,9 +135,9 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
         this.alustaKierroksenVuoronumero();
         this.setKukaVuorossa();
 
-        if (this.neljansuora.getPelilauta().onkoNeljanSuoraa()) {
+        if (this.pelilauta.onkoNeljanSuoraa()) {
             this.ilmoitaVoittaja();
-        } else if (this.neljansuora.getPelilauta().onkoLautaTaynna()) {
+        } else if (this.pelilauta.onkoLautaTaynna()) {
             this.ilmoitaLaudanTayttymisesta();
         }
 
