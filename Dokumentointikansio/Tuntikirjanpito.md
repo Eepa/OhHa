@@ -67,4 +67,5 @@ Perjantai 15.02.2013, 0,5h
 Javadocia jatkettu ja paranneltu.
 
 Lauantai 16.02.2013, 1,5h
-Luokkakaavio paivitetty.
+Luokkakaavio paivitetty, testeja paivitelty, aihemaarittelya 
+paivitetty.
