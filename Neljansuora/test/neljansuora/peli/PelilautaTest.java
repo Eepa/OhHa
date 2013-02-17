@@ -30,7 +30,7 @@ public class PelilautaTest {
         String teksti = "Pekka\n" + "Jukka\n";
         this.lukija = new Scanner(teksti);
 
-        this.pelilauta = new Pelilauta(8, 9, 4, this.lukija);
+        this.pelilauta = new Pelilauta(4, 4, 4, this.lukija);
 
     }
 
@@ -67,7 +67,7 @@ public class PelilautaTest {
 
     @Test
     public void luoPelilaudanHashMappiinOikein() {
-        int summa = 8 + 9;
+        int summa = 4 + 4;
 
         int tarkistussumma = this.pelilauta.getLauta().size() + this.pelilauta.getLauta().get(0).length;
 
@@ -123,7 +123,7 @@ public class PelilautaTest {
 
         }
 
-        assertEquals(tarkistusluku, 9);
+        assertEquals(tarkistusluku, 4);
 
     }
 
@@ -152,14 +152,14 @@ public class PelilautaTest {
 
     @Test
     public void pelilautaaLuodessaLuodaanTarpeeksiRiveja() {
-        assertEquals(this.pelilauta.getLauta().size(), 9);
+        assertEquals(this.pelilauta.getLauta().size(), 4);
     }
 
     @Test
     public void pelilautaaLuodessaLuodaanTarpeeksiPitkiaRiveja() {
         for (String[] rivi : this.pelilauta.getLauta().values()) {
 
-            if (rivi.length != 8) {
+            if (rivi.length != 4) {
                 assertTrue(false);
             }
         }
@@ -211,31 +211,21 @@ public class PelilautaTest {
 
     @Test
     public void onkoNeljanSuoraaPalauttaaOikeinJosOnSuoria() {
-        // MIKÄ VIKANA..?? AssertionFailedError
-//        Pelilauta pelilauta = new Pelilauta(8, 9, 4, this.lukija);
-//        
-//        pelilauta.luoPelaajat();
-//
-//        Pelaaja pelaaja1 = pelilauta.getPelaajat().get(0);
-//        Pelaaja pelaaja2 = pelilauta.getPelaajat().get(1);
-//
-//        for (int i = 0; i < pelilauta.getLauta().size(); i++) {
-//
-//            String[] rivi = pelilauta.getLauta().get(i);
-//
-//            for (int j = 0; j < rivi.length; j++) {
-//                pelaaja1.lisaaUusiNappula(j, i);
-//                pelaaja2.lisaaUusiNappula(j, i);
-//            }
-//        }
-//
-//        assertTrue(pelilauta.onkoNeljanSuoraa());
+
+        pelilauta.getLautaKasittelija().kirjoitaLaudalle("X");
+        this.pelilauta.luoPelaajat();
+        lisaaPelaajalleNappuloita(this.pelilauta.getPelaajat().get(0), 4);
+        lisaaPelaajalleNappuloita(this.pelilauta.getPelaajat().get(1), 4);
+        boolean onkoNeljanSuoraaMetodinPalauttamaArvo = this.pelilauta.onkoNeljanSuoraa();
+
+        this.pelilauta.taytaPelilauta();
+
+        assertTrue(onkoNeljanSuoraaMetodinPalauttamaArvo);
     }
 
-  
-
-    @Test
-    public void siirtojenTekeminenToimiiScanneriaKayttamallaTekstikayttoliittymassa() {
-        // Miten testataan scanneria?
+    private void lisaaPelaajalleNappuloita(Pelaaja p, int maara) {
+        for (int i = 0; i < maara; i++) {
+            p.lisaaUusiNappula(i, 0);
+        }
     }
 }

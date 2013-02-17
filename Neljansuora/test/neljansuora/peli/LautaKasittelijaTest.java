@@ -26,7 +26,7 @@ public class LautaKasittelijaTest {
         String teksti ="Pekka\n" + "Jukka\n";
         this.lukija = new Scanner(teksti);
 
-        this.neljansuora = new Neljansuora(8, 9, 4, this.lukija, "teksti");
+        this.neljansuora = new Neljansuora(4, 4, 4, this.lukija, "teksti");
 
         this.lautakasittelija = new LautaKasittelija(this.neljansuora.getPelilauta().getLauta(),
                 this.neljansuora.getPelilauta().getPelaajat(), this.lukija);
@@ -69,7 +69,7 @@ public class LautaKasittelijaTest {
 
         }
 
-        assertEquals(tarkistusluku, 9);
+        assertEquals(tarkistusluku, 4);
     }
 
     @Test
@@ -84,17 +84,11 @@ public class LautaKasittelijaTest {
 
     @Test
     public void yhdenSatunnaisenNappulanKirjoittaminenLaudalleToimiiOikein() {
-        this.lautakasittelija.kirjoitaLaudalleNappula("X", 0, 8);
+        this.lautakasittelija.kirjoitaLaudalleNappula("X", 0, 3);
 
-        String merkki = this.neljansuora.getPelilauta().getLauta().get(8)[0];
+        String merkki = this.neljansuora.getPelilauta().getLauta().get(3)[0];
 
         assertEquals("X", merkki);
     }
-
-    @Test
-    public void pelaajanSiirronLukeminenToimiiOikein() {
-        // MITEN TESTATAAN SCANNERIA?
-    }
-
-   
+  
 }

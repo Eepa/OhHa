@@ -25,7 +25,7 @@ public class NeljansuoraTest {
     public void setUp() {
         String teksti ="Pekka\n" + "Jukka\n";
         this.lukija = new Scanner(teksti);
-        this.neljansuora = new Neljansuora(8, 9, 4, lukija, "teksti");
+        this.neljansuora = new Neljansuora(4, 4, 4, lukija, "teksti");
 
     }
 

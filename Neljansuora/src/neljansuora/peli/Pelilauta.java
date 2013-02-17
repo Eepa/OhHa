@@ -206,6 +206,10 @@ public class Pelilauta {
     public void taytaPelilauta() {
         this.lautaKasittelija.kirjoitaLaudalle(".");
     }
+    
+    public LautaKasittelija getLautaKasittelija(){
+        return this.lautaKasittelija;
+    }
 
     public void setPaivitettava(Paivitettava paivitettava) {
         this.paivitettava = paivitettava;
