@@ -1,24 +1,21 @@
 package neljansuora.kayttoliittyma;
 
-import neljansuora.kayttoliittyma.logiikka.TilannetietoPanel;
-import neljansuora.kayttoliittyma.logiikka.PituudenAsettelija;
-import neljansuora.kayttoliittyma.logiikka.ValikkoPanel;
-import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
-import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
-import neljansuora.kayttoliittyma.grafiikka.PiirtoPanel;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.util.Scanner;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
+import neljansuora.kayttoliittyma.grafiikka.PiirtoPanel;
+import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
+import neljansuora.kayttoliittyma.logiikka.PituudenAsettelija;
+import neljansuora.kayttoliittyma.logiikka.TilannetietoPanel;
+import neljansuora.kayttoliittyma.logiikka.ValikkoPanel;
 import neljansuora.peli.Neljansuora;
 import neljansuora.peli.Pelilauta;
+
+
 
 /**
  * Kayttoliittyma-luokka kuvaa Neljansuora-pelin graafista käyttöliittymää.
@@ -72,14 +69,17 @@ public class Kayttoliittyma implements Runnable {
         this.neljansuora = new Neljansuora(leveys, korkeus, suoranPituus, lukija, "graafinen");
     }
 
-    
+   /**
+    * Luo uuden ruudun Neljansuora-pelille. Ruudun koko määräytyy Neljansuora-pelin 
+    * pelilaudan koon mukaan.
+    */
 
     @Override
     public void run() {
         frame = new JFrame("Neljän Suora");
 
         int leveys = (this.neljansuora.getPelilauta().getLauta().get(0).length) * 50;
-        int korkeus = (this.neljansuora.getPelilauta().getLauta().size() + 2) * 48;
+        int korkeus = (this.neljansuora.getPelilauta().getLauta().size() + 2) * 51;
         frame.setPreferredSize(new Dimension(leveys, korkeus));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

@@ -6,9 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
-import neljansuora.domain.Nappula;
 import neljansuora.domain.Pelaaja;
 import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
+
+
 
 /**
  * Kuvaa Neljansuora-pelin pelilautaa. Pelilaudalla on tietty

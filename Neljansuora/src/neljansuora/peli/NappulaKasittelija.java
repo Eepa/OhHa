@@ -1,10 +1,10 @@
 package neljansuora.peli;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import neljansuora.domain.Nappula;
 import neljansuora.domain.Pelaaja;
+
+
 
 /**
  * NappulaKasittelija-luokka muokkaa Pelilaudan Pelaajien nappuloiden tilaa ja

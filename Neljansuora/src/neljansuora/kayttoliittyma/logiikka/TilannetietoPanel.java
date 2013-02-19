@@ -1,14 +1,14 @@
 package neljansuora.kayttoliittyma.logiikka;
 
-import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
 import java.awt.GridLayout;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import neljansuora.domain.Pelaaja;
-import neljansuora.peli.Neljansuora;
+import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
 import neljansuora.peli.Pelilauta;
+
 
 /**
  * TilannetietoPanel-luokka kertoo kulloisenkin pelitilanteen ja pitää kirjaa
@@ -124,6 +124,7 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
     private void luoTietopaneeli() {
         JLabel vuorossa = new JLabel("Vuorossa:");
         this.kukaVuorossa = new JTextArea(this.vuorossaoleva);
+        this.kukaVuorossa.setEditable(false);
 
         add(vuorossa);
         add(kukaVuorossa);

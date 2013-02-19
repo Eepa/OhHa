@@ -6,6 +6,8 @@ import java.util.Scanner;
 import neljansuora.domain.Nappula;
 import neljansuora.domain.Pelaaja;
 
+
+
 /**
  * LautaKasittelija-luokka kuvaa LautaKasittelijaa, joka käsittelee ja muokkaa
  * Pelilaudan tilaa. Käsittelijän avulla lisätään laudalle nappuloita,

@@ -2,9 +2,10 @@ package neljansuora.kayttoliittyma.grafiikka;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.Map;
 import javax.swing.JPanel;
 import neljansuora.peli.Neljansuora;
+
+
 
 /**
  * Piirtoalusta-luokka piirtää graafiseen käyttöliittymään peliruudukon, jossa

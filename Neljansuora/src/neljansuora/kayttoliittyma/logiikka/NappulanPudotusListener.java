@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import neljansuora.peli.Pelilauta;
 
+
 /**
  * Luokka kuvaa tapahtumankuuntelijaa, joka tarkkailee, painetaanko RivinappulatPanelin nappuloita.
  * Jos nappuloita painetaan, suorittaa luokan ilmentymä nappulan pudottamisen pelilaudalle.
@@ -62,4 +63,6 @@ public class NappulanPudotusListener implements ActionListener {
         this.lauta.teeYhdenPelaajanSiirtoGraafistaKayttoliittymaaVarten(nappulanNumero, this.tilannetietoPanel.getVuoronumero());
         this.tilannetietoPanel.paivita();
     }
+
+    
 }

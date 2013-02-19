@@ -1,13 +1,9 @@
 package neljansuora.peli;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.Timer;
 import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
-import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
-import javax.swing.JOptionPane;
+
+
 
 /**
  * Luokka Neljansuora kuvaa Neljansuora-peliä. Luokka luo pelille pelilaudan ja

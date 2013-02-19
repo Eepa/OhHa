@@ -1,11 +1,11 @@
 package neljansuora.kayttoliittyma.logiikka;
 
-import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import neljansuora.kayttoliittyma.Kayttoliittyma;
+import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
 import neljansuora.peli.Neljansuora;
+
 
 /**
  * ValikkoPanel-luokka kuvaa graafiseen käyttöliittymään liittyvää napeista

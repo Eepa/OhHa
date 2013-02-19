@@ -1,16 +1,14 @@
 
 package neljansuora.kayttoliittyma.logiikka;
 
-import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import neljansuora.peli.Neljansuora;
 import neljansuora.peli.Pelilauta;
+
+
 
 /**
  * RivinappulatPanel-luokka luo käyttöliittymään nappularivin, jonka nappuloiden avulla pelaaja 
