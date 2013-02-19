@@ -70,5 +70,5 @@ Lauantai 16.02.2013, 1,5h
 Luokkakaavio paivitetty, testeja paivitelty, aihemaarittelya 
 paivitetty.
 
-Tiistai 19.02.2013, 0,5h
-Korjailtu koodia.
+Tiistai 19.02.2013, 1h
+Korjailtu koodia, kirjoitettu kayttoohjeet ja rakennekuvaus.

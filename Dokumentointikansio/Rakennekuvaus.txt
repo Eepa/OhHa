@@ -1,1 +1,25 @@
 Neljansuora-pelin rakennekuvaus
+
+Neljansuora-peli koostuu kayttoliittymasta ja pelin logiikkaa 
+sisaltavista luokista. Pelilogiikkaa hoitavia luokkia ovat 
+luokkakaavion oikeassa alalaidassa nakyvat viisi luokkaa (Nappula, 
+Pelaaja, NappulaKasittelija, LautaKasittelija, Pelilauta) ja 
+luokkakaavion keskella sijaitseva Neljansuora-luokka.
+
+Loput luokkakaavion luokista hoitavat pelin graafisen kaytto-
+liittyman toteutusta. Kayttoliittyman luokat voidaan jakaa 
+kayttoliittyman logiikkaa toteuttaviin luokkiin (eri Listenerit, 
+PituudenAsettelija, TilannetietoPanel, RivinappulatPanel, 
+ValikkoPanel) ja grafiikkaa toteuttaviin luokkiin (rajapinta 
+Paivitettava, PiirtoPanel ja Piirtoalusta).
+
+Main-luokka kaynnistaa uuden Neljansuora-pelin joko graafisessa 
+kayttoliittymassa, jolloin kaynnistys tapahtuu Kayttoliittyma-
+luokan kautta, tai tekstikayttoliittymassa, jolloin graafisen 
+kayttoliittyman luokkia ei kayteta ollenkaan.
+
+Keskeisia luokkakaavion luokkia ovat Pelilauta ja Neljansuora, 
+joiden avulla kaytetaan pelilogiikan muita luokkia. Lisaksi 
+tarkeita luokkia ovat graafisen kayttoliittyman TilannetietoPanel 
+ja Piirtoalusta, joista Piirtoalusta piirtaa pelin ja tietopaneeli 
+pitaa kirjaa pelaajien vuoroista.

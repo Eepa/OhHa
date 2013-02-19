@@ -1,1 +1,28 @@
 Neljansuora-pelin kaytto-ohjeet
+
+1. Kaynnista Neljansuora-peli ajamalla Neljansuora.jar-tiedosto.
+
+2. Anna pelilaudalle oikean kyselyruudun kohdalla ensin leveys,
+   korkeus ja sitten lyhimman halutun suoran pituus. Jos jatat 
+   kentan tyhjaksi, asettaa peli kentalle oletusarvoiset arvot.
+   (Leveys 7, korkeus 6, suoran pituus 4)
+
+3. Anna seuraavaksi avautuviin kyselyruutuihin pelaajille nimet. 
+   Tyhja arvo asettaa pelaajien nimiksi oletusarvot (Pelaaja1, 
+   Pelaaja2).
+
+4. Pelin kaynnistyttya vuorossaolevan pelaajan nakee laudan ala-
+   laidan palkista. 
+
+5. Vuorossaoleva pelaaja voi tiputtaa omanvärisensä nappulan 
+   pelilaudalle kayttamalla alalaidan nappeja.
+
+6. Laudan varimaailmaa saa vaihdettua ylalaidan Variasetukset-
+   napista. Painamalla nappia useamman kerran, vaihtuu vari 
+   takaisin alkuperaiseksi.
+
+7. Kun lauta tayttyy tai toinen pelaajista saa voittoon oikeutta-
+   van pituisen suoran, voi uuden pelin aloittaa painamalla yla-
+   laidan Uusi peli -nappia. Alalaidan tietopalkki ilmoittaa, 
+   jos lauta on tayttynyt tai jompikumpi pelaaja on voittanut 
+   pelin.
