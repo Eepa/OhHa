@@ -146,7 +146,7 @@ public class PituudenAsettelija {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Syötteen pitää olla joku luku!",
                     "Luvun antaminen epäonnistui", 0);
-            this.asetaEtsittavanSuoranPituus(leveys, korkeus, pituudenNimi);
+            palautettavaPituus = this.asetaEtsittavanSuoranPituus(leveys, korkeus, pituudenNimi);
         }
         return palautettavaPituus;
     }
