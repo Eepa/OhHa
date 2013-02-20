@@ -98,33 +98,49 @@ public class PelilautaTest {
 
         for (String[] rivi : this.pelilauta.getLauta().values()) {
 
-            String uusiSana = "";
-
-            for (int i = 0; i < rivi.length; i++) {
-                uusiSana += rivi[i];
-            }
+            String uusiSana = teeRivinMerkeistaSana(rivi);
 
             rivit.add(uusiSana);
 
         }
 
-        String testisana = "";
-        for (int j = 0; j < this.pelilauta.getLauta().get(0).length; j++) {
-            testisana += ".";
-        }
 
+
+        int tarkistusluku = palautaTarkistusluku(rivit);
+
+        assertEquals(tarkistusluku, 4);
+
+    }
+
+    public int palautaTarkistusluku(ArrayList rivit) {
+        String testisana = teeTestisana();
         int tarkistusluku = 0;
 
-        for (String rivinKirjainesitys : rivit) {
+        for (Object rivinKirjainesitys : rivit) {
 
             if (rivinKirjainesitys.equals(testisana)) {
                 tarkistusluku++;
             }
 
         }
+        return tarkistusluku;
+    }
 
-        assertEquals(tarkistusluku, 4);
+    public String teeTestisana() {
+        String testisana = "";
+        for (int j = 0; j < this.pelilauta.getLauta().get(0).length; j++) {
+            testisana += ".";
+        }
+        return testisana;
+    }
 
+    public String teeRivinMerkeistaSana(String[] rivi) {
+        String uusiSana = "";
+
+        for (int i = 0; i < rivi.length; i++) {
+            uusiSana += rivi[i];
+        }
+        return uusiSana;
     }
 
     @Test

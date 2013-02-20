@@ -1,6 +1,7 @@
 package neljansuora.peli;
 
 import java.util.Scanner;
+import neljansuora.domain.Pelaaja;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,13 +20,17 @@ public class NappulaKasittelijaTest {
     private Scanner lukija;
     private Neljansuora neljansuora;
     private NappulaKasittelija nappulakasittelija;
+    private LautaKasittelija lautakasittelija;
 
     @Before
     public void setUp() {
-        String teksti ="Pekka\n" + "Jukka\n";
+        String teksti = "Pekka\n" + "Jukka\n";
         this.lukija = new Scanner(teksti);
 
         this.neljansuora = new Neljansuora(4, 4, 4, this.lukija, "teksti");
+
+        this.lautakasittelija = new LautaKasittelija(this.neljansuora.getPelilauta().getLauta(),
+                this.neljansuora.getPelilauta().getPelaajat(), this.lukija);
 
         this.nappulakasittelija = new NappulaKasittelija(this.neljansuora.getPelilauta().getLauta(),
                 this.neljansuora.getPelilauta().getPelaajat(), 4);
@@ -49,7 +54,13 @@ public class NappulaKasittelijaTest {
 
     @Test
     public void onkoLautaTaynnaPalauttaaOikeinJosTaynna() {
-        // TODO
+         this.lisaaPelaajanNappulat();
+        
+        Pelaaja p = this.neljansuora.getPelilauta().getPelaajat().get(0);
+        
+        this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
+        
+        assertTrue(this.nappulakasittelija.onkoLautaTaynna());
     }
 
     @Test
@@ -84,7 +95,13 @@ public class NappulaKasittelijaTest {
 
     @Test
     public void onkoRiittavanPitkiaSuoriaPalauttaaOikeinJosSuora() {
-        //TODO
+         this.lisaaPelaajanNappulat();
+        
+        Pelaaja p = this.neljansuora.getPelilauta().getPelaajat().get(0);
+        
+        this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
+        
+        assertTrue(this.nappulakasittelija.onkoRiittavanPitkiaSuoria());
     }
 
     @Test
@@ -103,23 +120,26 @@ public class NappulaKasittelijaTest {
     @Test
     public void onkoMahdollinenSiirtoPalauttaaOikeinJosEiOleMahdollinen() {
 
-//        for (int j = 0; j < 9; j++) {
-//           String[] rivi = this.neljansuora.getPelilauta().getLauta().get(j);
-//        
-//            for (int i = 0; i < rivi.length; i++) {
-//                this.neljansuora.getPelilauta().teeYhdenPelaajanSiirto(j, 1);
-//            }
-//        }
-//        
-//        int epatotuuksienMaara = 8;
-//
-//        for (int i = 0; i < 8; i++) {
-//            if (!this.nappulakasittelija.onkoMahdollinenSiirto(i)) {
-//                epatotuuksienMaara--;
-//            }
-//        }
-//        assertEquals(epatotuuksienMaara, 0);
+        this.lisaaPelaajanNappulat();
         
-        //MITEN SAA LAUDAN TÄYTEEN ILMAN ETTÄ TULEE NELJAN SUORIA??
+        Pelaaja p = this.neljansuora.getPelilauta().getPelaajat().get(0);
+        
+        this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
+
+        assertFalse(this.nappulakasittelija.onkoMahdollinenSiirto(1));
+    }
+    
+    public void lisaaPelaajanNappulat(){
+        Pelaaja p = this.neljansuora.getPelilauta().getPelaajat().get(0);
+
+        for (int i = 0; i < this.neljansuora.getPelilauta().getLauta().size(); i++) {
+            String[] rivi = this.neljansuora.getPelilauta().getLauta().get(i);
+            for (int j = 0; j < rivi.length; j++) {
+                p.lisaaUusiNappula(j, i);
+            }
+
+        }
+        
+        this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
     }
 }

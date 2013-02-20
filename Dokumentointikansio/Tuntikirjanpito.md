@@ -72,3 +72,6 @@ paivitetty.
 
 Tiistai 19.02.2013, 1h
 Korjailtu koodia, kirjoitettu kayttoohjeet ja rakennekuvaus.
+
+Keskiviikko 20.02.2013, 1h
+Tehty lisaa testeja.
