@@ -23,3 +23,11 @@ Kayttajien toiminnot:
 - Oman nappulan pudottaminen
 - Pelilaudan varin vaihtaminen
 - Uuden pelin aloittaminen
+
+Laajennusmahdollisuudet:
+
+- Highscore-listan lisaaminen
+- Mahdollisuus lisata omia variyhdistelmia peliin
+- Mahdollisuus pelata useammalla pelaajalla
+- Mahdollisuus pelata tekoalya vastaan
+- Nappulan pudottaminen painamalla suoraan pelilaudan rivia

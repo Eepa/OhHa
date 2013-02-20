@@ -1,1 +1,6 @@
 Testausdokumentaatio
+
+Kirjoita esimerkiksi seuraavista
+Mitä et testannut automaattisesti?
+Miten näitä on testattu käsin?
+Raportoi myös mahdolliset bugit

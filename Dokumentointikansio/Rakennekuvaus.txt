@@ -1,4 +1,4 @@
-Neljansuora-pelin rakennekuvaus
+Neljansuora-pelin rakennekuvaus luokkakaaviosta
 
 Neljansuora-peli koostuu kayttoliittymasta ja pelin logiikkaa 
 sisaltavista luokista. Pelilogiikkaa hoitavia luokkia ovat 
@@ -23,3 +23,13 @@ joiden avulla kaytetaan pelilogiikan muita luokkia. Lisaksi
 tarkeita luokkia ovat graafisen kayttoliittyman TilannetietoPanel 
 ja Piirtoalusta, joista Piirtoalusta piirtaa pelin ja tietopaneeli 
 pitaa kirjaa pelaajien vuoroista.
+
+Luokkakaaviossa kaytannossa lahes jokainen luokka pitaa ylla yhta
+yhteytta johonkin toiseen luokkaan. Yhteydet ovat usein myos 
+yhdensuuntaisia eli vain toinen yhteyteen kuuluvista luokista 
+pystyy kayttamaan toista. Toinen yhteyteen kuuluva luokka ei tieda 
+yhteyden toisesta luokasta mitaan.
+
+Neljansuora-peliin kuuluu yksi rajapinta Paivitettava, jonka kaksi 
+luokkaa, TilannetietoPanel ja Piirtoalusta, toteuttavat.
+
