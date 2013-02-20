@@ -24,7 +24,6 @@ public class PelilautaTest {
     Neljansuora neljansuora;
     Pelilauta pelilauta;
     Scanner lukija;
-     
 
     @Before
     public void setUp() {
@@ -32,7 +31,6 @@ public class PelilautaTest {
         this.lukija = new Scanner(teksti);
 
         this.pelilauta = new Pelilauta(4, 4, 4, this.lukija);
-        
     }
 
     @Test
@@ -239,5 +237,4 @@ public class PelilautaTest {
             p.lisaaUusiNappula(i, 0);
         }
     }
-
 }
