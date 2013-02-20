@@ -1,0 +1,58 @@
+Sekvenssikaavioiden selitykset
+
+Kaikissa sekvenssikaavioissa oletetaan, ett kaikki oliot, joita 
+kaavion tapauksen suorituksen aikana kaytetaan ovat jo ennestaan 
+olemassa. Sekvenssikaavioiden suorituksen aikana ei siis luoda 
+uusia olioita.
+
+
+
+1. NappulanPudottaminenNeljansuorassa
+
+Pelilaudan tilanne: 
+
+Peli on juuri aloitettu. Pelilauta on tyhja. Ensimmainen pelaaja 
+tekee siirron pudottamalla nappulansa riville 1.
+
+Sekvenssikaavion suoritus alkaa hetkesta, jona pelaaja painaa 
+nappia 1 ja olion NappulanPudotusListener actionPerformed(ae)-
+metodia kutsutaan.
+
+Suorituksen loputtua pelaajan nappula on tippunut laudalle.
+
+
+
+2. UudenPelinAloittaminenJosNeljansuora
+
+Pelilaudan tilanne:
+
+Toinen pelaajista on saanut riittavan pitkan suoran ja pelin 
+suorittaminen on loppunut. Pelilaudalla painetaan Uusi peli 
+-nappia ja olion UusiPeliListener actionPerformed(ae)-metodia 
+kutsutaan.
+
+Sekvenssikaaviossa ei nayteta olion Pelilauta onkoNeljanSuoraa()-
+ja onkoLautaTaynna()-metodien suoritusta. Naiden metodien 
+suorituksen pystyy katsomaan sekvenssikaaviosta 
+NappulanPudottaminenNeljansuorassa.
+
+
+
+3. PelilaudanVarinVaihtaminen
+
+Pelilaudan tilanne:
+
+Pelilaudan varit ovat sininen, punainen ja keltainen. 
+Sekvenssikaavion suoritus alkaa siitä hetkestä, kun olion
+VarinVaihtoListener actionPerformed(ae)-metodia kutsutaan.
+
+Kaavion suorituksen aikana pelilaudan vari muuttuu musta, oranssi, 
+magentaksi.
+
+4. Sekvenssikaavio4
+
+Sekvenssikaaviossa kuvataan graafisen kayttoliittyman luomista 
+Neljansuora-pelille. Kaavio on tehty ennen kuin pelilaudalla 
+pystyi vaihtamaan varia tai aloittamaan uuden pelin, joten kaavion 
+toteutuksesta puuttuu niihin liittyvia osia.
+
