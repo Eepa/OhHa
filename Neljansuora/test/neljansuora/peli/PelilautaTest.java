@@ -24,6 +24,7 @@ public class PelilautaTest {
     Neljansuora neljansuora;
     Pelilauta pelilauta;
     Scanner lukija;
+     
 
     @Before
     public void setUp() {
@@ -31,6 +32,7 @@ public class PelilautaTest {
         this.lukija = new Scanner(teksti);
 
         this.pelilauta = new Pelilauta(4, 4, 4, this.lukija);
+        Paivitettava paivitettava = new Piirtoalusta(neljansuora);
 
     }
 
@@ -206,7 +208,6 @@ public class PelilautaTest {
             for (int j = 0; j < rivi.length; j++) {
                 rivi[j] = "X";
             }
-
         }
 
         assertTrue(this.pelilauta.onkoLautaTaynna());
@@ -231,8 +232,6 @@ public class PelilautaTest {
         lisaaPelaajalleNappuloita(this.pelilauta.getPelaajat().get(1), 4);
         boolean onkoNeljanSuoraaMetodinPalauttamaArvo = this.pelilauta.onkoNeljanSuoraa();
 
-        this.pelilauta.taytaPelilauta();
-
         assertTrue(onkoNeljanSuoraaMetodinPalauttamaArvo);
     }
 
@@ -241,4 +240,5 @@ public class PelilautaTest {
             p.lisaaUusiNappula(i, 0);
         }
     }
+
 }

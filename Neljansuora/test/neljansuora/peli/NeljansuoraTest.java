@@ -52,15 +52,4 @@ public class NeljansuoraTest {
         assertTrue(this.neljansuora.getPelilauta().getPaivitettava() != null);
     }
 
-    @Test
-    public void tekstikayttoliittymanKaynnistaMetodinSuoritusLoppuu() {
-        // tehdaan sisalto kun osataan
-        // ei osata vielakaan.. kysytaan pajassa
-        // ei osaa scanner-testeja tehda, eika testata Piirtoalustaa
-    }
-
-    @Test
-    public void kierroksenPelaaminenToimii() {
-        // Ei osata tehda testeja Piirtoalustalle ja scanner-luokkaa kayttavalle jutulle
-    }
-}
+   }
