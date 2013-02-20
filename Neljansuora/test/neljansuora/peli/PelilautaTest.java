@@ -32,8 +32,7 @@ public class PelilautaTest {
         this.lukija = new Scanner(teksti);
 
         this.pelilauta = new Pelilauta(4, 4, 4, this.lukija);
-        Paivitettava paivitettava = new Piirtoalusta(neljansuora);
-
+        
     }
 
     @Test
