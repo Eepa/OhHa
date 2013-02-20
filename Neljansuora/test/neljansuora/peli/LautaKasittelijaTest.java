@@ -52,19 +52,24 @@ public class LautaKasittelijaTest {
 
         }
 
-        String testisana = annaTestisana();
 
+        int tarkistusluku = palautaTarkistusluku(rivit);
+
+        assertEquals(tarkistusluku, 4);
+    }
+
+    public int palautaTarkistusluku(ArrayList rivit) {
+        String testisana = annaTestisana();
         int tarkistusluku = 0;
 
-        for (String rivinKirjainesitys : rivit) {
+        for (Object rivinKirjainesitys : rivit) {
 
             if (rivinKirjainesitys.equals(testisana)) {
                 tarkistusluku++;
             }
 
         }
-
-        assertEquals(tarkistusluku, 4);
+        return tarkistusluku;
     }
 
     public String luoRivinMerkeistaMerkkijono(String[] rivi) {
@@ -112,7 +117,7 @@ public class LautaKasittelijaTest {
         p.lisaaUusiNappula(0, 0);
         p.lisaaUusiNappula(1, 0);
         p.lisaaUusiNappula(2, 0);
-        
+
         this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
         String rivinMerkit = luoRivinMerkeistaMerkkijono(this.neljansuora.getPelilauta().getLauta().get(0));
         assertEquals("XXX.", rivinMerkit);

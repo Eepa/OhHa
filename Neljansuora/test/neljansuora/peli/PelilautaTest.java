@@ -103,9 +103,6 @@ public class PelilautaTest {
             rivit.add(uusiSana);
 
         }
-
-
-
         int tarkistusluku = palautaTarkistusluku(rivit);
 
         assertEquals(tarkistusluku, 4);
