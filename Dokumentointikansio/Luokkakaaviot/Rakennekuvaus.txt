@@ -1,4 +1,6 @@
-Neljansuora-pelin rakennekuvaus luokkakaaviosta
+Neljansuora-pelin rakennekuvaus
+
+
 
 Neljansuora-peli koostuu kayttoliittymasta ja pelin logiikkaa 
 sisaltavista luokista. Pelilogiikkaa hoitavia luokkia ovat 

@@ -78,7 +78,7 @@ public class Kayttoliittyma implements Runnable {
     public void run() {
         frame = new JFrame("Neljän Suora");
 
-        int leveys = (this.neljansuora.getPelilauta().getLauta().get(0).length) * 50;
+        int leveys = (this.neljansuora.getPelilauta().getLauta().get(0).length) * 51;
         int korkeus = (this.neljansuora.getPelilauta().getLauta().size() + 2) * 51;
         frame.setPreferredSize(new Dimension(leveys, korkeus));
 

@@ -49,6 +49,8 @@ VarinVaihtoListener actionPerformed(ae)-metodia kutsutaan.
 Kaavion suorituksen aikana pelilaudan vari muuttuu musta, oranssi, 
 magentaksi.
 
+
+
 4. Sekvenssikaavio4
 
 Sekvenssikaaviossa kuvataan graafisen kayttoliittyman luomista 
