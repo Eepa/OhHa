@@ -51,11 +51,10 @@ public class NappulaKasittelija {
      * @return Palauttaa true, jos on tilaa, muuten false.
      */
     public boolean onkoMahdollinenSiirto(int vaakarivinNumero) {
-
+        
         if (this.lauta.get(0)[vaakarivinNumero].equals(".")) {
             return true;
         }
-
         return false;
     }
 
@@ -75,7 +74,6 @@ public class NappulaKasittelija {
                 return;
             }
         }
-
     }
 
     /**
@@ -88,11 +86,10 @@ public class NappulaKasittelija {
     public boolean onkoRiittavanPitkiaSuoria() {
 
         for (Pelaaja p : this.pelaajat) {
-
             if (p.getNappulat().size() < this.merkkijononPituus) {
                 return false;
             }
-
+            
             String merkki = this.annaPelaajanMerkki(p);
 
             if (this.onkoVaakasuorasti(merkki, this.merkkijononPituus)
@@ -102,7 +99,6 @@ public class NappulaKasittelija {
                 return true;
             }
         }
-
         return false;
     }
 
@@ -131,7 +127,6 @@ public class NappulaKasittelija {
     public boolean onkoVaakasuorasti(String merkki, int pituus) {
 
         for (int i = 0; i < this.lauta.size(); i++) {
-
             String[] rivi = this.lauta.get(i);
 
             String testattavaJono = this.luoTestattavaJono(rivi);
@@ -157,7 +152,6 @@ public class NappulaKasittelija {
         for (int j = 0; j < rivi.length; j++) {
             testattavaJono = testattavaJono + rivi[j];
         }
-
         return testattavaJono;
     }
 
@@ -171,7 +165,6 @@ public class NappulaKasittelija {
         String testattavaJono = "";
 
         for (int j = 0; j < this.lauta.get(0).length; j++) {
-
             for (String[] rivi : this.lauta.values()) {
                 testattavaJono += rivi[j];
             }
@@ -187,12 +180,10 @@ public class NappulaKasittelija {
      * @return Palauttaa true, jos suora löytyy, muuten false.
      */
     public boolean onkoPystysuorasti(String merkki, int pituus) {
-
         String testattavaJono = this.luoPystyrivinTestattavaJono();
 
         if (this.testaaMerkkijononPituus(testattavaJono, merkki, pituus) == pituus) {
             return true;
-
         }
         return false;
     }
@@ -275,6 +266,7 @@ public class NappulaKasittelija {
      * @return Palauttaa muodostetun merkkijonon.
      */
     public String muodostaVinoMerkkijono(int y, int x, String merkkijono, String suoranSuunta) {
+        
         if (suoranSuunta.equals("koillinenlounas")) {
             merkkijono = this.laskeSeuraavatPisteetKoillinenLounas(y, x, merkkijono, suoranSuunta);
         } else {
@@ -349,7 +341,6 @@ public class NappulaKasittelija {
             return merkkijono;
         } else {
             String seuraavaPiste = this.lauta.get(y)[x];
-
             merkkijono = merkkijono + seuraavaPiste;
 
             return this.laskeSeuraavaPiste(y, x, yLisays, xLisays, merkkijono, suoranSuunta);
@@ -369,8 +360,8 @@ public class NappulaKasittelija {
      * 0.
      */
     public int testaaMerkkijononPituus(String testattavaJono, String merkki, int vahimmaispituus) {
-
         String tarkistusjono = teeJono(vahimmaispituus, merkki);
+        
         if (testattavaJono.contains(tarkistusjono)) {
             return vahimmaispituus;
         }
@@ -386,6 +377,7 @@ public class NappulaKasittelija {
      */
     public String teeJono(int pituus, String merkki) {
         String jono = "";
+        
         for (int i = 0; i < pituus; i++) {
             jono += merkki;
         }

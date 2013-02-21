@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
 import neljansuora.peli.Neljansuora;
 
-
 /**
  * ValikkoPanel-luokka kuvaa graafiseen käyttöliittymään liittyvää napeista
  * koostuvaa valikkoa, jossa pystyy aloittamaan uuden pelin ja vaihtamaan
@@ -28,12 +27,11 @@ public class ValikkoPanel extends JPanel {
      * @see TilannetietoPanel
      */
     private TilannetietoPanel tilannetietoPanel;
-   
     /**
      * Piirtoalusta, joka piirtää käyttöliittymän peliruudukon.
+     *
      * @see Piirtoalusta
      */
-    
     private Piirtoalusta piirtoalusta;
 
     /**
@@ -46,7 +44,6 @@ public class ValikkoPanel extends JPanel {
      * @param leveys ValikkoPanelin GridLayoutin leveys
      * @param neljansuora Viite Neljansuora-luokkaan
      * @param tilannetietoPanel Viite TilannetietoPanel-luokkaan
-     * @param kayttoliittyma Viite Kayttoliittyma-luokkaan
      * @param piirtoalusta Kuvaa piirtoalustaa, joka piirtää peliruudukon.
      */
     public ValikkoPanel(int korkeus, int leveys,
@@ -60,8 +57,8 @@ public class ValikkoPanel extends JPanel {
     }
 
     /**
-     * Luodaan ValikkoPanelin komponentit ja alustetaan niiden
-     * toiminnot. Komponentit asetetaan GridLayouttiin.
+     * Luodaan ValikkoPanelin komponentit ja alustetaan niiden toiminnot.
+     * Komponentit asetetaan GridLayouttiin.
      */
     private void luoKomponentit() {
 
@@ -76,7 +73,5 @@ public class ValikkoPanel extends JPanel {
 
         add(uusiPeli);
         add(variasetukset);
-
-
     }
 }

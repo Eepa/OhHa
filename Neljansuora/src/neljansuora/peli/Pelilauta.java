@@ -9,12 +9,10 @@ import javax.swing.JOptionPane;
 import neljansuora.domain.Pelaaja;
 import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
 
-
-
 /**
- * Kuvaa Neljansuora-pelin pelilautaa. Pelilaudalla on tietty
- * koko ja kaksi pelaajaa. Pelilauta tietää ja käyttää myös luokkia, jotka
- * auttavat muokkaamaan pelilaudan tilaa.
+ * Kuvaa Neljansuora-pelin pelilautaa. Pelilaudalla on tietty koko ja kaksi
+ * pelaajaa. Pelilauta tietää ja käyttää myös luokkia, jotka auttavat
+ * muokkaamaan pelilaudan tilaa.
  *
  * @author Eveliina Pakarinen
  */
@@ -69,11 +67,11 @@ public class Pelilauta {
     private Paivitettava paivitettava;
 
     /**
-     * Asetetaan Pelilaudan attribuuttien arvot ja alustetaan
-     * lautaa kuvaava HashMap ja pelaajat sisältävä ArrayList. Lisäksi
-     * konstruktorissa luodaan uudet LautaKasittelija- ja
-     * NappulaKasittelija-luokat. Lisäksi konstruktorissa kutsutaan luokan omaa
-     * metodia, jossa täytetään HashMap-lauta.
+     * Asetetaan Pelilaudan attribuuttien arvot ja alustetaan lautaa kuvaava
+     * HashMap ja pelaajat sisältävä ArrayList. Lisäksi konstruktorissa luodaan
+     * uudet LautaKasittelija- ja NappulaKasittelija-luokat. Lisäksi
+     * konstruktorissa kutsutaan luokan omaa metodia, jossa täytetään
+     * HashMap-lauta.
      *
      * @param leveys Pelilaudan leveys
      * @param korkeus Pelilaudan korkeus
@@ -92,7 +90,6 @@ public class Pelilauta {
         this.nappulaKasittelija = new NappulaKasittelija(this.lauta, this.pelaajat, this.merkkijononPituus);
 
         this.luoPelilauta();
-
     }
 
     /**
@@ -103,7 +100,6 @@ public class Pelilauta {
      */
     public void tulostaPelilauta() {
         this.lautaKasittelija.tulostaPelilauta();
-
     }
 
     public Map<Integer, String[]> getLauta() {
@@ -117,8 +113,8 @@ public class Pelilauta {
     public NappulaKasittelija getNappulaKasittelija() {
         return this.nappulaKasittelija;
     }
-    
-    public LautaKasittelija getLautaKasittelija(){
+
+    public LautaKasittelija getLautaKasittelija() {
         return this.lautaKasittelija;
     }
 
@@ -143,7 +139,6 @@ public class Pelilauta {
             Pelaaja pelaaja = new Pelaaja(i, nimi);
             this.pelaajat.add(pelaaja);
         }
-
     }
 
     /**
@@ -160,11 +155,10 @@ public class Pelilauta {
             Pelaaja pelaaja = new Pelaaja(i, this.kysyPelaajanNimi(i));
             this.pelaajat.add(pelaaja);
         }
-
     }
 
     /**
-     * Kysyy graafista käyttöliittymää varten pelaajan nimen (käytetään 
+     * Kysyy graafista käyttöliittymää varten pelaajan nimen (käytetään
      * pelaajien luomisvaiheessa).
      *
      * @param indeksi Kertoo pelaajan vuoronumeron.
@@ -187,7 +181,6 @@ public class Pelilauta {
                     "Nimen antaminen epäonnistui", 0);
             return this.kysyPelaajanNimi(indeksi);
         }
-
         return nimi;
     }
 
@@ -201,7 +194,6 @@ public class Pelilauta {
             String[] uusiRivi = new String[this.leveys];
             this.lauta.put(i, uusiRivi);
         }
-
         this.taytaPelilauta();
     }
 
@@ -211,7 +203,7 @@ public class Pelilauta {
     public void taytaPelilauta() {
         this.lautaKasittelija.kirjoitaLaudalle(".");
     }
-    
+
     public void setPaivitettava(Paivitettava paivitettava) {
         this.paivitettava = paivitettava;
     }
@@ -237,7 +229,6 @@ public class Pelilauta {
             if (this.onkoNeljanSuoraa() || this.onkoLautaTaynna()) {
                 return;
             }
-
             int pystyrivinNumero = this.lautaKasittelija.luePelaajanSiirto(p.getNimi());
 
             while (true) {
@@ -253,9 +244,7 @@ public class Pelilauta {
 
             this.lautaKasittelija.lisaaNappulatKenttaan(this.pelaajat);
             this.tulostaPelilauta();
-
         }
-
     }
 
     /**
@@ -274,13 +263,12 @@ public class Pelilauta {
                 if (this.onkoNeljanSuoraa() || this.onkoLautaTaynna()) {
                     return;
                 }
-
                 this.nappulaKasittelija.teeSiirto(pystyrivinNumero, p);
             }
         }
+        
         this.lautaKasittelija.lisaaNappulatKenttaan(this.pelaajat);
         this.paivitettava.paivita();
-
     }
 
     /**

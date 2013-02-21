@@ -10,46 +10,44 @@ import java.util.Map;
 import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
 
 /**
- * Luokka VarinvaihtoListener säätelee Piirtoalustan värejä ja asettaa 
- * uusia värejä Piirtoalustan värivalikoimaan.
+ * Luokka VarinvaihtoListener säätelee Piirtoalustan värejä ja asettaa uusia
+ * värejä Piirtoalustan värivalikoimaan.
+ *
  * @author evpa
  * @see Piirtoalusta
  */
-
 public class VarinvaihtoListener implements ActionListener {
-    
+
     /**
      * Piirtoalusta, joka piirtää käyttöliittymän peliruudukon.
+     *
      * @see Piirtoalusta
      */
     private Piirtoalusta piirtoalusta;
-    
     /**
-     * Kertoo, mikä väripaletti kulloinkin on käytössä. Numero viittaa 
+     * Kertoo, mikä väripaletti kulloinkin on käytössä. Numero viittaa
      * varientalletuslistan avainarvoihin.
      */
     private int varipaletinNumero;
-    
     /**
-     * Pitää tallessa erilaisia värilistoja Piirtoalustaa varten. Listat on talletettu 
-     * numeroavaimen (varipaletinNumero) taakse.
+     * Pitää tallessa erilaisia värilistoja Piirtoalustaa varten. Listat on
+     * talletettu numeroavaimen (varipaletinNumero) taakse.
      */
     private Map<Integer, List<Color>> varientalletuslista;
-    
+
     /**
-     * Konstruktorissa alustetaan varipaletinNumeron numerointi ja varientalletuslista. 
-     * Sen jälkeen alustetaan oletusvärilista luokan omalla metodilla. Lisäksi luokan attribuutteihin 
-     * asetetaan konstruktorin parametrien arvot.
+     * Konstruktorissa alustetaan varipaletinNumeron numerointi ja
+     * varientalletuslista. Sen jälkeen alustetaan oletusvärilista luokan omalla
+     * metodilla. Lisäksi luokan attribuutteihin asetetaan konstruktorin
+     * parametrien arvot.
+     *
      * @param piirtoalusta Kuvaa piirtoalustaa, joka piirtää peliruudukon.
      */
-
     public VarinvaihtoListener(Piirtoalusta piirtoalusta) {
-
         this.piirtoalusta = piirtoalusta;
         this.varipaletinNumero = 0;
         this.varientalletuslista = new HashMap<Integer, List<Color>>();
         this.alustaOletusVarilista();
-
     }
 
     @Override
@@ -57,44 +55,43 @@ public class VarinvaihtoListener implements ActionListener {
         this.setVaripaletinNumero();
 
         this.vaihdaVarit(this.varientalletuslista.get(this.varipaletinNumero));
-
         this.piirtoalusta.paivita();
     }
-    
-    /**
-     * Metodi kasvattaa väripaletin numeroa, jos se on pienempi kuin varientalletuslistan 
-     * varipalettien määrä, tai asettaa sen nollaksi, jos kierros on käyty loppuun.
-     */
 
+    /**
+     * Metodi kasvattaa väripaletin numeroa, jos se on pienempi kuin
+     * varientalletuslistan varipalettien määrä, tai asettaa sen nollaksi, jos
+     * kierros on käyty loppuun.
+     */
     public void setVaripaletinNumero() {
-        if (this.varipaletinNumero < this.varientalletuslista.size()-1) {
+        
+        if (this.varipaletinNumero < this.varientalletuslista.size() - 1) {
             this.varipaletinNumero++;
-        } else if (this.varipaletinNumero == this.varientalletuslista.size()-1) {
+        } else if (this.varipaletinNumero == this.varientalletuslista.size() - 1) {
             this.varipaletinNumero = 0;
         }
     }
-    
-    /**
-     * Asetetaan varientalletuslistalle Neljansuora-pelin oletusvärit käyttämällä 
-     * luokan omaa metodia.
-     */
 
+    /**
+     * Asetetaan varientalletuslistalle Neljansuora-pelin oletusvärit
+     * käyttämällä luokan omaa metodia.
+     */
     public void alustaOletusVarilista() {
         this.lisaaUusiVarilista(Color.blue, Color.red, Color.yellow);
         this.lisaaUusiVarilista(Color.black, Color.orange, Color.magenta);
         this.lisaaUusiVarilista(Color.DARK_GRAY, Color.CYAN, Color.PINK);
         this.lisaaUusiVarilista(new Color(235, 235, 235), new Color(78, 252, 58), new Color(252, 242, 93));
-        this.lisaaUusiVarilista(new Color(7, 107, 130), new Color(35, 168, 43) , new Color(237, 114, 7));
+        this.lisaaUusiVarilista(new Color(7, 107, 130), new Color(35, 168, 43), new Color(237, 114, 7));
     }
-    
+
     /**
-     * Lisää varientalletuslistalle uuden värilistan ja asettaa värilistalle 
+     * Lisää varientalletuslistalle uuden värilistan ja asettaa värilistalle
      * metodin parametreinä saadut värit.
+     *
      * @param taustavari Piirtoalustan taustaväri
      * @param pelaajan1Vari Pelaajan1 väri (pelaaja käyttää merkkiä "X")
      * @param pelaajan2Vari Pelaajan2 väri (pelaaja käyttää merkkiä "O")
      */
-
     public void lisaaUusiVarilista(Color taustavari, Color pelaajan1Vari, Color pelaajan2Vari) {
         this.varientalletuslista.put(this.varientalletuslista.size(), new ArrayList<Color>());
 
@@ -102,12 +99,12 @@ public class VarinvaihtoListener implements ActionListener {
         this.varientalletuslista.get(this.varientalletuslista.size() - 1).add(pelaajan1Vari);
         this.varientalletuslista.get(this.varientalletuslista.size() - 1).add(pelaajan2Vari);
     }
-    
+
     /**
      * Vaihtaa piirtoalustan värit parametrina saamansa listan väreihin.
+     *
      * @param varit Värilista, jonka väreihin piirtoalusta muunnetaan.
      */
-
     public void vaihdaVarit(List<Color> varit) {
         this.piirtoalusta.vaihdaTaustavaria(varit.get(0));
         this.piirtoalusta.vaihdaPelaajanVaria(varit.get(1), 1);

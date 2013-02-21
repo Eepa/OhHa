@@ -50,9 +50,7 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         this.piirraKentta(g);
-
     }
 
     /**
@@ -67,11 +65,9 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
         int korkeus = this.neljansuora.getPelilauta().getLauta().size();
 
         for (int i = 0; i < korkeus; i++) {
-
             String[] rivi = this.neljansuora.getPelilauta().getLauta().get(i);
 
             for (int j = 0; j < leveys; j++) {
-
                 String merkki = rivi[j];
 
                 if (merkki.equals(".")) {
@@ -88,7 +84,6 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
                 g.drawOval(j * 50, i * 50, 50, 50);
             }
         }
-
     }
 
     /**

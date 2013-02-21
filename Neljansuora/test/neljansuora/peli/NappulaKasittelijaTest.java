@@ -32,7 +32,6 @@ public class NappulaKasittelijaTest {
 
         this.nappulakasittelija = new NappulaKasittelija(this.neljansuora.getPelilauta().getLauta(),
                 this.neljansuora.getPelilauta().getPelaajat(), 4);
-
     }
 
     @Test
@@ -42,11 +41,11 @@ public class NappulaKasittelijaTest {
 
     @Test
     public void pisimmanSivunEtsiminenToimii() {
-        assertEquals(4,this.nappulakasittelija.selvitaLaudanPisimmanSivunPituus());
+        assertEquals(4, this.nappulakasittelija.selvitaLaudanPisimmanSivunPituus());
     }
-    
+
     @Test
-    public void pisimmanSivunEtsiminenToimiiEriLauta(){
+    public void pisimmanSivunEtsiminenToimiiEriLauta() {
         String teksti = "Pekka\n" + "Jukka\n";
         Scanner lukijaUusi = new Scanner(teksti);
 
@@ -57,7 +56,7 @@ public class NappulaKasittelijaTest {
 
         NappulaKasittelija nappulakasittelijaUusi = new NappulaKasittelija(neljansuoraUusi.getPelilauta().getLauta(),
                 neljansuoraUusi.getPelilauta().getPelaajat(), 4);
-        
+
         assertEquals(9, nappulakasittelijaUusi.selvitaLaudanPisimmanSivunPituus());
     }
 
@@ -71,7 +70,6 @@ public class NappulaKasittelijaTest {
         this.lisaaPelaajanNappulat();
 
         Pelaaja p = this.neljansuora.getPelilauta().getPelaajat().get(0);
-
         this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
 
         assertTrue(this.nappulakasittelija.onkoLautaTaynna());
@@ -112,7 +110,6 @@ public class NappulaKasittelijaTest {
         this.lisaaPelaajanNappulat();
 
         Pelaaja p = this.neljansuora.getPelilauta().getPelaajat().get(0);
-
         this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
 
         assertTrue(this.nappulakasittelija.onkoRiittavanPitkiaSuoria());
@@ -120,26 +117,23 @@ public class NappulaKasittelijaTest {
 
     @Test
     public void onkoMahdollinenSiirtoPalauttaaOikeinJosOnMahdollinen() {
-
-        int totuuksienMaara = 4;
+        int oikeidenMaara = 4;
 
         for (int i = 0; i < 4; i++) {
             if (this.nappulakasittelija.onkoMahdollinenSiirto(i)) {
-                totuuksienMaara--;
+                oikeidenMaara--;
             }
         }
-        assertEquals(totuuksienMaara, 0);
+        assertEquals(oikeidenMaara, 0);
     }
 
     @Test
     public void onkoMahdollinenSiirtoPalauttaaOikeinJosEiOleMahdollinen() {
-
         this.lisaaPelaajanNappulat();
-
+        
         Pelaaja p = this.neljansuora.getPelilauta().getPelaajat().get(0);
-
         this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
-
+        
         assertFalse(this.nappulakasittelija.onkoMahdollinenSiirto(1));
     }
 
@@ -151,23 +145,17 @@ public class NappulaKasittelijaTest {
             for (int j = 0; j < rivi.length; j++) {
                 p.lisaaUusiNappula(j, i);
             }
-
         }
-
         this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
     }
 
     @Test
     public void siirronTekeminenOnnistuu() {
         List<Pelaaja> pelaajat = this.neljansuora.getPelilauta().getPelaajat();
-
         this.nappulakasittelija.teeSiirto(0, pelaajat.get(0));
-
         this.lautakasittelija.lisaaNappulatKenttaan(pelaajat);
-
+        
         String merkkiOikeassaKohdassa = this.neljansuora.getPelilauta().getLauta().get(3)[0];
-
-
         assertEquals("X", merkkiOikeassaKohdassa);
     }
 
@@ -187,9 +175,8 @@ public class NappulaKasittelijaTest {
     @Test
     public void onkoVaakasuorastiPalauttaaOikeinJosOnSuoria() {
         this.lisaaPelaajanNappulat();
-
+        
         Pelaaja p = this.neljansuora.getPelilauta().getPelaajat().get(0);
-
         this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
 
         assertTrue(this.nappulakasittelija.onkoVaakasuorasti("X", 4));
@@ -203,11 +190,10 @@ public class NappulaKasittelijaTest {
     @Test
     public void onkoPystysuorastiPalauttaaOikeinJosOnSuoria() {
         this.lisaaPelaajanNappulat();
-
+        
         Pelaaja p = this.neljansuora.getPelilauta().getPelaajat().get(0);
-
         this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
-
+        
         assertTrue(this.nappulakasittelija.onkoPystysuorasti("X", 4));
     }
 
@@ -233,7 +219,6 @@ public class NappulaKasittelijaTest {
         this.lisaaPelaajanNappulat();
 
         Pelaaja p = this.neljansuora.getPelilauta().getPelaajat().get(0);
-
         this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
 
         assertTrue(this.nappulakasittelija.onkoVinostiKoillinenLounas("X", 4));
@@ -249,7 +234,6 @@ public class NappulaKasittelijaTest {
         this.lisaaPelaajanNappulat();
 
         Pelaaja p = this.neljansuora.getPelilauta().getPelaajat().get(0);
-
         this.lautakasittelija.lisaaPelaajanNappulat("X", p.getNappulat());
 
         assertTrue(this.nappulakasittelija.onkoVinostiKaakkoLuode("X", 4));
@@ -273,13 +257,12 @@ public class NappulaKasittelijaTest {
     public void muodostaVinoMerkkijonoPalauttaaOikeanJononKoillinenLounas() {
         String[] rivi = this.neljansuora.getPelilauta().getLauta().get(3);
         String merkkijono = "";
+        
         for (int j = 0; j < rivi.length; j++) {
             merkkijono += rivi[j];
 
-
             merkkijono = this.nappulakasittelija.muodostaVinoMerkkijono(3, j, merkkijono, "koillinenlounas");
         }
-
         assertEquals("....", merkkijono);
     }
 
@@ -287,13 +270,12 @@ public class NappulaKasittelijaTest {
     public void muodostaVinoMerkkijonoPalauttaaOikeanJononKaakkoLuode() {
         String[] rivi = this.neljansuora.getPelilauta().getLauta().get(0);
         String merkkijono = "";
+        
         for (int j = 0; j < rivi.length; j++) {
             merkkijono += rivi[j];
-
-
+            
             merkkijono = this.nappulakasittelija.muodostaVinoMerkkijono(0, j, merkkijono, "kaakkoluode");
         }
-
         assertEquals("....", merkkijono);
     }
 
@@ -301,13 +283,12 @@ public class NappulaKasittelijaTest {
     public void laskeSeuraavatPisteetKaakkoLuodePalauttaaOikeanMerkkijonon() {
         String[] rivi = this.neljansuora.getPelilauta().getLauta().get(0);
         String merkkijono = "";
+        
         for (int j = 0; j < rivi.length; j++) {
             merkkijono += rivi[j];
 
-
             merkkijono = this.nappulakasittelija.laskeSeuraavatPisteetKaakkoLuode(0, j, merkkijono, "kaakkoluode");
         }
-
         assertEquals("....", merkkijono);
     }
 
@@ -315,61 +296,58 @@ public class NappulaKasittelijaTest {
     public void laskeSeuraavatPisteetKoillinenLounasPalauttaaOikeanMerkkijonon() {
         String[] rivi = this.neljansuora.getPelilauta().getLauta().get(3);
         String merkkijono = "";
+        
         for (int j = 0; j < rivi.length; j++) {
             merkkijono += rivi[j];
-
 
             merkkijono = this.nappulakasittelija.laskeSeuraavatPisteetKoillinenLounas(3, j, merkkijono, "koillinenlounas");
         }
-
         assertEquals("....", merkkijono);
     }
-    
+
     @Test
-    public void yEhdonLaskeminenToimiiKoillinenLounasLiianIsoLuku(){
-        assertTrue(this.nappulakasittelija.tarkistaYEhtoSeuraavaaPistettaLaskettaessa(4, "koillinenlounas"));        
+    public void yEhdonLaskeminenToimiiKoillinenLounasLiianIsoLuku() {
+        assertTrue(this.nappulakasittelija.tarkistaYEhtoSeuraavaaPistettaLaskettaessa(4, "koillinenlounas"));
     }
-    
+
     @Test
-    public void yEhdonLaskeminenToimiiKoillinenLounasSopivaLuku(){
-        assertFalse(this.nappulakasittelija.tarkistaYEhtoSeuraavaaPistettaLaskettaessa(3, "koillinenlounas"));        
+    public void yEhdonLaskeminenToimiiKoillinenLounasSopivaLuku() {
+        assertFalse(this.nappulakasittelija.tarkistaYEhtoSeuraavaaPistettaLaskettaessa(3, "koillinenlounas"));
     }
-    
+
     @Test
-    public void yEhdonLaskeminenToimiiKaakkoLuodeLiianIsoLuku(){
-        assertTrue(this.nappulakasittelija.tarkistaYEhtoSeuraavaaPistettaLaskettaessa(-1, "kaakkoluode"));        
+    public void yEhdonLaskeminenToimiiKaakkoLuodeLiianIsoLuku() {
+        assertTrue(this.nappulakasittelija.tarkistaYEhtoSeuraavaaPistettaLaskettaessa(-1, "kaakkoluode"));
     }
-    
+
     @Test
-    public void yEhdonLaskeminenToimiiKaakkoLuodeSopivaLuku(){
-        assertFalse(this.nappulakasittelija.tarkistaYEhtoSeuraavaaPistettaLaskettaessa(0, "kaakkoluode"));        
+    public void yEhdonLaskeminenToimiiKaakkoLuodeSopivaLuku() {
+        assertFalse(this.nappulakasittelija.tarkistaYEhtoSeuraavaaPistettaLaskettaessa(0, "kaakkoluode"));
     }
-    
+
     @Test
-    public void laskeSeuraavaPistePalauttaaOikeanMerkkijononKoillinenLounas(){
+    public void laskeSeuraavaPistePalauttaaOikeanMerkkijononKoillinenLounas() {
         String[] rivi = this.neljansuora.getPelilauta().getLauta().get(3);
         String merkkijono = "";
+        
         for (int j = 0; j < rivi.length; j++) {
             merkkijono += rivi[j];
-
 
             merkkijono = this.nappulakasittelija.laskeSeuraavaPiste(3, j, 1, -1, merkkijono, "koillinenlounas");
         }
-
         assertEquals("....", merkkijono);
     }
-    
+
     @Test
-    public void laskeSeuraavaPistePalauttaaOikeanMerkkijononKaakkoLuode(){
-         String[] rivi = this.neljansuora.getPelilauta().getLauta().get(0);
+    public void laskeSeuraavaPistePalauttaaOikeanMerkkijononKaakkoLuode() {
+        String[] rivi = this.neljansuora.getPelilauta().getLauta().get(0);
         String merkkijono = "";
+        
         for (int j = 0; j < rivi.length; j++) {
             merkkijono += rivi[j];
 
-
-            merkkijono = this.nappulakasittelija.laskeSeuraavaPiste(0, j, -1,-1,merkkijono, "kaakkoluode");
+            merkkijono = this.nappulakasittelija.laskeSeuraavaPiste(0, j, -1, -1, merkkijono, "kaakkoluode");
         }
-
         assertEquals("....", merkkijono);
     }
 }

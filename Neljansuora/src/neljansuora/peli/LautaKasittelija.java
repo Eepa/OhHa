@@ -6,8 +6,6 @@ import java.util.Scanner;
 import neljansuora.domain.Nappula;
 import neljansuora.domain.Pelaaja;
 
-
-
 /**
  * LautaKasittelija-luokka kuvaa LautaKasittelijaa, joka käsittelee ja muokkaa
  * Pelilaudan tilaa. Käsittelijän avulla lisätään laudalle nappuloita,
@@ -18,8 +16,8 @@ import neljansuora.domain.Pelaaja;
 public class LautaKasittelija {
 
     /**
-     * Kuvaa Map-muotoista pelilautaa, jonka avaimet kuvaavat
-     * laudan y-akselin rivejä ja String[]-taulukon indeksit x-akselin paikkoja.
+     * Kuvaa Map-muotoista pelilautaa, jonka avaimet kuvaavat laudan y-akselin
+     * rivejä ja String[]-taulukon indeksit x-akselin paikkoja.
      */
     private Map<Integer, String[]> lauta;
     /**
@@ -44,11 +42,10 @@ public class LautaKasittelija {
         this.lukija = lukija;
         this.pelaajat = pelaajat;
     }
-    
+
     /**
      * Tulostaa Neljansuora-pelin pelilaudan tekstikäyttöliittymää varten.
      */
-
     public void tulostaPelilauta() {
         for (String[] rivi : this.lauta.values()) {
 
@@ -58,13 +55,14 @@ public class LautaKasittelija {
             System.out.println("");
         }
     }
-    
-/**
- * Kirjoittaa laudalle syötteen mukaisen merkin jokaiseen laudan pisteeseen.
- * @param syote Merkki, joka kirjoitetaan laudalle
- */
-    public void kirjoitaLaudalle(String syote) {
 
+    /**
+     * Kirjoittaa laudalle syötteen mukaisen merkin jokaiseen laudan pisteeseen.
+     *
+     * @param syote Merkki, joka kirjoitetaan laudalle
+     */
+    public void kirjoitaLaudalle(String syote) {
+        
         for (String[] taulukko : this.lauta.values()) {
 
             for (int j = 0; j < taulukko.length; j++) {
@@ -72,15 +70,15 @@ public class LautaKasittelija {
             }
         }
     }
-    
+
     /**
-     * Lisää parametrina annetun listan pelaajien nappulat kenttään kutsumalla 
+     * Lisää parametrina annetun listan pelaajien nappulat kenttään kutsumalla
      * luokan omaa nappulanlisäysmetodia pelaajakohtaisesti.
+     *
      * @param pelaajat Pelaajalista, jonka pelaajien nappulat lisätään kenttään
      */
-
     public void lisaaNappulatKenttaan(List<Pelaaja> pelaajat) {
-
+        
         for (Pelaaja p : pelaajat) {
 
             if (p.getVuoronumero() == 1) {
@@ -90,45 +88,40 @@ public class LautaKasittelija {
                 this.lisaaPelaajanNappulat("O", p.getNappulat());
             }
         }
-
     }
-    
+
     /**
-     * Lisää yhden pelaajan nappulalistan nappulat kenttään. Pelaajan nappulan merkki, 
-     * joka kirjoitetaan pelilaudalle, annetaan metodille parametrina.
+     * Lisää yhden pelaajan nappulalistan nappulat kenttään. Pelaajan nappulan
+     * merkki, joka kirjoitetaan pelilaudalle, annetaan metodille parametrina.
+     *
      * @param merkki Pelaajan nappulan merkki
      * @param nappulat Pelaajan nappulalista
      */
-
     public void lisaaPelaajanNappulat(String merkki, List<Nappula> nappulat) {
-
         for (Nappula nappula : nappulat) {
             this.kirjoitaLaudalleNappula(merkki, nappula.palautaX(), nappula.palautaY());
         }
-
     }
-    
+
     /**
      * Kirjoittaa laudalle yhden nappulan, jolla on parametrina annettu merkki.
+     *
      * @param nappulanMerkki Laudalle kirjoitettava merkki.
      * @param x Laudan x-akselin koordinaatti
      * @param y Laudan y-akselin koordinaatti
      */
-
     public void kirjoitaLaudalleNappula(String nappulanMerkki, int x, int y) {
-
         this.lauta.get(y)[x] = nappulanMerkki;
-
     }
-    
+
     /**
-     * Lukee tekstikäyttöliittymää varten pelaajan siirron ja palauttaa laudan x-
-     * akselin koordinaatin, jos annettu numero oli oikeanmuotoinen. Muuten metodi 
-     * käsittelee poikkeuksen ja pyytää antamaan numeron uudestaan.
+     * Lukee tekstikäyttöliittymää varten pelaajan siirron ja palauttaa laudan
+     * x- akselin koordinaatin, jos annettu numero oli oikeanmuotoinen. Muuten
+     * metodi käsittelee poikkeuksen ja pyytää antamaan numeron uudestaan.
+     *
      * @param nimi Pelaajan nimi
      * @return Palauttaa x-akselin koordinaatin
      */
-
     public int luePelaajanSiirto(String nimi) {
 
         System.out.println(nimi + " syötä numero 0:n ja " + (this.lauta.get(0).length - 1)
@@ -143,9 +136,8 @@ public class LautaKasittelija {
                 } else if (numero > this.lauta.get(0).length - 1) {
                     throw new IllegalArgumentException();
                 }
-
+                
                 return numero;
-
             } catch (Exception e) {
                 System.out.println("Ei kunnollinen numero!");
             }

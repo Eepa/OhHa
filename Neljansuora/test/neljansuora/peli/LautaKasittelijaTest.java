@@ -29,7 +29,6 @@ public class LautaKasittelijaTest {
 
         this.lautakasittelija = new LautaKasittelija(this.neljansuora.getPelilauta().getLauta(),
                 this.neljansuora.getPelilauta().getPelaajat(), this.lukija);
-
     }
 
     @Test
@@ -42,34 +41,26 @@ public class LautaKasittelijaTest {
         ArrayList<String> rivit = new ArrayList<String>();
 
         for (String[] rivi : this.neljansuora.getPelilauta().getLauta().values()) {
-
             String uusiSana = luoRivinMerkeistaMerkkijono(rivi);
-
             rivit.add(uusiSana);
-
         }
-
-
         int tarkistusluku = palautaTarkistusluku(rivit);
-
         assertEquals(tarkistusluku, 4);
     }
 
-    public int palautaTarkistusluku(ArrayList<String> rivit) {
+    private int palautaTarkistusluku(ArrayList<String> rivit) {
         String testisana = annaTestisana();
         int tarkistusluku = 0;
 
         for (String rivinKirjainesitys : rivit) {
-
             if (rivinKirjainesitys.equals(testisana)) {
                 tarkistusluku++;
             }
-
         }
         return tarkistusluku;
     }
 
-    public String luoRivinMerkeistaMerkkijono(String[] rivi) {
+    private String luoRivinMerkeistaMerkkijono(String[] rivi) {
         String uusiSana = "";
 
         for (int i = 0; i < rivi.length; i++) {
@@ -78,7 +69,7 @@ public class LautaKasittelijaTest {
         return uusiSana;
     }
 
-    public String annaTestisana() {
+    private String annaTestisana() {
         String testisana = "";
         for (int j = 0; j < this.neljansuora.getPelilauta().getLauta().get(0).length; j++) {
             testisana += ".";
@@ -88,7 +79,6 @@ public class LautaKasittelijaTest {
 
     @Test
     public void pelaajienNappuloidenLisaaminenKenttaanToimiiOikein() {
-
         List<Pelaaja> pelaajat = this.neljansuora.getPelilauta().getPelaajat();
         int i = 0;
 
@@ -98,17 +88,13 @@ public class LautaKasittelijaTest {
         }
 
         this.lautakasittelija.lisaaNappulatKenttaan(pelaajat);
-
         String rivinMerkit = luoRivinMerkeistaMerkkijono(this.neljansuora.getPelilauta().getLauta().get(0));
-
         assertEquals("XO..", rivinMerkit);
     }
 
     @Test
     public void yhdenPelaajanNappuloidenLisaaminenToimiiOikein() {
-
         List<Pelaaja> pelaajat = this.neljansuora.getPelilauta().getPelaajat();
-        int i = 0;
 
         Pelaaja p = pelaajat.get(0);
         p.lisaaUusiNappula(0, 0);
@@ -123,11 +109,7 @@ public class LautaKasittelijaTest {
     @Test
     public void yhdenSatunnaisenNappulanKirjoittaminenLaudalleToimiiOikein() {
         this.lautakasittelija.kirjoitaLaudalleNappula("X", 3, 3);
-
         String merkki = this.neljansuora.getPelilauta().getLauta().get(3)[3];
-
         assertEquals("X", merkki);
     }
-    
-    
 }

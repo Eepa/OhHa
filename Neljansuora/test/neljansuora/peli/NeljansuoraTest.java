@@ -21,10 +21,9 @@ public class NeljansuoraTest {
 
     @Before
     public void setUp() {
-        String teksti ="Pekka\n" + "Jukka\n";
+        String teksti = "Pekka\n" + "Jukka\n";
         this.lukija = new Scanner(teksti);
         this.neljansuora = new Neljansuora(4, 4, 4, lukija, "teksti");
-
     }
 
     @Test
@@ -49,16 +48,14 @@ public class NeljansuoraTest {
 
         assertTrue(this.neljansuora.getPelilauta().getPaivitettava() != null);
     }
-    
+
     @Test
-    public void pelinLopettaminenOnnistuu(){
+    public void pelinLopettaminenOnnistuu() {
         Paivitettava paivitettava = new Piirtoalusta(neljansuora);
         Pelilauta neljansuoranPelilauta = neljansuora.getPelilauta();
-
         neljansuora.setPaivitettava(paivitettava);
 
         lisaaPelaajalleNappuloita(neljansuoranPelilauta.getPelaajat().get(0), 3);
-
         neljansuoranPelilauta.getLautaKasittelija().lisaaNappulatKenttaan(neljansuoranPelilauta.getPelaajat());
 
         neljansuora.lopetaPeli();
@@ -68,11 +65,10 @@ public class NeljansuoraTest {
 
         assertEquals("...", nappuloidenMerkkijono);
     }
-    
+
     private void lisaaPelaajalleNappuloita(Pelaaja p, int maara) {
         for (int i = 0; i < maara; i++) {
             p.lisaaUusiNappula(i, 0);
         }
     }
-
-   }
+}

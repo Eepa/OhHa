@@ -22,7 +22,6 @@ public class PituudenAsettelija {
      * @return Palauttaa asetetun pituuden.
      */
     public int asetaLaudanSivunPituus(String pituudenNimi) {
-
         int palautettavaPituus = 0;
 
         String pituus = JOptionPane.showInputDialog(null, "Anna " + pituudenNimi + " väliltä 5-20. "
@@ -31,33 +30,27 @@ public class PituudenAsettelija {
         if (pituus == null) {
             System.exit(0);
         }
-
-        //Asettaa oletuspituuden ja leveyden
-
         if (pituus.isEmpty()) {
             return this.asetaOletusSivunpituus(pituudenNimi);
         }
 
         palautettavaPituus = this.testaaOlikoAnnettuSivunPituusLuku(pituus, pituudenNimi, palautettavaPituus);
-
         palautettavaPituus = this.testaaKuuluukoPituusAnnetulleValille(palautettavaPituus, 0, 0, 20, 5, pituudenNimi);
 
         return palautettavaPituus;
-
     }
 
     /**
-     * Asettaa pelilaudan oletussivunpituuden annetun pituuden nimen mukaan.      *
+     * Asettaa pelilaudan oletussivunpituuden annetun pituuden nimen mukaan.
+     *
      * @param pituudenNimi Nimi pituudelle, jonka arvoa ollaan asettamassa.
      * @return Palauttaa asetetun pituuden.
      */
     public int asetaOletusSivunpituus(String pituudenNimi) {
-
         if (pituudenNimi.equals("leveys")) {
             return 7;
         }
         return 6;
-
     }
 
     /**
@@ -71,6 +64,7 @@ public class PituudenAsettelija {
      */
     public int testaaOlikoAnnettuSivunPituusLuku(String pituus, String pituudenNimi,
             int palautettavaPituus) {
+        
         try {
             palautettavaPituus = Integer.parseInt(pituus);
         } catch (Exception e) {
@@ -103,7 +97,6 @@ public class PituudenAsettelija {
      * @see Pelilauta
      */
     public int asetaEtsittavanSuoranPituus(int leveys, int korkeus, String pituudenNimi) {
-
         int palautettavaPituus = 0;
 
         int pisin = this.selvitaPisin(leveys, korkeus);
@@ -114,17 +107,14 @@ public class PituudenAsettelija {
         if (pituus == null) {
             System.exit(0);
         }
-
         if (pituus.isEmpty()) {
             return 4;
         }
 
         palautettavaPituus = this.testaaOlikoAnnettuSuoranPituusLuku(pituus, leveys, korkeus, pituudenNimi, palautettavaPituus);
-
         palautettavaPituus = this.testaaKuuluukoPituusAnnetulleValille(palautettavaPituus, leveys, korkeus, pisin, 4, pituudenNimi);
 
         return palautettavaPituus;
-
     }
 
     /**
@@ -150,11 +140,12 @@ public class PituudenAsettelija {
         }
         return palautettavaPituus;
     }
-    
+
     /**
-     * Selvittää, kuuluuko parametrina annettu palautettavaPituus jollekin tietylle 
-     * välille. Jos tarkastus epäonnistuu metodi heittää poikkeuksen ja käsittelee sen.
-     * 
+     * Selvittää, kuuluuko parametrina annettu palautettavaPituus jollekin
+     * tietylle välille. Jos tarkastus epäonnistuu metodi heittää poikkeuksen ja
+     * käsittelee sen.
+     *
      * @param palautettavaPituus Pituus, joka palautetaan metodin lopuksi
      * @param leveys Pelilaudan leveys
      * @param korkeus Pelilaudan korkeus
@@ -163,7 +154,6 @@ public class PituudenAsettelija {
      * @param pituudenNimi Nimi pituudelle, jonka arvoa ollaan asettamassa.
      * @return Palauttaa oikeanmuotoisen pituuden numeroarvon.
      */
-
     public int testaaKuuluukoPituusAnnetulleValille(int palautettavaPituus, int leveys, int korkeus,
             int ylaraja, int alaraja, String pituudenNimi) {
 
@@ -183,17 +173,16 @@ public class PituudenAsettelija {
             } else {
                 return this.asetaLaudanSivunPituus(pituudenNimi);
             }
-
         }
     }
-    
+
     /**
      * Selvittää parametreina annetuista luvuista suuremman ja palauttaa sen.
+     *
      * @param leveys Pelilaudan leveys
      * @param korkeus Pelilaudan korkeus
      * @return Palauttaa suuremman lukuarvon (leveyden tai korkeuden)
      */
-
     public int selvitaPisin(int leveys, int korkeus) {
         if (leveys > korkeus) {
             return leveys;

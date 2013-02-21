@@ -9,7 +9,6 @@ import neljansuora.domain.Pelaaja;
 import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
 import neljansuora.peli.Pelilauta;
 
-
 /**
  * TilannetietoPanel-luokka kertoo kulloisenkin pelitilanteen ja pitää kirjaa
  * siitä, kumman pelaajan vuoro on siirtää seuraava nappula kentälle.
@@ -40,7 +39,7 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
      * Kertoo Neljansuora-pelin Pelaajien määrän.
      */
     private int pelaajienMaara;
-    
+
     /**
      * Konstruktori asettaa Tilannetietopaneelille uuden layoutin ja asettaa
      * neljansuora attribuutin arvoksi parametreinaan saamansa arvon. Lisäksi
@@ -64,20 +63,19 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
     public int getVuoronumero() {
         return this.vuoronumero;
     }
-    
+
     /**
      * Alustaa vuoronumeron vastaamaan pelaajien määrää.
      */
-
     public void alustaVuoronumero() {
         this.vuoronumero = this.pelaajienMaara;
     }
-    
+
     /**
      * Alustaa vuoronumeron kertomaan, mitä kierrosta pelataan.
      */
-
     public void alustaKierroksenVuoronumero() {
+        
         if (this.vuoronumero < this.pelaajienMaara) {
             vuoronumero++;
         } else if (this.vuoronumero == this.pelaajienMaara) {
@@ -88,15 +86,14 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
     public void setVuorossaoleva() {
         this.vuorossaoleva = this.haeOikeanPelaajanNimi();
     }
-    
+
     /**
-     * Palauttaa pelaajan nimen, jos oikean vuoronumeron omaava pelaaja löytyy 
+     * Palauttaa pelaajan nimen, jos oikean vuoronumeron omaava pelaaja löytyy
      * pelaajalistasta. Muuten palauttaa tyhjän merkkijonon.
+     *
      * @return Palautettava merkkijono (pelaajan nimi tai tyhjä)
      */
-
     public String haeOikeanPelaajanNimi() {
-        
         List<Pelaaja> pelaajat = this.pelilauta.getPelaajat();
 
         for (Pelaaja p : pelaajat) {
@@ -104,7 +101,6 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
                 return p.getNimi();
             }
         }
-
         return "";
     }
 
@@ -129,10 +125,15 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
         add(vuorossa);
         add(kukaVuorossa);
     }
+    
+    /**
+     * Paivita-metodi alustaa kierroksen vuoronumeron ja pelaajan. Lisaksi metodi 
+     * tarkistaa, onko pelilaudalla riittavan pitkia suoria tai onko lauta taynna, ja 
+     * ilmoittaa, jos jompikumpi tapaus tayttyy.
+     */
 
     @Override
     public void paivita() {
-
         this.alustaKierroksenVuoronumero();
         this.setKukaVuorossa();
 
@@ -141,7 +142,6 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
         } else if (this.pelilauta.onkoLautaTaynna()) {
             this.ilmoitaLaudanTayttymisesta();
         }
-
     }
 
     /**
@@ -162,7 +162,8 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
 
     /**
      * Ilmoittaa pelaajalle, jos pelilauta täyttyy. Paneelista poistetaan ensin
-     * kaikki sisältö ja sitten lisätään uusi JLabel kertomaan laudan täyttymisestä.
+     * kaikki sisältö ja sitten lisätään uusi JLabel kertomaan laudan
+     * täyttymisestä.
      */
     public void ilmoitaLaudanTayttymisesta() {
         this.removeAll();
@@ -174,13 +175,12 @@ public class TilannetietoPanel extends JPanel implements Paivitettava {
 
         add(lautaTaynna);
     }
-    
-    /**
-     * Alustaa uuden pelin, jos jompikumpi pelaaja sai riittävän pitkän suoran. 
-     * Paneelista poistetaan ensin kaikki sisältö ja sitten alustetaan paneeli samanlaiseksi 
-     * kuin Neljänsuora-pelin ensimmäisellä käynnistyskerralla.
-     */
 
+    /**
+     * Alustaa uuden pelin, jos jompikumpi pelaaja sai riittävän pitkän suoran.
+     * Paneelista poistetaan ensin kaikki sisältö ja sitten alustetaan paneeli
+     * samanlaiseksi kuin Neljänsuora-pelin ensimmäisellä käynnistyskerralla.
+     */
     public void aloitaUusiPeli() {
         this.removeAll();
         this.alustaVuoronumero();

@@ -3,8 +3,6 @@ package neljansuora.peli;
 import java.util.Scanner;
 import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
 
-
-
 /**
  * Luokka Neljansuora kuvaa Neljansuora-peliä. Luokka luo pelille pelilaudan ja
  * käyttää pelilaudan toimintoja. Luokka käyttää myös Neljansuora-pelin
@@ -44,7 +42,6 @@ public class Neljansuora {
      * @param kayttoliittymanTyyppi Kertoo käytettävän käyttöliittymän tyypin.
      */
     public Neljansuora(int leveys, int korkeus, int merkkijononPituus, Scanner lukija, String kayttoliittymanTyyppi) {
-
         this.lukija = lukija;
 
         this.luoPelilauta(leveys, korkeus, merkkijononPituus);
@@ -54,12 +51,10 @@ public class Neljansuora {
         } else if (kayttoliittymanTyyppi.equals("teksti")) {
             this.lisaaPelaajat();
         }
-
     }
 
     /**
-     * Luo Neljansuora-pelille uuden annettujen parametrien kokoisen
-     * Pelilaudan.
+     * Luo Neljansuora-pelille uuden annettujen parametrien kokoisen Pelilaudan.
      *
      * @param leveys Uuden Pelilaudan leveys.
      * @param korkeus Uuden Pelilaudan korkeus.
@@ -68,7 +63,6 @@ public class Neljansuora {
      */
     public void luoPelilauta(int leveys, int korkeus, int merkkijononPituus) {
         this.pelilauta = new Pelilauta(leveys, korkeus, merkkijononPituus, this.lukija);
-
     }
 
     public Pelilauta getPelilauta() {
@@ -93,7 +87,6 @@ public class Neljansuora {
      */
     public void lisaaPelaajatGraafiseenKayttoliittymaan() {
         int pelaajaMaara = 2;
-
         this.pelilauta.luoPelaajatGraafiseenKayttoliittymaan(pelaajaMaara);
     }
 
@@ -149,7 +142,5 @@ public class Neljansuora {
      */
     public void lopetaPeli() {
         this.pelilauta.lopetaPeli();
-
     }
-
 }
