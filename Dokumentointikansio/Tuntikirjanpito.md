@@ -77,5 +77,5 @@ Keskiviikko 20.02.2013, 3h
 Tehty lisaa testeja, paivitetty sekvenssikaaviot, aloitettu 
 testausdokumenttia.
 
-Torstai 21.02.2013, 2,5h
+Torstai 21.02.2013, 3h
 Tehty lisaa testeja, testausdokumenttia jatkettu.

@@ -26,3 +26,5 @@ Neljansuora-pelin kaytto-ohjeet
    laidan Uusi peli -nappia. Alalaidan tietopalkki ilmoittaa, 
    jos lauta on tayttynyt tai jompikumpi pelaaja on voittanut 
    pelin.
+
+8. Mukavia peleja!
