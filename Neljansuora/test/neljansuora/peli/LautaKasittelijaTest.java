@@ -129,8 +129,5 @@ public class LautaKasittelijaTest {
         assertEquals("X", merkki);
     }
     
-    @Test
-    public void laudalleKirjoittaminenToimii(){
-        
-    }
+    
 }
