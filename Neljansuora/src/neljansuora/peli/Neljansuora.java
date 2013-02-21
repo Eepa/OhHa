@@ -72,7 +72,6 @@ public class Neljansuora {
     /**
      * Lisää Pelilaudalle uudet Pelaajat tekstikäyttöliittymään.
      *
-     * @see Pelaaja
      * @see Pelilauta
      */
     public void lisaaPelaajat() {
@@ -82,7 +81,6 @@ public class Neljansuora {
     /**
      * Lisää Pelilaudalle uudet Pelaajat graafiseen käyttöliittymään.
      *
-     * @see Pelaaja
      * @see Pelilauta
      */
     public void lisaaPelaajatGraafiseenKayttoliittymaan() {

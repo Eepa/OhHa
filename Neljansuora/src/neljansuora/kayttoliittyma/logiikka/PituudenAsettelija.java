@@ -7,8 +7,6 @@ import javax.swing.JOptionPane;
  * leveyden ja pituuden ja voittosuoran vähimmäispituuden.
  *
  * @author evpa
- * @see Neljansuora
- * @see Kayttoliittyma
  */
 public class PituudenAsettelija {
 
@@ -94,7 +92,6 @@ public class PituudenAsettelija {
      * @param korkeus Pelilaudan korkeus
      * @param pituudenNimi Nimi pituudelle, jonka arvoa ollaan asettamassa.
      * @return Palauttaa asetetun pituuden
-     * @see Pelilauta
      */
     public int asetaEtsittavanSuoranPituus(int leveys, int korkeus, String pituudenNimi) {
         int palautettavaPituus = 0;
