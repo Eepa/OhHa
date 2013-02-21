@@ -5,8 +5,6 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import neljansuora.peli.Neljansuora;
 
-
-
 /**
  * Piirtoalusta-luokka piirtää graafiseen käyttöliittymään peliruudukon, jossa
  * näkyvät pelaajien nappulat ja tyhjät ruudut. Piirtoalustalle voi asettaa eri
@@ -67,7 +65,7 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
     public void piirraKentta(Graphics g) {
         int leveys = this.neljansuora.getPelilauta().getLauta().get(0).length;
         int korkeus = this.neljansuora.getPelilauta().getLauta().size();
-        
+
         for (int i = 0; i < korkeus; i++) {
 
             String[] rivi = this.neljansuora.getPelilauta().getLauta().get(i);
@@ -86,16 +84,18 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
                     g.setColor(this.pelaajanOVari);
                     g.fillOval(j * 50, i * 50, 50, 50);
                 }
+                g.setColor(Color.black);
+                g.drawOval(j * 50, i * 50, 50, 50);
             }
         }
 
     }
-    
+
     /**
      * Vaihtaa Piirtoalustan taustaväriä.
+     *
      * @param vari Kertoo uuden värin.
      */
-
     public void vaihdaTaustavaria(Color vari) {
         this.taustavari = vari;
         this.setBackground(vari);
@@ -103,10 +103,10 @@ public class Piirtoalusta extends JPanel implements Paivitettava {
 
     /**
      * Vaihtaa pelaajan nappulan väriä.
+     *
      * @param vari Kertoo uuden värin.
      * @param pelaajanNumero Kertoo mille pelaajalle väri asetetaan.
      */
-    
     public void vaihdaPelaajanVaria(Color vari, int pelaajanNumero) {
         if (pelaajanNumero == 1) {
             this.pelaajanXVari = vari;

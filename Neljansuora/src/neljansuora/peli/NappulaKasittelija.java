@@ -245,17 +245,17 @@ public class NappulaKasittelija {
      * muodostaminen aloitetaan.
      * @param merkki Merkki, jonka suoria tarkistetaan.
      * @param pituus Suoran vähimmäispituus
-     * @param i Y-akselin kooridnaatti, jolla rivi on.
+     * @param y Y-akselin kooridnaatti, jolla rivi on.
      * @param suoranSuunta Kertoo, minkä suuntaista suoraa etsitään.
      * @return Palauttaa true, jos suora löytyy, muuten false.
      */
     public boolean muodostaMerkkijonoVinolleSuoralle(String[] rivi, String merkki,
-            int pituus, int i, String suoranSuunta) {
+            int pituus, int y, String suoranSuunta) {
 
-        for (int j = 0; j < rivi.length; j++) {
-            String merkkijono = "" + rivi[j];
+        for (int x = 0; x < rivi.length; x++) {
+            String merkkijono = "" + rivi[x];
 
-            merkkijono = this.muodostaVinoMerkkijono(i, j, merkkijono, suoranSuunta);
+            merkkijono = this.muodostaVinoMerkkijono(y, x, merkkijono, suoranSuunta);
 
             if (this.testaaMerkkijononPituus(merkkijono, merkki, pituus) == pituus) {
                 return true;
@@ -268,17 +268,17 @@ public class NappulaKasittelija {
      * Muodostaa vinon merkkijonon rekursiivisesti sen perusteella, mihin
      * suuntaan vinon suoran pitää kulkea.
      *
-     * @param i Y-akselin koordinaatti
-     * @param j X-akselin koordinaatti
+     * @param y Y-akselin koordinaatti
+     * @param x X-akselin koordinaatti
      * @param merkkijono Jo muodostettu merkkijono
      * @param suoranSuunta Kertoo, minkä suuntaista suoraa etsitään.
      * @return Palauttaa muodostetun merkkijonon.
      */
-    public String muodostaVinoMerkkijono(int i, int j, String merkkijono, String suoranSuunta) {
+    public String muodostaVinoMerkkijono(int y, int x, String merkkijono, String suoranSuunta) {
         if (suoranSuunta.equals("koillinenlounas")) {
-            merkkijono = this.laskeSeuraavatPisteetKoillinenLounas(i, j, merkkijono, suoranSuunta);
+            merkkijono = this.laskeSeuraavatPisteetKoillinenLounas(y, x, merkkijono, suoranSuunta);
         } else {
-            merkkijono = this.laskeSeuraavatPisteetKaakkoLuode(i, j, merkkijono, suoranSuunta);
+            merkkijono = this.laskeSeuraavatPisteetKaakkoLuode(y, x, merkkijono, suoranSuunta);
         }
         return merkkijono;
     }

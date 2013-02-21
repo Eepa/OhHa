@@ -6,12 +6,9 @@ import java.util.Scanner;
 import neljansuora.domain.Pelaaja;
 import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
 import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Testiluokka PelilautaTest testaa luokan Pelilauta toimivuutta

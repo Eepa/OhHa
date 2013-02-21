@@ -3,7 +3,6 @@ package neljansuora;
 import java.util.Scanner;
 import javax.swing.SwingUtilities;
 import neljansuora.kayttoliittyma.Kayttoliittyma;
-import neljansuora.peli.Neljansuora;
 
 
 

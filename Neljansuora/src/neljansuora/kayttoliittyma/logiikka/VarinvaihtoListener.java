@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
-import neljansuora.peli.Neljansuora;
 
 /**
  * Luokka VarinvaihtoListener säätelee Piirtoalustan värejä ja asettaa 
@@ -84,6 +83,8 @@ public class VarinvaihtoListener implements ActionListener {
         this.lisaaUusiVarilista(Color.blue, Color.red, Color.yellow);
         this.lisaaUusiVarilista(Color.black, Color.orange, Color.magenta);
         this.lisaaUusiVarilista(Color.DARK_GRAY, Color.CYAN, Color.PINK);
+        this.lisaaUusiVarilista(new Color(235, 235, 235), new Color(78, 252, 58), new Color(252, 242, 93));
+        this.lisaaUusiVarilista(new Color(7, 107, 130), new Color(35, 168, 43) , new Color(237, 114, 7));
     }
     
     /**

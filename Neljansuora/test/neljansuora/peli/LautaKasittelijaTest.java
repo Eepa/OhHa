@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import neljansuora.domain.Pelaaja;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Testiluokka LautaKasittelijaTest testaa luokan LautaKasittelija toimivuutta
@@ -41,7 +38,7 @@ public class LautaKasittelijaTest {
     }
 
     @Test
-    public void laudalleKirjoittaminenToimiiOikeinJosKirjoitetaanTyhjanPaikanMerkkiaAlussa() {
+    public void laudalleKirjoittaminenOnToiminutOikeinKunOnKirjoitettuTyhjanPaikanMerkkiaAlussa() {
         ArrayList<String> rivit = new ArrayList<String>();
 
         for (String[] rivi : this.neljansuora.getPelilauta().getLauta().values()) {
@@ -58,11 +55,11 @@ public class LautaKasittelijaTest {
         assertEquals(tarkistusluku, 4);
     }
 
-    public int palautaTarkistusluku(ArrayList rivit) {
+    public int palautaTarkistusluku(ArrayList<String> rivit) {
         String testisana = annaTestisana();
         int tarkistusluku = 0;
 
-        for (Object rivinKirjainesitys : rivit) {
+        for (String rivinKirjainesitys : rivit) {
 
             if (rivinKirjainesitys.equals(testisana)) {
                 tarkistusluku++;
@@ -130,5 +127,10 @@ public class LautaKasittelijaTest {
         String merkki = this.neljansuora.getPelilauta().getLauta().get(3)[3];
 
         assertEquals("X", merkki);
+    }
+    
+    @Test
+    public void laudalleKirjoittaminenToimii(){
+        
     }
 }
