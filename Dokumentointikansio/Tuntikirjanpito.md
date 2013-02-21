@@ -76,3 +76,6 @@ Korjailtu koodia, kirjoitettu kayttoohjeet ja rakennekuvaus.
 Keskiviikko 20.02.2013, 3h
 Tehty lisaa testeja, paivitetty sekvenssikaaviot, aloitettu 
 testausdokumenttia.
+
+Torstai 21.02.2013, 1,5h
+Tehty lisaa testeja, testausdokumenttia jatkettu.

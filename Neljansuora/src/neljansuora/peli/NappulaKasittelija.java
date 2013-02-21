@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Map;
 import neljansuora.domain.Pelaaja;
 
-
-
 /**
  * NappulaKasittelija-luokka muokkaa Pelilaudan Pelaajien nappuloiden tilaa ja
  * tarkistaa, onko laudalle tullut riittävän pitkiä suoria. Kasittelija tekee
@@ -16,8 +14,8 @@ import neljansuora.domain.Pelaaja;
 public class NappulaKasittelija {
 
     /**
-     * Kuvaa Map-muotoista pelilautaa, jonka avaimet kuvaavat
-     * laudan y-akselin rivejä ja String[]-taulukon indeksit x-akselin paikkoja.
+     * Kuvaa Map-muotoista pelilautaa, jonka avaimet kuvaavat laudan y-akselin
+     * rivejä ja String[]-taulukon indeksit x-akselin paikkoja.
      */
     private Map<Integer, String[]> lauta;
     /**
@@ -175,7 +173,7 @@ public class NappulaKasittelija {
         for (int j = 0; j < this.lauta.get(0).length; j++) {
 
             for (String[] rivi : this.lauta.values()) {
-                testattavaJono = testattavaJono + rivi[j];
+                testattavaJono += rivi[j];
             }
         }
         return testattavaJono;
@@ -190,13 +188,11 @@ public class NappulaKasittelija {
      */
     public boolean onkoPystysuorasti(String merkki, int pituus) {
 
-        for (int i = 0; i < this.lauta.size(); i++) {
+        String testattavaJono = this.luoPystyrivinTestattavaJono();
 
-            String testattavaJono = this.luoPystyrivinTestattavaJono();
+        if (this.testaaMerkkijononPituus(testattavaJono, merkki, pituus) == pituus) {
+            return true;
 
-            if (this.testaaMerkkijononPituus(testattavaJono, merkki, pituus) == pituus) {
-                return true;
-            }
         }
         return false;
     }
@@ -289,7 +285,8 @@ public class NappulaKasittelija {
 
     /**
      * Laskee rekursiivisesti seuraavan pisteen merkkijonoon, jonka metodi saa
-     * parametrina. Kutsuu luokan omaa laskeSeuraavaPiste()-metodia seuraavan pisteen laskemiseksi.
+     * parametrina. Kutsuu luokan omaa laskeSeuraavaPiste()-metodia seuraavan
+     * pisteen laskemiseksi.
      *
      * @param y Y-akselin koordinaatti
      * @param x X-akselin koordinaatti
@@ -303,7 +300,8 @@ public class NappulaKasittelija {
 
     /**
      * Laskee rekursiivisesti seuraavan pisteen merkkijonoon, jonka metodi saa
-     * parametrina. Kutsuu luokan omaa laskeSeuraavaPiste()-metodia seuraavan pisteen laskemiseksi.
+     * parametrina. Kutsuu luokan omaa laskeSeuraavaPiste()-metodia seuraavan
+     * pisteen laskemiseksi.
      *
      * @param y Y-akselin koordinaatti
      * @param x X-akselin koordinaatti
@@ -331,9 +329,9 @@ public class NappulaKasittelija {
     }
 
     /**
-     * Lisää rekursiivisesti annettuun merkkijonoon aina seuraavan pisteen ja 
+     * Lisää rekursiivisesti annettuun merkkijonoon aina seuraavan pisteen ja
      * palauttaa valmiin merkkijonon.
-     * 
+     *
      * @param y Y-akselin koordinaatti
      * @param x X-akselin koordinaatti
      * @param yLisays Lisäys, joka lisätään y-akselin koordinaattiin.
@@ -361,11 +359,14 @@ public class NappulaKasittelija {
     /**
      * Testaa, onko testattavassa merkkijonossa tarpeeksi pitkiä suoria.
      *
-     * @param testattavaJono Jono, josta etsitään tietyn merkin tietynpituisia suoria.
-     * @param merkki Merkki, josta muodostettua uutta suoraa etsitään testattavastaJonosta.
+     * @param testattavaJono Jono, josta etsitään tietyn merkin tietynpituisia
+     * suoria.
+     * @param merkki Merkki, josta muodostettua uutta suoraa etsitään
+     * testattavastaJonosta.
      * @param vahimmaispituus Lyhimmän etsityn suoran pituus.
-     * @return Palauttaa testatun merkkijonon sisältämän vähimmäispituuden, jos vähimmäispituuden 
-     * mittainen suora löytyy merkkijonosta. Muuten palauttaa 0.
+     * @return Palauttaa testatun merkkijonon sisältämän vähimmäispituuden, jos
+     * vähimmäispituuden mittainen suora löytyy merkkijonosta. Muuten palauttaa
+     * 0.
      */
     public int testaaMerkkijononPituus(String testattavaJono, String merkki, int vahimmaispituus) {
 
@@ -416,8 +417,8 @@ public class NappulaKasittelija {
     }
 
     /**
-     * Selvittää pelilaudan pisimmän sivun pituuden (pidempi pituus laudan x- tai y-akselin
-     * pituuksista).
+     * Selvittää pelilaudan pisimmän sivun pituuden (pidempi pituus laudan x-
+     * tai y-akselin pituuksista).
      *
      * @return Palauttaa pisimmän sivun pituuden.
      */

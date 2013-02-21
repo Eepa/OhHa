@@ -117,6 +117,10 @@ public class Pelilauta {
     public NappulaKasittelija getNappulaKasittelija() {
         return this.nappulaKasittelija;
     }
+    
+    public LautaKasittelija getLautaKasittelija(){
+        return this.lautaKasittelija;
+    }
 
     /**
      * Metodi luo tekstikäyttöliittymään pelaajat ja lisää ne Pelilaudan
@@ -208,10 +212,6 @@ public class Pelilauta {
         this.lautaKasittelija.kirjoitaLaudalle(".");
     }
     
-    public LautaKasittelija getLautaKasittelija(){
-        return this.lautaKasittelija;
-    }
-
     public void setPaivitettava(Paivitettava paivitettava) {
         this.paivitettava = paivitettava;
     }

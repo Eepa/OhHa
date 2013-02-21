@@ -21,7 +21,6 @@ import static org.junit.Assert.*;
  */
 public class PelilautaTest {
 
-    Neljansuora neljansuora;
     Pelilauta pelilauta;
     Scanner lukija;
 
@@ -66,32 +65,40 @@ public class PelilautaTest {
 
     @Test
     public void luoPelilaudanHashMappiinOikein() {
-        int summa = 4 + 4;
-
         int tarkistussumma = this.pelilauta.getLauta().size() + this.pelilauta.getLauta().get(0).length;
 
-        assertEquals(summa, tarkistussumma);
+        assertEquals(8, tarkistussumma);
 
     }
 
     @Test
-    public void rivinTayttoToimiiAlussaOikeinEnsimmaisellaRivilla() {
+    public void rivinTayttoOnToiminutPelilautaaLuodessaOikeinEnsimmaisellaRivilla() {
         String[] taulukko = this.pelilauta.getLauta().get(0);
-        String tulostus = "";
-        for (int i = 0; i < taulukko.length; i++) {
-            tulostus = tulostus + taulukko[i];
-        }
+        String tulostus = palautaTaulukonMerkitMerkkijonossa(taulukko);
 
-        String testiSana = "";
-        for (int j = 0; j < taulukko.length; j++) {
-            testiSana = testiSana + ".";
-        }
+        String testiSana = palautaTestisana(taulukko);
 
         assertEquals(tulostus, testiSana);
     }
 
+    private String palautaTaulukonMerkitMerkkijonossa(String[] taulukko) {
+        String tulostus = "";
+        for (int i = 0; i < taulukko.length; i++) {
+            tulostus = tulostus + taulukko[i];
+        }
+        return tulostus;
+    }
+
+    private String palautaTestisana(String[] taulukko) {
+        String testiSana = "";
+        for (int j = 0; j < taulukko.length; j++) {
+            testiSana = testiSana + ".";
+        }
+        return testiSana;
+    }
+
     @Test
-    public void tayttoJaLaudalleKirjoittaminenToimivatAlussaOikeinJokaisellaRivilla() {
+    public void tayttoJaLaudalleKirjoittaminenOvatToimineetPelilautaaLuodessaOikeinJokaisellaRivilla() {
 
         ArrayList<String> rivit = new ArrayList<String>();
 
@@ -108,7 +115,7 @@ public class PelilautaTest {
 
     }
 
-    public int palautaTarkistusluku(ArrayList rivit) {
+    private int palautaTarkistusluku(ArrayList rivit) {
         String testisana = teeTestisana();
         int tarkistusluku = 0;
 
@@ -122,7 +129,7 @@ public class PelilautaTest {
         return tarkistusluku;
     }
 
-    public String teeTestisana() {
+    private String teeTestisana() {
         String testisana = "";
         for (int j = 0; j < this.pelilauta.getLauta().get(0).length; j++) {
             testisana += ".";
@@ -130,7 +137,7 @@ public class PelilautaTest {
         return testisana;
     }
 
-    public String teeRivinMerkeistaSana(String[] rivi) {
+    private String teeRivinMerkeistaSana(String[] rivi) {
         String uusiSana = "";
 
         for (int i = 0; i < rivi.length; i++) {
@@ -155,11 +162,28 @@ public class PelilautaTest {
     }
 
     @Test
+    public void luotuLautaKasittelijaOnOlemassaJaPalautetaanOikein() {
+        assertTrue(this.pelilauta.getLautaKasittelija() != null);
+    }
+
+    @Test
     public void luotuPaivitettavaAsetetaanJaPalautetaanOikein() {
-        Paivitettava paivitettava = new Piirtoalusta(new Neljansuora(8, 9, 4, this.lukija, "teksti"));
+        Paivitettava paivitettava = new Piirtoalusta(new Neljansuora(4, 4, 4, this.lukija, "teksti"));
         this.pelilauta.setPaivitettava(paivitettava);
 
         assertTrue(this.pelilauta.getPaivitettava() != null);
+    }
+
+    @Test
+    public void kakkosPelaajanSiirronTekeminenGraafistaKayttoliittymaaVartenToimii() {
+        Neljansuora neljansuora = new Neljansuora(4, 4, 4, this.lukija, "teksti");
+        Paivitettava paivitettava = new Piirtoalusta(neljansuora);
+        neljansuora.getPelilauta().setPaivitettava(paivitettava);
+
+        neljansuora.getPelilauta().teeYhdenPelaajanSiirtoGraafistaKayttoliittymaaVarten(0, 2);
+        String merkkiLaudanOikeassaKohdassa = neljansuora.getPelilauta().getLauta().get(3)[0];
+
+        assertEquals("O", merkkiLaudanOikeassaKohdassa);
     }
 
     @Test
@@ -180,7 +204,7 @@ public class PelilautaTest {
     }
 
     @Test
-    public void siirtojenTekeminenToimiiAntamallaSyotteenPelaajastaJaRivista() {
+    public void ykkosPelaajanSiirronTekeminenGraafistaKayttoliittymaaVartenToimii() {
         Neljansuora neljansuora = new Neljansuora(8, 9, 4, this.lukija, "teksti");
         Paivitettava paivitettava = new Piirtoalusta(neljansuora);
         Pelilauta pelilauta = neljansuora.getPelilauta();
@@ -236,5 +260,25 @@ public class PelilautaTest {
         for (int i = 0; i < maara; i++) {
             p.lisaaUusiNappula(i, 0);
         }
+    }
+
+    @Test
+    public void pelinLopettaminenToimii() {
+        Neljansuora neljansuora = new Neljansuora(4, 4, 4, this.lukija, "teksti");
+        Paivitettava paivitettava = new Piirtoalusta(neljansuora);
+        Pelilauta neljansuoranPelilauta = neljansuora.getPelilauta();
+
+        neljansuoranPelilauta.setPaivitettava(paivitettava);
+
+        this.lisaaPelaajalleNappuloita(neljansuoranPelilauta.getPelaajat().get(0), 3);
+
+        neljansuoranPelilauta.getLautaKasittelija().lisaaNappulatKenttaan(neljansuoranPelilauta.getPelaajat());
+
+        neljansuoranPelilauta.lopetaPeli();
+
+        String nappuloidenMerkkijono = neljansuoranPelilauta.getLauta().get(0)[0] + neljansuoranPelilauta.getLauta().get(0)[1]
+                + neljansuoranPelilauta.getLauta().get(0)[2];
+
+        assertEquals("...", nappuloidenMerkkijono);
     }
 }

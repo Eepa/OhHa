@@ -1,6 +1,7 @@
 package neljansuora.peli;
 
 import java.util.Scanner;
+import neljansuora.domain.Pelaaja;
 import neljansuora.kayttoliittyma.grafiikka.Paivitettava;
 import neljansuora.kayttoliittyma.grafiikka.Piirtoalusta;
 import org.junit.After;
@@ -50,6 +51,31 @@ public class NeljansuoraTest {
         this.neljansuora.setPaivitettava(paivitettava);
 
         assertTrue(this.neljansuora.getPelilauta().getPaivitettava() != null);
+    }
+    
+    @Test
+    public void pelinLopettaminenOnnistuu(){
+        Paivitettava paivitettava = new Piirtoalusta(neljansuora);
+        Pelilauta neljansuoranPelilauta = neljansuora.getPelilauta();
+
+        neljansuora.setPaivitettava(paivitettava);
+
+        lisaaPelaajalleNappuloita(neljansuoranPelilauta.getPelaajat().get(0), 3);
+
+        neljansuoranPelilauta.getLautaKasittelija().lisaaNappulatKenttaan(neljansuoranPelilauta.getPelaajat());
+
+        neljansuora.lopetaPeli();
+
+        String nappuloidenMerkkijono = neljansuoranPelilauta.getLauta().get(0)[0] + neljansuoranPelilauta.getLauta().get(0)[1]
+                + neljansuoranPelilauta.getLauta().get(0)[2];
+
+        assertEquals("...", nappuloidenMerkkijono);
+    }
+    
+    private void lisaaPelaajalleNappuloita(Pelaaja p, int maara) {
+        for (int i = 0; i < maara; i++) {
+            p.lisaaUusiNappula(i, 0);
+        }
     }
 
    }

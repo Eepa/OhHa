@@ -118,7 +118,6 @@ public class Neljansuora {
         while (true) {
 
             if (this.pelilauta.onkoNeljanSuoraa() || this.pelilauta.onkoLautaTaynna()) {
-                System.out.println("Lopetuksen kautta tarkistus");
                 break;
             }
 
