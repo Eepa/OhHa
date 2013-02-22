@@ -22,7 +22,7 @@ public class PituudenAsettelija {
     public int asetaLaudanSivunPituus(String pituudenNimi) {
         int palautettavaPituus = 0;
 
-        String pituus = JOptionPane.showInputDialog(null, "Anna " + pituudenNimi + " väliltä 5-20. "
+        String pituus = JOptionPane.showInputDialog(null, "Anna " + pituudenNimi + " väliltä 5-12. "
                 + "Tyhjä asettaa oletusarvon. ", "Sivun pituuden asetus", 1);
 
         if (pituus == null) {
@@ -33,7 +33,7 @@ public class PituudenAsettelija {
         }
 
         palautettavaPituus = this.testaaOlikoAnnettuSivunPituusLuku(pituus, pituudenNimi, palautettavaPituus);
-        palautettavaPituus = this.testaaKuuluukoPituusAnnetulleValille(palautettavaPituus, 0, 0, 20, 5, pituudenNimi);
+        palautettavaPituus = this.testaaKuuluukoPituusAnnetulleValille(palautettavaPituus, 0, 0, 12, 5, pituudenNimi);
 
         return palautettavaPituus;
     }
